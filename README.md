@@ -50,12 +50,15 @@ As a user, I want the ability to...
 - favorite restaurants that other people have created. 
 
 
-link to Route Table: https://docs.google.com/document/d/1akUKBv4C3ENjpQdZiww0Eg14tJImJ6vQsz81rTDH7n4/edit
-
+## Wireframes
 ![1](https://share.balsamiq.com/c/tWNZY9PhP3jbcugUK58au4.png)
 ![2](https://share.balsamiq.com/c/gEbEcZyXBUcMgfq1TS3Qvt.png)
 ![3](https://share.balsamiq.com/c/b8N7rZbP4yhqQXfV6x5iRM.png)
 ![4](https://share.balsamiq.com/c/mGTtzQNFKbG6Cp2HgSBYGM.png)
 ![5](https://share.balsamiq.com/c/wCKymQfzvSmnzSDwwwbME8.png)
 
+## ERD
 ![6](https://i.imgur.com/6j2sMz3.png)
+
+
+link to Route Table: https://docs.google.com/document/d/1akUKBv4C3ENjpQdZiww0Eg14tJImJ6vQsz81rTDH7n4/edit
