@@ -26,11 +26,13 @@ Our Application is designed to allow users to interact with various restaurants.
 
 ## Technologies Used
 
-* React JS
+* React
 * Mongoose
-* API
+* Express
+* Node.js
+* MongoDB 
 * Bootstrap
-* Modal
+
 
 ## User Stories
 
