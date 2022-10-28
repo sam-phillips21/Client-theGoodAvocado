@@ -1,13 +1,10 @@
-# The Good Avocado
+# The Good Avocado App
 
-## The Team
+A Yelp Mockup: Restaurant Reviews and Descriptions
+
+## The Flossing Avocados
+
 Alina, Angel, Melanie, Sam 
-
-## Team Name:  Flossing Avocados
-
-## App Name: The Good Avocado
-
-Yelp Mockup: Restaurant Reviews and Descriptions
 
 ## Description
 
