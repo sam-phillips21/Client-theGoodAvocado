@@ -12,17 +12,26 @@ import SignUp from './components/auth/SignUp'
 import SignIn from './components/auth/SignIn'
 import SignOut from './components/auth/SignOut'
 import ChangePassword from './components/auth/ChangePassword'
+import RestaurantCreate from './components/restaurants/RestaurantCreate'
+import RestaurantIndex from './components/restaurants/RestaurantIndex'
+import RestaurantShow from './components/restaurants/RestaurantShow'
 
 const App = () => {
 
   const [user, setUser] = useState(null)
+  const [owner, setOwner] = useState(null)
   const [msgAlerts, setMsgAlerts] = useState([])
 
   console.log('user in app', user)
+  console.log('owner in app', owner)
   console.log('message alerts', msgAlerts)
   const clearUser = () => {
     console.log('clear user ran')
     setUser(null)
+  }
+  const clearOwnder = () => {
+	console.log('clear owner ran')
+	setOwner(null)
   }
 
 	const deleteAlert = (id) => {
@@ -67,6 +76,33 @@ const App = () => {
               <RequireAuth user={user}>
                 <ChangePassword msgAlert={msgAlert} user={user} />
               </RequireAuth>}
+          />
+		  <Route
+            path='/create'
+            element={
+              <RequireAuth user={user}>
+                <RestaurantCreate msgAlert={msgAlert} user={user} />
+              </RequireAuth>}
+          />
+		  <Route
+            path='/restaurants'
+            element={
+              <RequireAuth user={user}>
+                <RestaurantIndex msgAlert={msgAlert} user={user} />
+              </RequireAuth>}
+          />
+		  <Route
+            path='/my-restaurants'
+            element={
+              <RequireAuth user={owner}>
+                <RestaurantIndex msgAlert={msgAlert} user={owner} />
+              </RequireAuth>}
+          />
+		  <Route
+            path='/Restaurants/:id'
+            element={
+                <RestaurantShow msgAlert={msgAlert} user={user} />
+				}
           />
 				</Routes>
 				{msgAlerts.map((msgAlert) => (
