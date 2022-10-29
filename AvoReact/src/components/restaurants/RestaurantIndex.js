@@ -11,7 +11,7 @@ const cardContainerLayout = {
 
 const RestaurantIndex = ({ user, msgAlert }) => {
 
-    const [allResturants, setAllRestaurants] = useState([])
+    const [allRestaurants, setAllRestaurants] = useState([])
 
     useEffect(() => {
         restaurantIndex(user)
@@ -27,29 +27,21 @@ const RestaurantIndex = ({ user, msgAlert }) => {
         })
     }, [])
 
-    const allRestaurantsJSX = allRestaurants.map(restaurant => {
-        return (
-            <Link to={`/restaurtants/${restaurant._id}`} key= {restaurant._id}>
-                <li>Name: {restaurant.name} type: {restaurant.type}</li>
-                </Link>
-        )
 
-    })
-
-    const restaurantCards = allResturants.map(restaurant => (
+    const restaurantCards = allRestaurants.map(restaurant => (
         <Card key={ restaurant.id } style={{ width: '30%', margin: 5 }}>
-            <Card.Header>{restaurant.fullTitle }</Card.Header>
+            <Card.Header>{ restaurant.name }</Card.Header>
             <Card.Body>
                 <Card.Text>
-                    <Link to={ `/restaurants/${restaurant.id}` } >View { restaurant.name} </Link>
+                    <Link to={ `/restaurants/${restaurant._id }` }>View { restaurant.name } </Link>
                 </Card.Text>
             </Card.Body>
         </Card>
     ))
 
     return (
-        <div className='container-md' style={ cardContrainerLayoiut }>
-            { restaurantCards}
+        <div className='container-md' style={ cardContainerLayout }>
+            { restaurantCards }
         </div>
     )
 }
