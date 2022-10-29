@@ -22,10 +22,6 @@ const SignUp = (props) => {
     const [password, setPassword] = useState('')
     const [passwordConfirmation, setPasswordConfirmation] = useState('')
 
-<<<<<<< HEAD
-=======
-
->>>>>>> a075c9beaac62e456c967667db55ad537990c02c
     const navigate = useNavigate()
 
 	const onSignUp = (event) => {
@@ -33,11 +29,7 @@ const SignUp = (props) => {
 
 		const { msgAlert, setUser } = props
 
-<<<<<<< HEAD
-        const credentials = {email, password, passwordConfirmation}
-=======
         const credentials = {email, password, passwordConfirmation,}
->>>>>>> a075c9beaac62e456c967667db55ad537990c02c
 
 		signUp(credentials)
 			.then(() => signIn(credentials))

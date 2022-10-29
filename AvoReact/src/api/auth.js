@@ -10,10 +10,7 @@ export const signUp = (credentials) => {
 				email: credentials.email,
 				password: credentials.password,
 				password_confirmation: credentials.passwordConfirmation,
-<<<<<<< HEAD
-=======
 				restaurantOwner: credentials.restaurantOwner
->>>>>>> a075c9beaac62e456c967667db55ad537990c02c
 			},
 		},
 	})
