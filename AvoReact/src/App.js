@@ -29,7 +29,7 @@ const App = () => {
     console.log('clear user ran')
     setUser(null)
   }
-  const clearOwnder = () => {
+  const clearOwner = () => {
 	console.log('clear owner ran')
 	setOwner(null)
   }
