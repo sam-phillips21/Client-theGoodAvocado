@@ -8,6 +8,7 @@ const linkStyle = {
 }
 const authenticatedOptions = (
 	<>
+<<<<<<< HEAD
 		<Nav.Item className='m-2'>
 			<Link to='Restaurants' style={linkStyle}>
 				All Restaurants
@@ -19,11 +20,18 @@ const authenticatedOptions = (
 			</Link>
 		</Nav.Item>
 		<Nav.Item className='m-2'>
+=======
+		<Nav.Item>
+>>>>>>> a075c9beaac62e456c967667db55ad537990c02c
 			<Link to='change-password' style={linkStyle}>
 				Change Password
 			</Link>
 		</Nav.Item>
+<<<<<<< HEAD
 		<Nav.Item className='m-2'>
+=======
+		<Nav.Item>
+>>>>>>> a075c9beaac62e456c967667db55ad537990c02c
 			<Link to='sign-out' style={linkStyle}>
 				Sign Out
 			</Link>
@@ -33,10 +41,17 @@ const authenticatedOptions = (
 
 const unauthenticatedOptions = (
 	<>
+<<<<<<< HEAD
         <Nav.Item className='m-2'>
 		    <Link to='sign-up' style={linkStyle}>Sign Up</Link>
         </Nav.Item>
         <Nav.Item className='m-2'>
+=======
+        <Nav.Item>
+		    <Link to='sign-up' style={linkStyle}>Sign Up</Link>
+        </Nav.Item>
+        <Nav.Item>
+>>>>>>> a075c9beaac62e456c967667db55ad537990c02c
 		    <Link to='sign-in' style={linkStyle}>Sign In</Link>
         </Nav.Item>
 	</>
@@ -44,11 +59,19 @@ const unauthenticatedOptions = (
 
 const alwaysOptions = (
 	<>
+<<<<<<< HEAD
 		<Nav.Item className='m-2'>
 			<Link to='/' style={linkStyle}>
 				Home
 			</Link>
 		</Nav.Item>
+=======
+		<Nav.Link>
+			<Link to='/' style={linkStyle}>
+				Home
+			</Link>
+		</Nav.Link>
+>>>>>>> a075c9beaac62e456c967667db55ad537990c02c
 	</>
 )
 
