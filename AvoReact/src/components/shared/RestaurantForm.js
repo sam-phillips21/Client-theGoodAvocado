@@ -1,6 +1,8 @@
+import React from 'react'
 import { Form, Button, Container } from 'react-bootstrap'
 
-const RestaurantForm = ({ restaurant, handleChange, heading, handleSubmit }) => {
+const RestaurantForm = (props) => {
+    const { restaurant, handleChange, heading, handleSubmit } = props
 
     return (
         <Container className="justify-content-center">
