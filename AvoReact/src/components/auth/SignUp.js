@@ -22,7 +22,6 @@ const SignUp = (props) => {
     const [password, setPassword] = useState('')
     const [passwordConfirmation, setPasswordConfirmation] = useState('')
 
-
     const navigate = useNavigate()
 
 	const onSignUp = (event) => {
