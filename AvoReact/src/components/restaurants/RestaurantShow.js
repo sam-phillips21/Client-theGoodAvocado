@@ -6,6 +6,7 @@ import RestaurantUpdateModal from './RestaurantUpdateModal'
 import NewReview from '../Reviews/NewReview'
 import ShowReview from '../Reviews/ShowReview'
 // import LoadingScreen from '../LoadingScreen'
+import { restaurantDelete, restaurantShow } from '../../api/restaurant'
 
 const cardContainerLayout = {
     display: 'flex',
@@ -19,6 +20,7 @@ const RestaurantShow = ({ user, msgAlert }) => {
     // const [isUpdateShown, setIsUpdateShown] = useState(false)
     const [editModalShow, setEditModalShow] = useState(false)
     // const [reviewModalShow, setReviewModalShow] = useState(false)
+   
     const [deleted, setDeleted] = useState(false)
     const [updated, setUpdated] = useState(false)
 
@@ -28,12 +30,14 @@ const RestaurantShow = ({ user, msgAlert }) => {
     useEffect(() => {
         restaurantShow(user, id)
             .then(res => {
+            .then((res) => {
                 setRestaurant(res.data.restaurant)
             })
             .catch((error) => {
                 msgAlert({
                     heading: 'Failure',
                     message: 'Show Restaurant Failure' + error,
+                    message: 'Show Failure' + error,
                     variant: 'danger'
                 })
             })
@@ -75,6 +79,7 @@ const RestaurantShow = ({ user, msgAlert }) => {
             msgAlert({
                 heading: 'Success',
                 message: 'Deleting a Restaurant',
+                message: 'Deleting',
                 variant: 'success'
             })
             
@@ -83,6 +88,7 @@ const RestaurantShow = ({ user, msgAlert }) => {
             msgAlert({
                 heading: 'Failure',
                 message: 'Deleting a Restaurant Fail: ' + error,
+                message: 'Deleting  ' + error,
                 variant: 'danger'
             })
         })
@@ -193,3 +199,4 @@ const RestaurantShow = ({ user, msgAlert }) => {
 }
 
 export default RestaurantShow
+
