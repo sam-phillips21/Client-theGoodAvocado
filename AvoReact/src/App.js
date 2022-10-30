@@ -21,11 +21,9 @@ import RestaurantShow from './components/restaurants/RestaurantShow'
 const App = () => {
 
   const [user, setUser] = useState(null)
-  const [owner] = useState(null)
   const [msgAlerts, setMsgAlerts] = useState([])
 
   console.log('user in app', user)
-  console.log('owner in app', owner)
   console.log('message alerts', msgAlerts)
   const clearUser = () => {
     console.log('clear user ran')
@@ -87,13 +85,6 @@ const App = () => {
             element={
               <RequireAuth user={user}>
                 <RestaurantIndex msgAlert={msgAlert} user={user} />
-              </RequireAuth>}
-          />
-		  <Route
-            path='/my-restaurants'
-            element={
-              <RequireAuth user={owner}>
-                <RestaurantIndex msgAlert={msgAlert} user={owner} />
               </RequireAuth>}
           />
 		  <Route
