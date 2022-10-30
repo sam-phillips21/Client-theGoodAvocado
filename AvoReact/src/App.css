@@ -1,3 +1,13 @@
+@import url('https://fonts.googleapis.com/css2?family=Swanky+and+Moo+Moo&display=swap');
+
+
+
 body {
-    background-image: url(../public/beigePurple.png);
+    background-image: url("https://imgur.com/uEWrIXl");
+    /* background-color: rgb(222, 241, 237);
+    background-repeat: no-repeat;
+    background-attachment: fixed; */
+    font:"font-family: 'Swanky and Moo Moo', cursive;"
 }
+
+/* <blockquote class="imgur-embed-pub" lang="en" data-id="uEWrIXl"><a href="https://imgur.com/uEWrIXl">View post on imgur.com</a></blockquote><script async src="//s.imgur.com/min/embed.js" charset="utf-8"></script> */
