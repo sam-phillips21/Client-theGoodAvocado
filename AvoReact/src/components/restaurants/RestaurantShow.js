@@ -18,7 +18,7 @@ const RestaurantShow = ({ user, msgAlert }) => {
     const [restaurant, setRestaurant] = useState(null)
     // const [isUpdateShown, setIsUpdateShown] = useState(false)
     const [editModalShow, setEditModalShow] = useState(false)
-    const [reviewModalShow, setReviewModalShow] = useState(false)
+    // const [reviewModalShow, setReviewModalShow] = useState(false)
     const [deleted, setDeleted] = useState(false)
     const [updated, setUpdated] = useState(false)
 
@@ -29,7 +29,6 @@ const RestaurantShow = ({ user, msgAlert }) => {
         restaurantShow(user, id)
             .then(res => {
                 setRestaurant(res.data.restaurant)
-                console.log('res', res.data.restaurant)
             })
             .catch((error) => {
                 msgAlert({
@@ -113,6 +112,10 @@ const RestaurantShow = ({ user, msgAlert }) => {
     //     return <LoadingScreen />
     // }
 
+    if (!restaurant) {
+        return <p> ...Loading </p>
+    }
+
     return (
         <>
 			<Container className="fluid">
@@ -129,11 +132,11 @@ const RestaurantShow = ({ user, msgAlert }) => {
                     </Card.Text>
                 </Card.Body>
                 <Card.Footer>
-                    <Button onClick={() => setReviewModalShow(true)}
+                    {/* <Button onClick={() => setReviewModalShow(true)}
                         className="m-2" variant="info"
                     >
                         Give {restaurant.name} a review!
-                    </Button>
+                    </Button> */}
                     { 
                         restaurant.owner && user && restaurant.owner._id === user._id 
                         ?
@@ -180,10 +183,10 @@ const RestaurantShow = ({ user, msgAlert }) => {
             <NewReview 
                 user={user}
                 restaurant={restaurant}
-                show={reviewModalShow}
+                // show={reviewModalShow}
                 msgAlert={msgAlert}
                 triggerRefresh={() => setUpdated(prev => !prev)}
-                handleClose={() => setReviewModalShow(false)}
+                // handleClose={() => setReviewModalShow(false)}
             />
         </>
     )
