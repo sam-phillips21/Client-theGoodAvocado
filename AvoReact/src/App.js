@@ -58,41 +58,41 @@ const App = () => {
 						path='/sign-in'
 						element={<SignIn msgAlert={msgAlert} setUser={setUser} />}
 					/>
-          <Route
-            path='/sign-out'
-            element={
-              <RequireAuth user={user}>
-                <SignOut msgAlert={msgAlert} clearUser={clearUser} user={user} />
-              </RequireAuth>
-            }
-          />
-          <Route
-            path='/change-password'
-            element={
-              <RequireAuth user={user}>
-                <ChangePassword msgAlert={msgAlert} user={user} />
-              </RequireAuth>}
-          />
-		  <Route
-            path='/create'
-            element={
-              <RequireAuth user={user}>
-                <RestaurantCreate msgAlert={msgAlert} user={user} />
-              </RequireAuth>}
-          />
-		  <Route
-            path='/restaurants'
-            element={
-              <RequireAuth user={user}>
-                <RestaurantIndex msgAlert={msgAlert} user={user} />
-              </RequireAuth>}
-          />
-		  <Route
-            path='/restaurants/:id'
-            element={
-                <RestaurantShow msgAlert={msgAlert} user={user} />
-				    }
-          />
+					<Route
+						path='/sign-out'
+						element={
+						<RequireAuth user={user}>
+							<SignOut msgAlert={msgAlert} clearUser={clearUser} user={user} />
+						</RequireAuth>
+						}
+					/>
+					<Route
+						path='/change-password'
+						element={
+						<RequireAuth user={user}>
+							<ChangePassword msgAlert={msgAlert} user={user} />
+						</RequireAuth>}
+					/>
+					<Route
+						path='/create'
+						element={
+						<RequireAuth user={user}>
+							<RestaurantCreate msgAlert={msgAlert} user={user} />
+						</RequireAuth>}
+					/>
+					<Route
+						path='/restaurants'
+						element={
+						<RequireAuth user={user}>
+							<RestaurantIndex msgAlert={msgAlert} user={user} />
+						</RequireAuth>}
+					/>
+					<Route
+						path='/restaurants/:id'
+						element={
+							<RestaurantShow msgAlert={msgAlert} user={user} />
+								}
+					/>
 				</Routes>
 				{msgAlerts.map((msgAlert) => (
 					<AutoDismissAlert

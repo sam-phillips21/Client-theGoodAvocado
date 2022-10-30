@@ -12,7 +12,7 @@ const RestaurantCreate = ({ user, msgAlert }) => {
         type: '',
         address: '',
         telephone: '',
-        delivery: null,
+        delivery: false,
         isUserRestaurantOwner: false,
     }
 
