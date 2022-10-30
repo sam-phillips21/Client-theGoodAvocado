@@ -7,6 +7,7 @@ import NewReview from '../Reviews/NewReview'
 import ShowReview from '../Reviews/ShowReview'
 // import LoadingScreen from '../LoadingScreen'
 
+
 const cardContainerLayout = {
     display: 'flex',
     flexFlow: 'row wrap',
@@ -19,6 +20,7 @@ const RestaurantShow = ({ user, msgAlert }) => {
     // const [isUpdateShown, setIsUpdateShown] = useState(false)
     const [editModalShow, setEditModalShow] = useState(false)
     // const [reviewModalShow, setReviewModalShow] = useState(false)
+   
     const [deleted, setDeleted] = useState(false)
     const [updated, setUpdated] = useState(false)
 
@@ -28,6 +30,7 @@ const RestaurantShow = ({ user, msgAlert }) => {
     useEffect(() => {
         restaurantShow(user, id)
             .then(res => {
+          
                 setRestaurant(res.data.restaurant)
             })
             .catch((error) => {
@@ -193,3 +196,4 @@ const RestaurantShow = ({ user, msgAlert }) => {
 }
 
 export default RestaurantShow
+
