@@ -1,3 +1,5 @@
+import './App.css'
+
 // import React, { Component, Fragment } from 'react'
 import React, { useState, Fragment } from 'react'
 import { Route, Routes } from 'react-router-dom'
@@ -29,7 +31,7 @@ const App = () => {
     console.log('clear user ran')
     setUser(null)
   }
-  const clearOwnder = () => {
+  const clearOwner = () => {
 	console.log('clear owner ran')
 	setOwner(null)
   }
@@ -99,7 +101,7 @@ const App = () => {
               </RequireAuth>}
           />
 		  <Route
-            path='/Restaurants/:id'
+            path='/restaurants/:id'
             element={
                 <RestaurantShow msgAlert={msgAlert} user={user} />
 				}
