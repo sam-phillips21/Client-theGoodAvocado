@@ -6,9 +6,9 @@ const Home = (props) => {
 	console.log('props in home', props)
 
 	return (
-		<div className='container-md'>
+		<>
 			<h2>Welcome to The Good Avocado</h2>
-		</div>
+		</>
 	)
 }
 
