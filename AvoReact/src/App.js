@@ -21,7 +21,7 @@ import RestaurantShow from './components/restaurants/RestaurantShow'
 const App = () => {
 
   const [user, setUser] = useState(null)
-  const [owner, setOwner] = useState(null)
+  const [owner] = useState(null)
   const [msgAlerts, setMsgAlerts] = useState([])
 
   console.log('user in app', user)
@@ -30,10 +30,6 @@ const App = () => {
   const clearUser = () => {
     console.log('clear user ran')
     setUser(null)
-  }
-  const clearOwner = () => {
-	console.log('clear owner ran')
-	setOwner(null)
   }
 
 	const deleteAlert = (id) => {
@@ -104,7 +100,7 @@ const App = () => {
             path='/restaurants/:id'
             element={
                 <RestaurantShow msgAlert={msgAlert} user={user} />
-				}
+				    }
           />
 				</Routes>
 				{msgAlerts.map((msgAlert) => (
