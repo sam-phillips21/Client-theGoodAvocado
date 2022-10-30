@@ -2,12 +2,16 @@ import React, { useEffect, useState } from 'react'
 import { Card } from 'react-bootstrap'
 import { Link } from 'react-router-dom'
 import { restaurantIndex } from '../../api/restaurant'
+// import Image from 'react-bootstrap/Image'
+import images from '../shared/images'
 
 const cardContainerLayout = {
     display: 'flex',
     flexFlow: 'row wrap',
     justifyContent: 'center'
 }
+
+
 
 const RestaurantIndex = ({ user, msgAlert }) => {
 
@@ -27,9 +31,16 @@ const RestaurantIndex = ({ user, msgAlert }) => {
         })
     }, [])
 
-
     const restaurantCards = allRestaurants.map(restaurant => (
-        <Card key={ restaurant.id } style={{ width: '30%', margin: 5 }}>
+        
+        <Card key={ restaurant.id } style={{ width: '25rem', margin: 5 }}>      
+            {
+                images.map(image => (
+                    <Card.Img variant="top" src={ image } />
+                ))
+                
+            }
+            
             <Card.Header>{ restaurant.name }</Card.Header>
             <Card.Body>
                 <Card.Text>
