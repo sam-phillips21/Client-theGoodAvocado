@@ -1,28 +1,21 @@
 import React, { useState } from 'react'
-import { useNavigate } from 'react-router-dom'
-import { restaurantCreate } from '../../api/restaurant'
+import { Modal } from 'react-bootstrap'
 import RestaurantForm from '../shared/RestaurantForm'
+import { restaurantUpdate } from '../../api/restaurant'
 
+const RestaurantUpdateModal = (props) => {
+    const { 
+        user, show, handleClose, 
+        msgAlert, triggerRefresh 
+    } = props
 
-const RestaurantCreate = ({ user, msgAlert }) => {
-    const navigate = useNavigate()
-
-    const defaultRestaurant = {
-        name: '',
-        type: '',
-        address: '',
-        telephone: '',
-        delivery: null,
-        isUserRestaurantOwner: false,
-    }
-
-    const [restaurant, setRestaurant] = useState(defaultRestaurant)
+    const [restaurant, setRestaurant] = useState(props.restaurant)
 
     const handleChange = event => {
         setRestaurant(prevRestaurant => {
             const updatedName = event.target.name
             let updatedValue = event.target.value
-
+            
             // handle checkboxes since they only send 'checked' or 'unchecked'
             if ((updatedName === 'delivery' || updatedName === 'isUserRestaurantOwner') && event.target.checked) {
                 updatedValue = true
@@ -34,36 +27,41 @@ const RestaurantCreate = ({ user, msgAlert }) => {
         })
     }
 
-
-    const handleCreateRestaurant = event => {
+    const handleSubmit = event => {
         event.preventDefault()
-        restaurantCreate(restaurant, user)
-            .then(res => { navigate(`/restaurants/${res.data.restaurant.id}`) })
+        
+        restaurantUpdate(restaurant, user, props.restaurant._id)
+            .then(() => handleClose())
             .then(() => {
                 msgAlert({
                     heading: 'Success',
-                    message: 'Created Restaurant',
+                    message: 'Updated Restaurant',
                     variant: 'success'
                 })
             })
+            .then(() => triggerRefresh())
             .catch(error => {
                 msgAlert({
                     heading: 'Failure',
-                    message: 'Create Restaurant Failure' + error,
+                    message: 'Update Restaurant Failure' + error,
                     variant: 'danger'
                 })
             })
     }
 
     return (
-        <RestaurantForm
-            restaurant={restaurant}
-            handleChange={handleChange}
-            heading="Add a New Restaurant"
-            handleSubmit={handleCreateRestaurant}
-        />
+        <Modal show={show} onHide={handleClose}>
+            <Modal.Header closeButton/>
+            <Modal.Body>
+                <RestaurantForm 
+                    restaurant={restaurant}
+                    handleChange={handleChange}
+                    handleSubmit={handleSubmit}
+                    heading="Update Restaurant"
+                />
+            </Modal.Body>
+        </Modal>
     )
 }
 
-
-export default RestaurantCreate
+export default RestaurantUpdateModal
