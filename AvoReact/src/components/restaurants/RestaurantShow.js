@@ -6,7 +6,7 @@ import RestaurantUpdateModal from './RestaurantUpdateModal'
 import NewReview from '../Reviews/NewReview'
 import ShowReview from '../Reviews/ShowReview'
 // import LoadingScreen from '../LoadingScreen'
-import { restaurantDelete, restaurantShow } from '../../api/restaurant'
+
 
 const cardContainerLayout = {
     display: 'flex',
@@ -37,7 +37,6 @@ const RestaurantShow = ({ user, msgAlert }) => {
                 msgAlert({
                     heading: 'Failure',
                     message: 'Show Restaurant Failure' + error,
-                    message: 'Show Failure' + error,
                     variant: 'danger'
                 })
             })
@@ -79,7 +78,6 @@ const RestaurantShow = ({ user, msgAlert }) => {
             msgAlert({
                 heading: 'Success',
                 message: 'Deleting a Restaurant',
-                message: 'Deleting',
                 variant: 'success'
             })
             
@@ -88,7 +86,6 @@ const RestaurantShow = ({ user, msgAlert }) => {
             msgAlert({
                 heading: 'Failure',
                 message: 'Deleting a Restaurant Fail: ' + error,
-                message: 'Deleting  ' + error,
                 variant: 'danger'
             })
         })
