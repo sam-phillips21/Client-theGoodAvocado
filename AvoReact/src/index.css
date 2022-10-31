@@ -1,8 +1,11 @@
+@import url('https://fonts.googleapis.com/css2?family=Swanky+and+Moo+Moo&display=swap');
+
 body {
-  /* background-image: url("https://imgur.com/uEWrIXl"); */
-  background-color: rgb(82, 116, 109);
+  background-image: url("https://imgur.com/uEWrIXl.png");
+  /* background-color: rgb(82, 116, 109); */
   background-repeat: no-repeat;
   background-attachment: fixed;
+  font:"font-family: 'Swanky and Moo Moo', cursive;";
   margin: 0;
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
     'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
