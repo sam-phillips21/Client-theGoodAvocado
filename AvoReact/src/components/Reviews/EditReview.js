@@ -2,7 +2,7 @@ import React, {useState} from 'react'
 import { Form, Container, Button } from 'react-bootstrap'
 import ReviewForm from '../shared/ReviewForm'
 import {handleDeleteReview} from './ShowReview'
-import {reviewDelete} from '../../api/review'
+import {reviewUpdate, reviewDelete} from '../../api/review'
 
 const EditReview = (props) => {
     const { handleChange,  heading, triggerRefresh } = props
