@@ -1,16 +1,14 @@
 import apiUrl from '../apiConfig'
 import axios from 'axios'
 
-export const reviewCreate = (data, user) => {
+// CREATE
+export const reviewCreate = (user, restaurantId, newReview) => {
+    console.log('the user in createReview', user)
+    console.log('the newReview in createReview', newReview)
 	return axios({
+		url: `${apiUrl}/reviews/${restaurantId}`,
 		method: 'POST',
-		url: apiUrl + '/reviews',
-		data: {
-			review: data,
-		},
-		headers: {
-			Authorization: `Token token=${user.token}`,
-		},
+		data: { review: newReview }
 	})
 }
 
@@ -28,25 +26,26 @@ export const reviewShow = (user, id) => {
 	})
 }
 
-export const reviewUpdate = (data, user, id) => {
+// UPDATE review
+export const reviewUpdate = (user, restaurantId, updatedReview) => {
+    console.log('this is updatedReview', updatedReview)
 	return axios({
+		url: `${apiUrl}/reviews/${restaurantId}/${updatedReview._id}`,
 		method: 'PATCH',
-		url: apiUrl + '/reviews/' + id,
-		data: {
-			review: data,
-		},
 		headers: {
 			Authorization: `Token token=${user.token}`,
 		},
+		data: { review: updatedReview }
 	})
 }
 
-export const reviewDelete = (user, id) => {
+// DELETE review
+export const reviewDelete = (user, restaurantId, reviewId) => {
 	return axios({
+		url: `${apiUrl}/reviews/${restaurantId}/${reviewId}`,
 		method: 'DELETE',
-		url: apiUrl + '/reviews/' + id,
 		headers: {
 			Authorization: `Token token=${user.token}`,
-		},
+		}
 	})
 }
