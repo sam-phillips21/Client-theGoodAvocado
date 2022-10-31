@@ -14,15 +14,18 @@ export const reviewCreate = (user, restaurantId, newReview) => {
 
 export const reviewIndex = (user) => {
 	return axios({
+		url: apiUrl + '/reviews',
 		method: 'GET',
-		url: apiUrl + '/reviews'
+        headers: {
+			Authorization: `Token token=${user.token}`,
+		},
 	})
 }
 
 export const reviewShow = (user, id) => {
 	return axios({
+		url: apiUrl + '/reviews/' + id,
 		method: 'GET',
-		url: apiUrl + '/reviews/' + id
 	})
 }
 
