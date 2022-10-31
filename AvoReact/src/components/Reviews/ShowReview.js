@@ -1,11 +1,10 @@
-// import React, { useEffect, useState } from 'react' 
-// import { useParams, useNavigate } from 'react-router-dom'
-// import { Container, Card, Button } from 'react-bootstrap'
-// import { restaurantShow, restaurantDelete } from '../../api/restaurant'
-// import RestaurantUpdateModal from './RestaurantUpdateModal'
-// import NewReview from '../Reviews/NewReview'
-// import ShowReview from '../Reviews/ShowReview'
-// // import LoadingScreen from '../LoadingScreen'
+import React, { useEffect, useState } from 'react' 
+import { useParams, useNavigate } from 'react-router-dom'
+import { restaurantShow, restaurantDelete } from '../../api/restaurant'
+import Accordion from 'react-bootstrap/Accordion'
+import {reviewDelete} from '../../api/review'
+
+// import LoadingScreen from '../LoadingScreen'
 
 
 // const cardContainerLayout = {
@@ -13,187 +12,104 @@
 //     flexFlow: 'row wrap',
 //     justifyContent: 'center'
 // }
+import ReviewForm from '../shared/ReviewForm'
 
-// const ReviewShow = ({ user, msgAlert }) => {
+const ShowReview = (props) => {
+    const {review, restaurant, user, msgAlert, triggerRefresh} = props
 
-//     const [review, setReview] = useState(null)
-//     // const [isUpdateShown, setIsUpdateShown] = useState(false)
-//     const [editModalShow, setEditModalShow] = useState(false)
-//     // const [reviewModalShow, setReviewModalShow] = useState(false)
-   
-//     const [deleted, setDeleted] = useState(false)
-//     const [updated, setUpdated] = useState(false)
+    // const [setReview] = useState(null)
+    // const [isUpdateShown, setIsUpdateShown] = useState(false)
+    // const [editShow, setEditShow] = useState(false)
 
-//     const { id } = useParams()
-//     const navigate = useNavigate()
+    // const [NewReview, setNewReview] = useState
+    // const [deleted, setDeleted] = useState(false)
+    // const [updated, setUpdated] = useState(false)
 
-//     useEffect(() => {
-//         reviewShow(user, id)
-//             .then(res => {
+    // const { id } = useParams()
+    // const navigate = useNavigate()
+
+    // useEffect(() => {
+    //     ShowReview(user, id)
+    //         .then(res => {
           
-//                 setReview(res.data.review)
-//             })
-//             .catch((error) => {
-//                 msgAlert({
-//                     heading: 'Failure',
-//                     message: 'Show Review Failure' + error,
-//                     variant: 'danger'
-//                 })
-//             })
-//     }, [updated])
+    //            ShowReview(res.data.review)
+    //         })
+    //         .catch((error) => {
+    //             msgAlert({
+    //                 heading: 'Failure',
+    //                 message: 'Show Review Failure' + error,
+    //                 variant: 'danger'
+    //             })
+    //         })
+    // }, [updated])
 
-//     // const toggleShowUpdate = () => {
-//     //     setIsUpdateShown(prevUpdateShown => !prevUpdateShown)
-//     // }
-
-//     // const handleChange = (event) => {
-//     //     // to keep the values as users input info 
-//     //     // first spread the current review
-//     //     // then comma and modify the key to the value you need
-//     //     setReview({...review, [event.target.name]: event.target.value})
-//     // }
-
-//     // const handleUpdateReview = () => {
-//     //     reviewUpdate(review, user, id)
-//     //     .then(() => {
-//     //         msgAlert({
-//     //             heading: 'Success',
-//     //             message: 'Updating Review',
-//     //             variant: 'success'
-//     //         })
-//     //     })
-//     //     .catch((error) => {
-//     //         msgAlert({
-//     //             heading: 'Failure',
-//     //             message: 'Update Review Failure' + error,
-//     //             variant: 'danger'
-//     //         })
-//     //     })
-//     // }
-
-//     const handleDeleteReview = () => {
-//         reviewDelete(user, id)
-//         .then(() => {
-//             setDeleted(true)
-//             msgAlert({
-//                 heading: 'Success',
-//                 message: 'Deleting a Review',
-//                 variant: 'success'
-//             })
+    const handleDeleteReview = () => {
+        reviewDelete(user, review._id, restaurant._id)
+        .then(() => {
+            // setDeleted(true)
+            msgAlert({
+                heading: 'Success',
+                message: 'Deleting a Review',
+                variant: 'success'
+            })
             
-//         })
-//         .catch((error) => {
-//             msgAlert({
-//                 heading: 'Failure',
-//                 message: 'Deleting  Review Fail: ' + error,
-//                 variant: 'danger'
-//             })
-//         })
-//     }
+        })
+        .catch((error) => {
+            msgAlert({
+                heading: 'Failure',
+                message: 'Deleting  Review Fail: ' + error,
+                variant: 'danger'
+            })
+        })
+    }
 
-//     let reviewCards
-//     if (review) {
-//         if (restaurant.reviews.length > 0) {
-//             // map over the reviews
-//             // produce one ShowReview component for each of them
-//             reviewCards = restaurant.reviews.map(review => (
-//                 <ShowReview 
-//                     key={review._id}
-//                     review={review}
-//                     restaurant={restaurant}
-//                     user={user}
-//                     msgAlert={msgAlert}
-//                     triggerRefresh={() => setUpdated(prev => !prev)}
-//                 />
-//             ))
-//         }
-//     }
+    // let reviewAccordion
+    // if (review) {
+    //     if (review.length > 0) {
+    //         // map over the reviews
+    //         // produce one ShowReview component for each of them
+    //         reviewAccordion = review.reviews.map(review => (
+    //             <ShowReview 
+    //                 key={review._id}
+    //                 review={review}
+    //                 user={user}
+    //                 msgAlert={msgAlert}
+    //                 triggerRefresh={() => setUpdated(prev => !prev)}
+    //             />
+    //         ))
+    //     }
+    // }
 
-//     if (deleted) navigate('/restaurants')
+    // if (deleted) navigate('/restaurants')
 
-//     // if (!restaurant) {
-//     //     return <LoadingScreen />
-//     // }
+    // if (!restaurant) {
+    //     return <LoadingScreen />
+    // }
 
-//     if (!review) {
-//         return <p> ...Loading </p>
-//     }
+    // if (!review) {
+    //     return <p> ...Loading </p>
+    // }
 
-//     return (
-//         <>
-// 			<Container className="fluid">
-//                 <Card>
-//                 <Card.Header>{ restaurant.name }</Card.Header>
-//                 <Card.Body>
-//                     <Card.Text>
-//                         <small>Type: { restaurant.type }</small><br/>
-//                         <small>Address: { restaurant.address }</small><br/>
-//                         <small>Telephone: { restaurant.telephone }</small><br/>
-//                         <small>
-//                             Does this restaurant deliver?: { restaurant.delivery ? 'yes' : 'no' }
-//                         </small><br/>
-//                     </Card.Text>
-//                 </Card.Body>
-//                 <Card.Footer>
-//                     {/* <Button onClick={() => setReviewModalShow(true)}
-//                         className="m-2" variant="info"
-//                     >
-//                         Give {restaurant.name} a review!
-//                     </Button> */}
-//                     { 
-//                         restaurant.owner && user && restaurant.owner._id === user._id 
-//                         ?
-//                         <>
-//                             <Button onClick={() => setEditModalShow(true)} className="m-2" variant="warning">
-//                                 Edit Restaurant
-//                             </Button>
-//                             <Button onClick={() => handleDeleteRestaurant()}
-//                                 className="m-2"
-//                                 variant="danger"
-//                             >
-//                                 { restaurant.name } is closed Permanently
-//                             </Button>
-//                         </>
-//                         :
-//                         null
-//                     }
-//                 </Card.Footer>
-//                     {/* <h3>Name: {restaurant.name}</h3>
-//                     <p>Type: {restaurant.type}</p>
-//                     <button onClick={toggleShowUpdate}>Toggle Update</button>
-//                     {isUpdateShown && (
-//                         <RestaurantUpdate
-//                             restaurant={restaurant}
-//                             handleChange={handleChange}
-//                             handleUpdateRestaurant={handleUpdateRestaurant}
-//                         />
-//                     )}
-//                     <button onClick={handleDeleteRestaurant} >Delete</button> */}
-//                 </Card>
-//             </Container>
-//             <h3>All of {restaurant.name}'s reviews:</h3>
-//             <Container style={cardContainerLayout}>
-//                 { reviewCards }
-//             </Container>
-//             <RestaurantUpdateModal 
-//                 user={user}
-//                 restaurant={restaurant}
-//                 show={editModalShow}
-//                 msgAlert={msgAlert}
-//                 triggerRefresh={() => setUpdated(prev => !prev)}
-//                 handleClose={() => setEditModalShow(false)}
-//             />
-//             <NewReview 
-//                 user={user}
-//                 restaurant={restaurant}
-//                 // show={reviewModalShow}
-//                 msgAlert={msgAlert}
-//                 triggerRefresh={() => setUpdated(prev => !prev)}
-//                 // handleClose={() => setReviewModalShow(false)}
-//             />
-//         </>
-//     )
-// }
+    return (
+        <>
+			<Accordion>
+            <Accordion.Item eventKey="0">
+                <Accordion.Header>New Review</Accordion.Header>
+                <Accordion.Body>
+                        <ReviewForm
+                        review={review}
+                        handleDeleteReview={handleDeleteReview}
+                        msgAlert={msgAlert}
+                        // handleChange={handleChange}
+                        // handleSubmit={handleSubmit}
+                        heading="Please submit a review!"
+                        />
+                </Accordion.Body>
+            </Accordion.Item>
+        </Accordion>
+        </>
+    )
+}
 
-// export default ReviewShow
+export default ShowReview
 
