@@ -93,12 +93,12 @@ const App = () => {
 							<RestaurantShow msgAlert={msgAlert} user={user} />
 								}
 					/>
-						<Route
+						{/* <Route
 						path='/reviews/:restaurantId'
 						element={
 							<IndexReview msgAlert={msgAlert} user={user} />
 								}
-					/>
+					/> */}
 				</Routes>
 				{msgAlerts.map((msgAlert) => (
 					<AutoDismissAlert
