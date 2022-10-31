@@ -3,7 +3,7 @@ import { Card } from 'react-bootstrap'
 import { Link } from 'react-router-dom'
 import { restaurantIndex } from '../../api/restaurant'
 // import Image from 'react-bootstrap/Image'
-import images from '../shared/images'
+import FoodImages from '../shared/FoodImages'
 
 const cardContainerLayout = {
     display: 'flex',
@@ -33,15 +33,9 @@ const RestaurantIndex = ({ user, msgAlert }) => {
 
     const restaurantCards = allRestaurants.map(restaurant => (
         
-        <Card key={ restaurant.id } style={{ width: '25rem', margin: 5 }}>      
-            {
-                images.map(image => (
-                    <Card.Img variant="top" src={ image } />
-                ))
-                
-            }
-            
-            <Card.Header>{ restaurant.name }</Card.Header>
+        <Card key={ restaurant.id } style={{ width: '30rem', margin: 8 }}>      
+            <Card.Img variant="top" src={ FoodImages[`${restaurant.type}`] } style={{ height: '300px' }} />
+            <Card.Header><b>{ restaurant.name }</b> / { restaurant.type }</Card.Header>
             <Card.Body>
                 <Card.Text>
                     <Link to={ `/restaurants/${restaurant._id }` }>View { restaurant.name } </Link>
