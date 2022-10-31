@@ -12,8 +12,19 @@ const RestaurantCreate = ({ user, msgAlert }) => {
         type: '',
         address: '',
         telephone: '',
-        delivery: false,
         isUserRestaurantOwner: false,
+        delivery: false,
+        reservations: false,
+        takeout: false,
+        
+        catering: false,
+        acceptsCreditCard: false,
+
+        parking: false,
+        wifi: false,
+        masksRequired: false,
+        alcohol: false
+
     }
 
     const [restaurant, setRestaurant] = useState(defaultRestaurant)
@@ -21,15 +32,11 @@ const RestaurantCreate = ({ user, msgAlert }) => {
     const handleChange = event => {
         setRestaurant(prevRestaurant => {
             const updatedName = event.target.name
-            let updatedValue = event.target.value
+            console.log(event.target.type)
+            let updatedValue = event.target.type === 'checkbox' ? event.target.checked : event.target.value
 
-            // handle checkboxes since they only send 'checked' or 'unchecked'
-            if ((updatedName === 'delivery' || updatedName === 'isUserRestaurantOwner') && event.target.checked) {
-                updatedValue = true
-            } else if ((updatedName === 'delivery' || updatedName === 'isUserRestaurantOwner') && !event.target.checked) {
-                updatedValue = false
-            }
             const updatedRestaurant = { [updatedName]: updatedValue }
+            console.log(updatedRestaurant)
             return { ...prevRestaurant, ...updatedRestaurant }
         })
     }

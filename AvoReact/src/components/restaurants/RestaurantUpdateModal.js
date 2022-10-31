@@ -14,15 +14,11 @@ const RestaurantUpdateModal = (props) => {
     const handleChange = event => {
         setRestaurant(prevRestaurant => {
             const updatedName = event.target.name
-            let updatedValue = event.target.value
-            
-            // handle checkboxes since they only send 'checked' or 'unchecked'
-            if ((updatedName === 'delivery' || updatedName === 'isUserRestaurantOwner') && event.target.checked) {
-                updatedValue = true
-            } else if ((updatedName === 'delivery' || updatedName === 'isUserRestaurantOwner') && !event.target.checked) {
-                updatedValue = false
-            }
+            console.log(event.target.type)
+            let updatedValue = event.target.type === 'checkbox' ? event.target.checked : event.target.value
+
             const updatedRestaurant = { [updatedName]: updatedValue }
+            console.log(updatedRestaurant)
             return { ...prevRestaurant, ...updatedRestaurant }
         })
     }
