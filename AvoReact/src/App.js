@@ -94,7 +94,7 @@ const App = () => {
 								}
 					/>
 						<Route
-						path='/reviews'
+						path='/reviews/:restaurantId'
 						element={
 							<IndexReview msgAlert={msgAlert} user={user} />
 								}

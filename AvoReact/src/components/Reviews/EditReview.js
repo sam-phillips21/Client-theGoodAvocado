@@ -1,8 +1,35 @@
-import React from 'react'
+import React, {useState} from 'react'
 import { Form, Container, Button } from 'react-bootstrap'
+import ReviewForm from '../shared/ReviewForm'
+import {handleDeleteReview} from './ShowReview'
+import {reviewDelete} from '../../api/review'
 
 const EditReview = (props) => {
-    const { review, handleChange, handleSubmit, heading } = props
+    const { handleChange,  heading, triggerRefresh } = props
+
+const [review, setReview] = useState(props.review)
+
+const handleSubmit = event => {
+    event.preventDefault()
+    
+    reviewUpdate(review, user, props.review._id)
+        .then(() => handleClose())
+        .then(() => {
+            msgAlert({
+                heading: 'Success',
+                message: 'Updated Review',
+                variant: 'success'
+            })
+        })
+        .then(() => triggerRefresh())
+        .catch(error => {
+            msgAlert({
+                heading: 'Failure',
+                message: 'Update Review Failure' + error,
+                variant: 'danger'
+            })
+        })
+}
 
     return (
         <Container className="justify-content-center">
@@ -32,7 +59,7 @@ const EditReview = (props) => {
                     <option value="4">4</option>
                     <option value="5">5</option>
                 </Form.Select>
-                <Button type="submit">Submit</Button>
+                <Button type="submit">Update</Button>
             </Form>
         </Container>
     )
