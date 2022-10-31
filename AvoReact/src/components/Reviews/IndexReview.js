@@ -20,7 +20,7 @@ const ReviewIndex = ({ user, msgAlert }) => {
     useEffect(() => {
         reviewIndex(user)
         .then(res => {
-            setAllReviews(res.data.restaurants)
+            setAllReviews(res.data.reviews)
         })
         .catch((error) => {
             msgAlert({
@@ -44,7 +44,7 @@ const ReviewIndex = ({ user, msgAlert }) => {
             <Card.Header>{ review.name }</Card.Header>
             <Card.Body>
                 <Card.Text>
-                    <Link to={ `/reviews/${restaurant._id }` }>View { restaurant.name } </Link>
+                    <Link to={ `/reviews/mine` }>View { restaurant.name } </Link>
                 </Card.Text>
             </Card.Body>
         </Card>
