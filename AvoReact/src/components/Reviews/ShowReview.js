@@ -95,7 +95,7 @@ const ShowReview = (props) => {
     return (
 		<Accordion>
             <Accordion.Item eventKey="0">
-                <Accordion.Header>Title: {review.title}</Accordion.Header>
+                <Accordion.Header>{user.email} said:</Accordion.Header>
                 <Accordion.Body>
                     <small>{review.comment}</small><br/>
                         {/* <ReviewForm

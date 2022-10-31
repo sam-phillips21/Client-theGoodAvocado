@@ -8,16 +8,6 @@ const ReviewForm = (props) => {
         <Container className="justify-content-center">
             <h3>{heading}</h3>
             <Form onSubmit={handleSubmit}>
-            <Form.Label>Title:</Form.Label>
-                <Form.Control
-                    placeholder="Add a title for your review"
-                    name="title"
-                    id="title"
-                    value={review.title}
-                    onChange={handleChange}
-                    as="textarea"
-                    rows={3}
-                />
                 <Form.Label>Comment:</Form.Label>
                 <Form.Control
                     placeholder="Add comments about the restaurant, the food, and your overall experience"
