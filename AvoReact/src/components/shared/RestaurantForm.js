@@ -69,7 +69,7 @@ const RestaurantForm = (props) => {
                     defaultChecked={restaurant.isUserRestaurantOwner}
                     onChange={handleChange}
                 />
-                <Form.Label>Amenities:</Form.Label>
+                {/* <Form.Label>Amenities:</Form.Label> */}
                 <Form.Check 
                     label="Offers delivery?"
                     name="delivery"
