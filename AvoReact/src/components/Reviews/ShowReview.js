@@ -1,8 +1,8 @@
+import Accordion from 'react-bootstrap/Accordion'
 import React, { useEffect, useState } from 'react' 
 import { useParams, useNavigate } from 'react-router-dom'
-import { restaurantShow, restaurantDelete } from '../../api/restaurant'
-import Accordion from 'react-bootstrap/Accordion'
-import {reviewDelete} from '../../api/review'
+import { Button } from 'react-bootstrap'
+import { reviewUpdate, reviewDelete } from '../../api/review'
 
 // import LoadingScreen from '../LoadingScreen'
 
@@ -12,11 +12,12 @@ import {reviewDelete} from '../../api/review'
 //     flexFlow: 'row wrap',
 //     justifyContent: 'center'
 // }
+
 import ReviewForm from '../shared/ReviewForm'
 
 const ShowReview = (props) => {
     const {review, restaurant, user, msgAlert, triggerRefresh} = props
-
+    console.log('user', user)
     // const [setReview] = useState(null)
     // const [isUpdateShown, setIsUpdateShown] = useState(false)
     // const [editShow, setEditShow] = useState(false)
@@ -54,6 +55,7 @@ const ShowReview = (props) => {
             })
             
         })
+        .then(() => triggerRefresh())
         .catch((error) => {
             msgAlert({
                 heading: 'Failure',
@@ -91,23 +93,36 @@ const ShowReview = (props) => {
     // }
 
     return (
-        <>
-			<Accordion>
+		<Accordion>
             <Accordion.Item eventKey="0">
-                <Accordion.Header>New Review</Accordion.Header>
+                <Accordion.Header>{user.email} said:</Accordion.Header>
                 <Accordion.Body>
-                        <ReviewForm
+                    <small>{review.comment}</small><br/>
+                        {/* <ReviewForm
                         review={review}
                         handleDeleteReview={handleDeleteReview}
                         msgAlert={msgAlert}
                         // handleChange={handleChange}
                         // handleSubmit={handleSubmit}
-                        heading="Please submit a review!"
-                        />
+                        heading={user}
+                        /> */}
+                    <Button
+                        className='m-2'
+                        variant='warning'
+                    >
+                        Edit
+                    </Button>
+                    <Button
+                        variant="danger"
+                        onClick={handleDeleteReview}
+                    >
+                        Delete
+                    </Button>
+
                 </Accordion.Body>
+
             </Accordion.Item>
         </Accordion>
-        </>
     )
 }
 
