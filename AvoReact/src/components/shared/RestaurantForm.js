@@ -17,13 +17,28 @@ const RestaurantForm = (props) => {
                     onChange={handleChange}
                 />
                 <Form.Label>Type of Cuisine:</Form.Label>
-                <Form.Control
-                    placeholder="Use a comma to separate if more than one"
+                <Form.Select
+                    aria-label='type of cuisine'
                     name="type"
-                    id="type"
-                    value={restaurant.type}
+                    defaultValue={restaurant.type}
                     onChange={handleChange}
-                />
+                >
+                    <option>Select a type</option>
+                    <option value="American">American</option>
+                    <option value="Chinese">Chinese</option>
+                    <option value="French">French</option>
+                    <option value="Italian">Italian</option>
+                    <option value="Indian">Indian</option>
+                    <option value="Japanese">Japanese</option>
+                    <option value="Korean">Korean</option>
+                    <option value="Mediterranean">Mediterranean</option>
+                    <option value="Mexican">Mexican</option>
+                    <option value="Portuguese">Portuguese</option>
+                    <option value="Seafood">Seafood</option>
+                    <option value="Spanish">Spanish</option>
+                    <option value="Vietnamese">Vietnamese</option>
+                    <option value="Other">Other</option>
+                </Form.Select>
                 <Form.Label>Address:</Form.Label>
                 <Form.Control
                     placeholder="Restaurant's address"
