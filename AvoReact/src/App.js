@@ -15,6 +15,8 @@ import ChangePassword from './components/auth/ChangePassword'
 import RestaurantCreate from './components/restaurants/RestaurantCreate'
 import RestaurantIndex from './components/restaurants/RestaurantIndex'
 import RestaurantShow from './components/restaurants/RestaurantShow'
+import ShowReview from './components/Reviews/ShowReview'
+import IndexReview from './components/Reviews/IndexReview'
 
 const App = () => {
 
@@ -89,6 +91,12 @@ const App = () => {
 						path='/restaurants/:id'
 						element={
 							<RestaurantShow msgAlert={msgAlert} user={user} />
+								}
+					/>
+						<Route
+						path='/reviews'
+						element={
+							<IndexReview msgAlert={msgAlert} user={user} />
 								}
 					/>
 				</Routes>
