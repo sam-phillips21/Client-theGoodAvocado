@@ -11,23 +11,23 @@ const [review, setReview] = useState(props.review)
 
 const handleChange = (e) => {
     setReview(prevReview => {
-        const name = e.target.name
-        let value = e.target.value
+        const updatedName = e.target.name
+        let updatedValue = e.target.value
 
         // handle the checkbox
    
 
-        const updatedReview = { [name]: value }
+        const updatedReview = { [updatedName]: updatedValue }
 
         return {
             ...prevReview, ...updatedReview
         }
     })
 }
+console.log(props.review)
 
 const handleSubmit = event => {
     event.preventDefault()
-    
     reviewUpdate(review, user, props.review._id)
         .then(() => handleClose())
         .then(() => {
