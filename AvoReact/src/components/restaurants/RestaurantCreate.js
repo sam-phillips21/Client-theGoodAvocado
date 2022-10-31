@@ -38,7 +38,7 @@ const RestaurantCreate = ({ user, msgAlert }) => {
     const handleCreateRestaurant = event => {
         event.preventDefault()
         restaurantCreate(restaurant, user)
-            .then(res => { navigate(`/restaurants/${res.data.restaurant.id}`) })
+            .then(res => { navigate(`/restaurants/${res.data.restaurant._id}`) })
             .then(() => {
                 msgAlert({
                     heading: 'Success',
