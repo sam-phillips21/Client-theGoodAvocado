@@ -6,7 +6,7 @@ import EditReview from '../Reviews/EditReview'
 // import LoadingScreen from '../LoadingScreen'
 
 const ShowReview = (props) => {
-    const {review, restaurant, user, msgAlert, triggerRefresh, handleChange} = props
+    const {review, restaurant, user, msgAlert, triggerRefresh} = props
     // console.log('this is the props, props')
 
     const [editModalShow, setEditModalShow] = useState(false)
@@ -42,7 +42,7 @@ const ShowReview = (props) => {
 
         <>
             <Card className="m-2">
-                    <Card.Header>{user._id} said:</Card.Header>
+                    <Card.Header>{user.email} said:</Card.Header>
                     <Card.Body>
                         <small>Comments: {review.comment}</small><br/>
                         <small>Rating: {review.rating}</small><br/>
@@ -61,7 +61,7 @@ const ShowReview = (props) => {
                                 </Button>
                                 <Button
                                     variant="danger"
-                                    handleChange = {handleChange}
+                                    // handleChange = {handleChange}
                                     onClick={() => handleDeleteReview()}
                                 >
                                     Delete
