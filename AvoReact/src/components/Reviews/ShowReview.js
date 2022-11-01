@@ -23,7 +23,7 @@ const ShowReview = (props) => {
 
     // const [NewReview, setNewReview] = useState
     const [deleted, setDeleted] = useState(false)
-    // const [updated, setUpdated] = useState(false)
+    const [updated, setUpdated] = useState(false)
 
     // const { id } = useParams()
     // const navigate = useNavigate()
@@ -114,6 +114,8 @@ const ShowReview = (props) => {
                     </Button>
                     <Button
                         variant="danger"
+                        triggerRefresh={() => setUpdated(prev => !prev)}
+
                         handleChange = {handleChange}
                         onClick={() => handleDeleteReview()}
                     >
