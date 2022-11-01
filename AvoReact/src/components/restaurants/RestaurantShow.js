@@ -1,10 +1,11 @@
-import React, { useEffect, useState } from 'react' 
+import React, { useEffect, useState } from 'react'
 import { useParams, useNavigate } from 'react-router-dom'
-import { Container, Card, Button } from 'react-bootstrap'
+import { Container, Card, Button, Image, Carousel } from 'react-bootstrap'
 import { restaurantShow, restaurantDelete } from '../../api/restaurant'
 import RestaurantUpdateModal from './RestaurantUpdateModal'
 import NewReview from '../Reviews/NewReview'
 import ShowReview from '../Reviews/ShowReview'
+import FoodImages from '../shared/FoodImages'
 // import LoadingScreen from '../LoadingScreen'
 
 
@@ -14,13 +15,13 @@ const cardContainerLayout = {
     justifyContent: 'center'
 }
 
+
 const RestaurantShow = ({ user, msgAlert }) => {
 
     const [restaurant, setRestaurant] = useState(null)
-    // const [isUpdateShown, setIsUpdateShown] = useState(false)
     const [editModalShow, setEditModalShow] = useState(false)
     // const [reviewModalShow, setReviewModalShow] = useState(false)
-   
+
     const [deleted, setDeleted] = useState(false)
     const [updated, setUpdated] = useState(false)
 
@@ -30,7 +31,7 @@ const RestaurantShow = ({ user, msgAlert }) => {
     useEffect(() => {
         restaurantShow(user, id)
             .then(res => {
-          
+
                 setRestaurant(res.data.restaurant)
             })
             .catch((error) => {
@@ -73,22 +74,22 @@ const RestaurantShow = ({ user, msgAlert }) => {
 
     const handleDeleteRestaurant = () => {
         restaurantDelete(user, id)
-        .then(() => {
-            setDeleted(true)
-            msgAlert({
-                heading: 'Success',
-                message: 'Deleting a Restaurant',
-                variant: 'success'
+            .then(() => {
+                setDeleted(true)
+                msgAlert({
+                    heading: 'Success',
+                    message: 'Deleting a Restaurant',
+                    variant: 'success'
+                })
+
             })
-            
-        })
-        .catch((error) => {
-            msgAlert({
-                heading: 'Failure',
-                message: 'Deleting a Restaurant Fail: ' + error,
-                variant: 'danger'
+            .catch((error) => {
+                msgAlert({
+                    heading: 'Failure',
+                    message: 'Deleting a Restaurant Fail: ' + error,
+                    variant: 'danger'
+                })
             })
-        })
     }
 
     let reviewCards
@@ -97,7 +98,7 @@ const RestaurantShow = ({ user, msgAlert }) => {
             // map over the reviews
             // produce one ShowReview component for each of them
             reviewCards = restaurant.reviews.map(review => (
-                <ShowReview 
+                <ShowReview
                     key={review._id}
                     review={review}
                     restaurant={restaurant}
@@ -121,61 +122,64 @@ const RestaurantShow = ({ user, msgAlert }) => {
 
     return (
         <>
-			<Container className="fluid">
-                <Card>
-                <Card.Header>{ restaurant.name }</Card.Header>
-                <Card.Body>
-                    <Card.Text>
-                        <small>Type: { restaurant.type }</small><br/>
-                        <small>Address: { restaurant.address }</small><br/>
-                        <small>Telephone: { restaurant.telephone }</small><br/>
-                        <small>
-                            Does this restaurant deliver?: { restaurant.delivery ? 'yes' : 'no' }
-                        </small><br/>
-                    </Card.Text>
-                </Card.Body>
-                <Card.Footer>
-                    {/* <Button onClick={() => setReviewModalShow(true)}
-                        className="m-2" variant="info"
-                    >
-                        Give {restaurant.name} a review!
-                    </Button> */}
-                    { 
-                        restaurant.owner && user && restaurant.owner._id === user._id 
-                        ?
-                        <>
-                            <Button onClick={() => setEditModalShow(true)} className="m-2" variant="warning">
-                                Edit Restaurant
-                            </Button>
-                            <Button onClick={() => handleDeleteRestaurant()}
-                                className="m-2"
-                                variant="danger"
-                            >
-                                { restaurant.name } is closed Permanently
-                            </Button>
-                        </>
-                        :
-                        null
-                    }
-                </Card.Footer>
-                    {/* <h3>Name: {restaurant.name}</h3>
-                    <p>Type: {restaurant.type}</p>
-                    <button onClick={toggleShowUpdate}>Toggle Update</button>
-                    {isUpdateShown && (
-                        <RestaurantUpdate
-                            restaurant={restaurant}
-                            handleChange={handleChange}
-                            handleUpdateRestaurant={handleUpdateRestaurant}
-                        />
-                    )}
-                    <button onClick={handleDeleteRestaurant} >Delete</button> */}
+            {/* <Carousel>
+                <Carousel.Item>
+                    <img
+                        className="d-block w-100"
+                        src={FoodImages[`${restaurant.type}`]}
+                        style=
+                    />
+                    <Carousel.Caption>
+                        <h3>First slide label</h3>
+                        <p>Nulla vitae elit libero, a pharetra augue mollis interdum.</p>
+                    </Carousel.Caption>
+                </Carousel.Item>
+            </Carousel> */}
+            <Container className="fluid">
+                <Container className='show-image-container'> 
+                    <Image className='show-image' src={FoodImages[`${restaurant.type}`]} />
+                    <h1 className='display-1 show-image-header'>{restaurant.name}</h1>
+                </Container>
+                <Card key={restaurant.id} style={{ width: '30rem', margin: 8 }}>
+
+                    <Card.Header>{restaurant.name}</Card.Header>
+
+                    <Card.Body>
+                        <Card.Text>
+                            <small>Type: {restaurant.type}</small><br />
+                            <small>Address: {restaurant.address}</small><br />
+                            <small>Telephone: {restaurant.telephone}</small><br />
+                            <small>
+                                Does this restaurant deliver?: {restaurant.delivery ? 'yes' : 'no'}
+                            </small><br />
+                        </Card.Text>
+                    </Card.Body>
+                    <Card.Footer>
+                        {
+                            restaurant.owner && user && restaurant.owner._id === user._id
+                                ?
+                                <>
+                                    <Button onClick={() => setEditModalShow(true)} className="m-2" variant="warning">
+                                        Edit Restaurant
+                                    </Button>
+                                    <Button onClick={() => handleDeleteRestaurant()}
+                                        className="m-2"
+                                        variant="danger"
+                                    >
+                                        {restaurant.name} is closed Permanently
+                                    </Button>
+                                </>
+                                :
+                                null
+                        }
+                    </Card.Footer>
                 </Card>
             </Container>
             <h3>All of {restaurant.name}'s reviews:</h3>
             <Container style={cardContainerLayout}>
-                { reviewCards }
+                {reviewCards}
             </Container>
-            <RestaurantUpdateModal 
+            <RestaurantUpdateModal
                 user={user}
                 restaurant={restaurant}
                 show={editModalShow}
@@ -183,13 +187,13 @@ const RestaurantShow = ({ user, msgAlert }) => {
                 triggerRefresh={() => setUpdated(prev => !prev)}
                 handleClose={() => setEditModalShow(false)}
             />
-            <NewReview 
+            <NewReview
                 user={user}
                 restaurant={restaurant}
                 // show={reviewModalShow}
                 msgAlert={msgAlert}
                 triggerRefresh={() => setUpdated(prev => !prev)}
-                // handleClose={() => setReviewModalShow(false)}
+            // handleClose={() => setReviewModalShow(false)}
             />
         </>
     )
