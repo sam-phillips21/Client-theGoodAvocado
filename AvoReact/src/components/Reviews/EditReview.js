@@ -36,7 +36,7 @@ const EditReview = (props) => {
     const handleSubmit = (e) => {
         e.preventDefault()
         
-        updatedReview(user, review._id, review)
+        reviewUpdate(user, review._id, review)
             .then(() => handleClose())
             .then(() => {
                 msgAlert({
