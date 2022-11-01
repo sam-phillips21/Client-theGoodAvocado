@@ -13,7 +13,11 @@ const ShowReview = (props) => {
 
 
     const handleDeleteReview = () => {
-        reviewDelete(user, review._id, restaurant._id)
+        reviewDelete(user, restaurant._id, review._id)
+        console.log('user', user)
+        console.log('restaurant', restaurant)
+        console.log('review', review)
+
         .then(() => {
             msgAlert({
                 heading: 'Success: Review Deleted',
