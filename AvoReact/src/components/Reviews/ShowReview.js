@@ -7,16 +7,17 @@ import EditReview from '../Reviews/EditReview'
 
 const ShowReview = (props) => {
     const {review, restaurant, user, msgAlert, triggerRefresh, handleChange} = props
-
     // console.log('this is the props, props')
-
- 
 
     const [editModalShow, setEditModalShow] = useState(false)
 
 
     const handleDeleteReview = () => {
-        reviewDelete(user, review._id, restaurant._id)
+        reviewDelete(user, restaurant._id, review._id)
+        console.log('user', user)
+        console.log('restaurant', restaurant)
+        console.log('review', review)
+
         .then(() => {
             msgAlert({
                 heading: 'Success: Review Deleted',
@@ -40,7 +41,8 @@ const ShowReview = (props) => {
             <Card className="m-2">
                     <Card.Header>{user.email} said:</Card.Header>
                     <Card.Body>
-                        <small>{review.comment}</small><br/>
+                        <small>Comments: {review.comment}</small><br/>
+                        <small>Rating: {review.rating}</small><br/>
 
                         <Button
                             className='m-2'
