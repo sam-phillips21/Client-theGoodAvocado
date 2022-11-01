@@ -13,13 +13,15 @@ export const reviewCreate = (user, restaurantId, newReview) => {
 	})
 }
 
-export const reviewIndex = (user) => {
+// INDEX
+export const reviewIndex = (author) => {
+	// const authorId = { author: user._id }
 	return axios({
 		url: apiUrl + '/reviews',
 		method: 'GET',
-        headers: {
-			Authorization: `Token token=${user.token}`,
-		},
+        // headers: {
+		// 	Authorization: `Token token=${user.token}`,
+		// },
 	})
 }
 

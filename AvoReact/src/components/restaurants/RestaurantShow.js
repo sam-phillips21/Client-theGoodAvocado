@@ -31,7 +31,7 @@ const cardContainerLayout = {
 
 
 const RestaurantShow = ({ user, msgAlert }) => {
-
+console.log('this is the restShow user', user)
     const [restaurant, setRestaurant] = useState(null)
     const [editModalShow, setEditModalShow] = useState(false)
     // const [reviewModalShow, setReviewModalShow] = useState(false)
