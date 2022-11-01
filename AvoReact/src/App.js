@@ -16,7 +16,7 @@ import RestaurantCreate from './components/restaurants/RestaurantCreate'
 import RestaurantIndex from './components/restaurants/RestaurantIndex'
 import RestaurantShow from './components/restaurants/RestaurantShow'
 import ShowReview from './components/Reviews/ShowReview'
-import IndexReview from './components/Reviews/IndexReview'
+// import IndexReview from './components/Reviews/IndexReview'
 
 const App = () => {
 

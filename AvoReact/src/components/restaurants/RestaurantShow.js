@@ -30,8 +30,13 @@ const RestaurantShow = ({ user, msgAlert }) => {
 
     useEffect(() => {
         restaurantShow(user, id)
+<<<<<<< HEAD
             .then(res => {
 
+=======
+            .then((res) => {
+                console.log(res.data.restaurant)
+>>>>>>> 821d769 (merge commit attempt)
                 setRestaurant(res.data.restaurant)
             })
             .catch((error) => {
