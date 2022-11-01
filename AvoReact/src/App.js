@@ -16,7 +16,7 @@ import RestaurantCreate from './components/restaurants/RestaurantCreate'
 import RestaurantIndex from './components/restaurants/RestaurantIndex'
 import RestaurantShow from './components/restaurants/RestaurantShow'
 // import ShowReview from './components/Reviews/ShowReview'
-// import IndexReview from './components/Reviews/IndexReview'
+import IndexReview from './components/Reviews/IndexReview'
 
 const App = () => {
 
@@ -93,12 +93,13 @@ const App = () => {
 							<RestaurantShow msgAlert={msgAlert} user={user} />
 								}
 					/>
-						{/* <Route
-						path='/reviews/:restaurantId'
+						<Route
+						path='/reviews'
 						element={
+						<RequireAuth user={user}>	
 							<IndexReview msgAlert={msgAlert} user={user} />
-								}
-					/> */}
+						</RequireAuth>}
+					/>
 				</Routes>
 				{msgAlerts.map((msgAlert) => (
 					<AutoDismissAlert
