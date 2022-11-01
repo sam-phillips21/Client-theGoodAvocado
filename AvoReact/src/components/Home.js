@@ -7,7 +7,7 @@ const Home = (props) => {
 	return (
 
 		<div className='container-md'>
-			<h2>Welcome to The Good Avocado</h2>
+			<h2>Welcome to The Good Avocado </h2>
 			<RestaurantIndex msgAlert= {msgAlert}/>
 		</div>
 
