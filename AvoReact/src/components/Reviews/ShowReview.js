@@ -3,8 +3,9 @@ import React, { useEffect, useState } from 'react'
 import { useParams, useNavigate } from 'react-router-dom'
 import { Button } from 'react-bootstrap'
 import { reviewUpdate, reviewDelete } from '../../api/review'
-
+import {EditReview, handleChange} from '../Reviews/EditReview'
 // import LoadingScreen from '../LoadingScreen'
+import ReviewForm from '../shared/ReviewForm'
 
 
 // const cardContainerLayout = {
@@ -13,17 +14,15 @@ import { reviewUpdate, reviewDelete } from '../../api/review'
 //     justifyContent: 'center'
 // }
 
-import ReviewForm from '../shared/ReviewForm'
 
 const ShowReview = (props) => {
-    const {review, restaurant, user, msgAlert, triggerRefresh} = props
-    console.log('user', user)
+    const {review, restaurant, user, msgAlert, triggerRefresh, handleChange} = props
     // const [setReview] = useState(null)
     // const [isUpdateShown, setIsUpdateShown] = useState(false)
     // const [editShow, setEditShow] = useState(false)
 
     // const [NewReview, setNewReview] = useState
-    // const [deleted, setDeleted] = useState(false)
+    const [deleted, setDeleted] = useState(false)
     // const [updated, setUpdated] = useState(false)
 
     // const { id } = useParams()
@@ -47,7 +46,7 @@ const ShowReview = (props) => {
     const handleDeleteReview = () => {
         reviewDelete(user, review._id, restaurant._id)
         .then(() => {
-            // setDeleted(true)
+            setDeleted(true)
             msgAlert({
                 heading: 'Success',
                 message: 'Deleting a Review',
@@ -93,9 +92,9 @@ const ShowReview = (props) => {
     // }
 
     return (
-		<Accordion>
+		<Accordion defaultActiveKey={['0']} alwaysOpen>
             <Accordion.Item eventKey="0">
-                <Accordion.Header>{user.email} said:</Accordion.Header>
+                <Accordion.Header>{user} said:</Accordion.Header>
                 <Accordion.Body>
                     <small>{review.comment}</small><br/>
                         {/* <ReviewForm
@@ -109,12 +108,14 @@ const ShowReview = (props) => {
                     <Button
                         className='m-2'
                         variant='warning'
+                        onClick={() => reviewUpdate()}
                     >
                         Edit
                     </Button>
                     <Button
                         variant="danger"
-                        onClick={handleDeleteReview}
+                        handleChange = {handleChange}
+                        onClick={() => handleDeleteReview()}
                     >
                         Delete
                     </Button>

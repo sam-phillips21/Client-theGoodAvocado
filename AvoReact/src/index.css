@@ -5,19 +5,20 @@ body {
   background-color: rgb(82, 116, 109);
   background-repeat: no-repeat;
   background-attachment: fixed;
-  font-family: 'Swanky and Moo Moo', cursive;
+  font:"font-family: 'Swanky and Moo Moo', cursive;";
   margin: 0;
-  /* font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
     'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
     sans-serif;
   -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale; */
+  -moz-osx-font-smoothing: grayscale;
 }
 
 
-/* code {
+code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
+
 } */
 
 .show-image-container {
@@ -39,3 +40,6 @@ body {
   height: 500px;
   object-fit: cover;
 }
+=======
+}
+

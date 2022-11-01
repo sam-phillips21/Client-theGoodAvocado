@@ -5,9 +5,25 @@ import {handleDeleteReview} from './ShowReview'
 import {reviewUpdate, reviewDelete} from '../../api/review'
 
 const EditReview = (props) => {
-    const { handleChange,  heading, triggerRefresh } = props
+    const {heading, triggerRefresh, user, handleClose, msgAlert } = props
 
 const [review, setReview] = useState(props.review)
+
+const handleChange = (e) => {
+    setReview(prevReview => {
+        const name = e.target.name
+        let value = e.target.value
+
+        // handle the checkbox
+   
+
+        const updatedReview = { [name]: value }
+
+        return {
+            ...prevReview, ...updatedReview
+        }
+    })
+}
 
 const handleSubmit = event => {
     event.preventDefault()
