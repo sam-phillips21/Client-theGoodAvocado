@@ -30,8 +30,8 @@ const RestaurantShow = ({ user, msgAlert }) => {
 
     useEffect(() => {
         restaurantShow(user, id)
-            .then((res) => {
-                console.log(res.data.restaurant)
+            .then(res => {
+
                 setRestaurant(res.data.restaurant)
             })
             .catch((error) => {
@@ -219,4 +219,3 @@ const RestaurantShow = ({ user, msgAlert }) => {
 }
 
 export default RestaurantShow
-
