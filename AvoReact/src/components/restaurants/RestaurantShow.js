@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import { useParams, useNavigate } from 'react-router-dom'
-import { Container, Card, Button, Image, Row, Col } from 'react-bootstrap'
+import { Container, Button, Image, } from 'react-bootstrap'
 import { restaurantShow, restaurantDelete } from '../../api/restaurant'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faBicycle, faClipboardList, faBurger, faBowlFood, faCreditCard, faSquareParking, faWifi, faMaskFace, faWineGlass, faXmark, faShop } from '@fortawesome/free-solid-svg-icons'

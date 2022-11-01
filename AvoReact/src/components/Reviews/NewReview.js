@@ -5,7 +5,7 @@ import { reviewCreate } from '../../api/review'
 
 const NewReview = (props) => {
     const { 
-        user, restaurant, handleClose, msgAlert, triggerRefresh
+        user, restaurant, msgAlert, triggerRefresh
     } = props
 
     const [review, setReview] = useState({})
@@ -34,7 +34,6 @@ const NewReview = (props) => {
         e.preventDefault()
 
         reviewCreate(user, restaurant._id, review)
-            .then(() => handleClose())
             .then(() => {
                 msgAlert({
                     heading: 'Thanks!',
