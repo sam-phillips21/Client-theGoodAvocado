@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import { useParams, useNavigate } from 'react-router-dom'
-import { Container, Card, Button, Image, Row } from 'react-bootstrap'
+import { Container, Card, Button, Image, Row, Col } from 'react-bootstrap'
 import { restaurantShow, restaurantDelete } from '../../api/restaurant'
 import RestaurantUpdateModal from './RestaurantUpdateModal'
 import NewReview from '../Reviews/NewReview'
@@ -129,8 +129,8 @@ const RestaurantShow = ({ user, msgAlert }) => {
                 </Container>
                 <Container className='text-center'>
                     <h1 className='border-bottom border-2 border-success mb-3'>{restaurant.type} Restaurant</h1>
-                    <h2>{restaurant.address}</h2>
-                    <h2>{restaurant.telephone}</h2>
+                    <h4>{restaurant.address}</h4>
+                    <h4>{restaurant.telephone}</h4>
                     {
                         restaurant.owner && user && restaurant.owner._id === user._id
                             ?
@@ -149,6 +149,10 @@ const RestaurantShow = ({ user, msgAlert }) => {
                             null
                     }
                 </Container>
+                <Row>
+                    <Col></Col>
+                    <Col></Col>
+                </Row>
 
 
 
@@ -187,7 +191,7 @@ const RestaurantShow = ({ user, msgAlert }) => {
                     </Card.Footer>
                 </Card> */}
 
-                <h3>All of {restaurant.name}'s reviews:</h3>
+                <h3 className='my-5'>All of {restaurant.name}'s reviews:</h3>
                 <Container style={cardContainerLayout}>
                     {reviewCards}
                 </Container>
