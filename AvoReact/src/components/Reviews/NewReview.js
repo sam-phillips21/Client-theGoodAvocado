@@ -7,7 +7,7 @@ const NewReview = (props) => {
     const { 
         user, restaurant, msgAlert, triggerRefresh
     } = props
-
+    console.log('user', user)
     const [review, setReview] = useState({})
 
     const handleChange = (e) => {
@@ -32,8 +32,10 @@ const NewReview = (props) => {
 
     const handleSubmit = (e) => {
         e.preventDefault()
+        let updatedReview = review
+        updatedReview.authorEmail = user.email
 
-        reviewCreate(user, restaurant._id, review)
+        reviewCreate(user, restaurant._id, updatedReview)
             .then(() => {
                 msgAlert({
                     heading: 'Thanks!',

@@ -8,7 +8,7 @@ const Home = (props) => {
 		<>
 			<div className='container-sm'>
 				<h2>Welcome to The Good Avocado </h2>
-				<img className='rounded img-fluid body-bg' src="https://images.pexels.com/photos/511763/pexels-photo-511763.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1" alt="a table full of various meals" />
+				<img className='rounded img-fluid body-bg' src="https://images.pexels.com/photos/3184183/pexels-photo-3184183.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1" alt="a table full of various meals" />
 			</div>
 			<div>
 				<br/>

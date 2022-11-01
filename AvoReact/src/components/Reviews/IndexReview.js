@@ -9,8 +9,6 @@ const cardContainerLayout = {
     justifyContent: 'center'
 }
 
-
-
 const ReviewIndex = ({ user, msgAlert }) => {
 
     const [allReviews, setAllReviews] = useState([])
@@ -24,20 +22,22 @@ const ReviewIndex = ({ user, msgAlert }) => {
         .catch((error) => {
             msgAlert({
                 heading: 'Failure',
-                message: 'Index Failure' + error,
+                message: 'Index Failure: ' + error,
                 variant: 'danger'
             })
         })
     }, [])
 
-    const restaurantCards = allReviews.map(review => (
+    const reviewCards = allReviews.map(review => (
         
         <Card key={ review.id } style={{ width: '25rem', margin: 5 }}>      
             
-            <Card.Header>{ review.name }</Card.Header>
+            <Card.Header>{ user.email }</Card.Header>
             <Card.Body>
                 <Card.Text>
                     <Link to={ `/reviews` }>View { review.name } </Link>
+                    <small>Comments: {review.comment}</small><br/>
+                    <small>Rating: {review.rating}</small><br/>
                 </Card.Text>
             </Card.Body>
         </Card>
@@ -45,9 +45,12 @@ const ReviewIndex = ({ user, msgAlert }) => {
 
 
     return (
-        <div className='container-md' style={ cardContainerLayout }>
-            { restaurantCards }
-        </div>
+        <>
+            <h2 className='text-center mt-3'>All My Reviews</h2>
+            <div className='container-md text-center' style={ cardContainerLayout }>
+                { reviewCards }
+            </div>
+        </>
     )
 }
 

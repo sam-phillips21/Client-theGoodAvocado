@@ -10,8 +10,6 @@ const cardContainerLayout = {
     justifyContent: 'center'
 }
 
-
-
 const RestaurantIndex = ({ user, msgAlert }) => {
 
     const [allRestaurants, setAllRestaurants] = useState([])
@@ -24,7 +22,7 @@ const RestaurantIndex = ({ user, msgAlert }) => {
             .catch((error) => {
                 msgAlert({
                     heading: 'Failure',
-                    message: 'Index Failure' + error,
+                    message: 'Index Failure: ' + error,
                     variant: 'danger'
                 })
             })

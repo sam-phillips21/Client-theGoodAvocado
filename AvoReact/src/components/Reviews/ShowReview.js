@@ -42,15 +42,15 @@ const ShowReview = (props) => {
 
         <>
             <Card className="m-2">
-                    <Card.Header>{user.email} said:</Card.Header>
+                    <Card.Header>{review.authorEmail} said:</Card.Header>
                     <Card.Body>
                         <small>Comments: {review.comment}</small><br/>
                         <small>Rating: {review.rating}</small><br/>
                     </Card.Body>
                     <Card.Footer>
-                        {/* {
-                            user._id === review.owner._id
-                            ? */}
+                        {
+                            user.email === review.authorEmail
+                            ?
                             <>
                                 <Button
                                     className='m-2'
@@ -67,9 +67,9 @@ const ShowReview = (props) => {
                                     Delete
                                 </Button>
                             </>
-                            {/* :
-                            null
-                        } */}
+                            :
+                            <></>
+                        }
                     </Card.Footer>
             </Card>
             <EditReview 
