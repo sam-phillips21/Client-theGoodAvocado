@@ -7,10 +7,7 @@ import EditReview from '../Reviews/EditReview'
 
 const ShowReview = (props) => {
     const {review, restaurant, user, msgAlert, triggerRefresh, handleChange} = props
-
     // console.log('this is the props, props')
-
- 
 
     const [editModalShow, setEditModalShow] = useState(false)
 
@@ -40,7 +37,8 @@ const ShowReview = (props) => {
             <Card className="m-2">
                     <Card.Header>{user.email} said:</Card.Header>
                     <Card.Body>
-                        <small>{review.comment}</small><br/>
+                        <small>Comments: {review.comment}</small><br/>
+                        <small>Rating: {review.rating}</small><br/>
 
                         <Button
                             className='m-2'
