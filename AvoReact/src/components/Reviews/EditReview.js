@@ -1,83 +1,72 @@
-import React, {useState} from 'react'
-import { Form, Container, Button } from 'react-bootstrap'
+import React, { useState } from 'react'
+import { Modal } from 'react-bootstrap'
 import ReviewForm from '../shared/ReviewForm'
-import {handleDeleteReview} from './ShowReview'
-import {reviewUpdate, reviewDelete} from '../../api/review'
+import { reviewUpdate } from '../../api/review'
+import messages from '../shared/AutoDismissAlert/messages'
+
 
 const EditReview = (props) => {
-    const {heading, triggerRefresh, user, handleClose, msgAlert } = props
+    const { 
+        user, show, handleClose, 
+        msgAlert, triggerRefresh, restaurant
+    } = props
 
-const [review, setReview] = useState(props.review)
+    const [review, setReview] = useState(props.review)
 
-const handleChange = (e) => {
-    setReview(prevReview => {
-        const updatedName = e.target.name
-        let updatedValue = e.target.value
+    const handleChange = (e) => {
+        setReview(prevReview => {
+            const name = e.target.name
+            let value = e.target.value
 
-        // handle the checkbox
-   
+            // handle the checkbox
+            // if (name === "isSqueaky" && e.target.checked) {
+            //     value = true
+            // } else if (name === "isSqueaky" && !e.target.checked) {
+            //     value = false
+            // }
 
-        const updatedReview = { [updatedName]: updatedValue }
+            const updatedReview = { [name]: value }
 
-        return {
-            ...prevReview, ...updatedReview
-        }
-    })
-}
-console.log(props.review)
-
-const handleSubmit = event => {
-    event.preventDefault()
-    reviewUpdate(review, user, props.review._id)
-        .then(() => handleClose())
-        .then(() => {
-            msgAlert({
-                heading: 'Success',
-                message: 'Updated Review',
-                variant: 'success'
-            })
+            return {
+                ...prevReview, ...updatedReview
+            }
         })
-        .then(() => triggerRefresh())
-        .catch(error => {
-            msgAlert({
-                heading: 'Failure',
-                message: 'Update Review Failure' + error,
-                variant: 'danger'
+    }
+
+    const handleSubmit = (e) => {
+        e.preventDefault()
+        
+        updatedReview(user, review._id, review)
+            .then(() => handleClose())
+            .then(() => {
+                msgAlert({
+                    heading: 'Success',
+                    message: messages.updateReviewSuccess,
+                    variant: 'success'
+                })
             })
-        })
-}
+            .then(() => triggerRefresh())
+            .catch((error) => {
+                msgAlert({
+                    heading: 'Failure',
+                    message: messages.updateReviewFailure + error,
+                    variant: 'danger'
+                })
+            })
+    }
 
     return (
-        <Container className="justify-content-center">
-            <h3>{heading}</h3>
-            <Form onSubmit={handleSubmit}>
-                <Form.Label>Comment:</Form.Label>
-                <Form.Control
-                    placeholder="Add comments about the restaurant, the food, and your overall experience"
-                    name="comment"
-                    id="comment"
-                    value={review.comment}
-                    onChange={handleChange}
-                    as="textarea"
-                    rows={3}
+        <Modal show={show} onHide={handleClose}>
+            <Modal.Header closeButton/>
+            <Modal.Body>
+                <ReviewForm 
+                    review={review}
+                    handleChange={handleChange}
+                    handleSubmit={handleSubmit}
+                    heading="Give this restaurant a review!"
                 />
-                <Form.Select
-                    aria-label="rating"
-                    name="rating"
-                    defaultValue={review.rating} 
-                    onChange={handleChange}
-                >
-                    <option>Add a rating</option>
-                    <option value="0">0</option>
-                    <option value="1">1</option>
-                    <option value="2">2</option>
-                    <option value="3">3</option>
-                    <option value="4">4</option>
-                    <option value="5">5</option>
-                </Form.Select>
-                <Button type="submit">Update</Button>
-            </Form>
-        </Container>
+            </Modal.Body>
+        </Modal>
     )
 }
 
