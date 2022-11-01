@@ -149,11 +149,27 @@ const RestaurantShow = ({ user, msgAlert }) => {
                             null
                     }
                 </Container>
-                <Row>
-                    <Col></Col>
-                    <Col></Col>
-                </Row>
-
+                <Container>
+                    <Row>
+                        <Col>Delivery: {restaurant.delivery ? 'Yes' : 'No'}</Col>
+                        <Col>Reservations: {restaurant.reservations ? 'Yes' : 'No'}</Col>
+                    </Row>
+                    <Row>
+                        <Col>Takeout: {restaurant.takeout ? 'Yes' : 'No'}</Col>
+                        <Col>Catering: {restaurant.catering ? 'Yes' : 'No'}</Col>
+                    </Row>
+                    <Row>
+                        <Col>Accepts Credit Cards: {restaurant.acceptsCreditCard ? 'Yes' : 'No'}</Col>
+                        <Col>Parking: {restaurant.parking ? 'Yes' : 'No'}</Col>
+                    </Row>
+                    <Row>
+                        <Col>Free Wi-fi: {restaurant.wifi ? 'Yes' : 'No'}</Col>
+                        <Col>Masks Required: {restaurant.masksRequired ? 'Yes' : 'No'}</Col>
+                    </Row>
+                    <Row>
+                        <Col>Alcohol: {restaurant.alcohol ? 'Yes' : 'No'}</Col>
+                    </Row>
+                </Container>
 
 
                 {/* <Card key={restaurant.id} style={{ width: '30rem', margin: 8 }}>
