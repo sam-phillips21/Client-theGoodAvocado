@@ -13,7 +13,7 @@ const ShowReview = (props) => {
 
 
     const handleDeleteReview = () => {
-        reviewDelete(user, restaurant.id, review.id)
+        reviewDelete(user, restaurant._id, review.id)
         .then(() => {
             console.log('user', user)
             console.log('restaurant', restaurant)

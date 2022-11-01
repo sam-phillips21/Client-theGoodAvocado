@@ -3,12 +3,13 @@ import axios from 'axios'
 
 // CREATE
 export const reviewCreate = (user, restaurantId, newReview) => {
-    // console.log('the user in createReview', user)
-    // console.log('the newReview in createReview', newReview)
+	const authorId = { author: user._id }
+	const review = {...newReview, ...authorId}
+
 	return axios({
 		url: `${apiUrl}/reviews/${restaurantId}`,
 		method: 'POST',
-		data: { review: newReview }
+		data: { review: review }
 	})
 }
 
@@ -31,14 +32,16 @@ export const reviewIndex = (user) => {
 
 // UPDATE review
 export const reviewUpdate = (user, restaurantId, updatedReview) => {
-    console.log('this is updatedReview', updatedReview)
+	const authorId = { author: user._id }
+	const review = {...updatedReview, ...authorId}
+
 	return axios({
-		url: `${apiUrl}/reviews/${restaurantId}/${updatedReview._id}`,
+		url: `${apiUrl}/reviews/${restaurantId}/${review.id}`,
 		method: 'PATCH',
 		headers: {
 			Authorization: `Token token=${user.token}`,
 		},
-		data: { review: updatedReview }
+		data: { review: review }
 	})
 }
 
