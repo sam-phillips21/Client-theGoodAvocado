@@ -16,15 +16,12 @@ const RestaurantCreate = ({ user, msgAlert }) => {
         delivery: false,
         reservations: false,
         takeout: false,
-        
         catering: false,
         acceptsCreditCard: false,
-
         parking: false,
         wifi: false,
         masksRequired: false,
         alcohol: false
-
     }
 
     const [restaurant, setRestaurant] = useState(defaultRestaurant)
