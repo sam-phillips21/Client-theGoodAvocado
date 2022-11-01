@@ -22,12 +22,12 @@ export const reviewIndex = (user) => {
 	})
 }
 
-export const reviewShow = (user, id) => {
-	return axios({
-		url: apiUrl + '/reviews/' + id,
-		method: 'GET',
-	})
-}
+// export const reviewShow = (user, id) => {
+// 	return axios({
+// 		url: apiUrl + '/reviews/' + id,
+// 		method: 'GET',
+// 	})
+// }
 
 // UPDATE review
 export const reviewUpdate = (user, restaurantId, updatedReview) => {

@@ -13,11 +13,14 @@ const ShowReview = (props) => {
 
 
     const handleDeleteReview = () => {
-        reviewDelete(user, restaurant._id, review._id)
-        .then (() => {console.log('user', user)
-        console.log('restaurant', restaurant)
-        console.log('review', review)
-    })
+        reviewDelete(user, restaurant.id, review.id)
+        .then(() => {
+            console.log('user', user)
+            console.log('restaurant', restaurant)
+            console.log('review', review)
+
+        })
+
         .then(() => {
             msgAlert({
                 heading: 'Success: Review Deleted',
@@ -39,27 +42,35 @@ const ShowReview = (props) => {
 
         <>
             <Card className="m-2">
-                    <Card.Header>{user.email} said:</Card.Header>
+                    <Card.Header>{user._id} said:</Card.Header>
                     <Card.Body>
                         <small>Comments: {review.comment}</small><br/>
                         <small>Rating: {review.rating}</small><br/>
-
-                        <Button
-                            className='m-2'
-                            variant='warning'
-                            onClick={() => setEditModalShow}
-                        >
-                            Edit
-                        </Button>
-                        <Button
-                            variant="danger"
-                            handleChange = {handleChange}
-                            onClick={() => handleDeleteReview()}
-                        >
-                            Delete
-                        </Button>
-
                     </Card.Body>
+                    <Card.Footer>
+                        {/* {
+                            user._id === review.owner._id
+                            ? */}
+                            <>
+                                <Button
+                                    className='m-2'
+                                    variant='warning'
+                                    onClick={() => setEditModalShow(true)}
+                                >
+                                    Edit
+                                </Button>
+                                <Button
+                                    variant="danger"
+                                    handleChange = {handleChange}
+                                    onClick={() => handleDeleteReview()}
+                                >
+                                    Delete
+                                </Button>
+                            </>
+                            {/* :
+                            null
+                        } */}
+                    </Card.Footer>
             </Card>
             <EditReview 
                 user={user}
