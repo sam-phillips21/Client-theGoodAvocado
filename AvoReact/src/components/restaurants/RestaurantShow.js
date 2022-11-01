@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import { useParams, useNavigate } from 'react-router-dom'
-import { Container, Card, Button, Image, Carousel } from 'react-bootstrap'
+import { Container, Card, Button, Image, Row } from 'react-bootstrap'
 import { restaurantShow, restaurantDelete } from '../../api/restaurant'
 import RestaurantUpdateModal from './RestaurantUpdateModal'
 import NewReview from '../Reviews/NewReview'
@@ -122,25 +122,37 @@ const RestaurantShow = ({ user, msgAlert }) => {
 
     return (
         <>
-            {/* <Carousel>
-                <Carousel.Item>
-                    <img
-                        className="d-block w-100"
-                        src={FoodImages[`${restaurant.type}`]}
-                        style=
-                    />
-                    <Carousel.Caption>
-                        <h3>First slide label</h3>
-                        <p>Nulla vitae elit libero, a pharetra augue mollis interdum.</p>
-                    </Carousel.Caption>
-                </Carousel.Item>
-            </Carousel> */}
-            <Container className="fluid">
-                <Container className='show-image-container'> 
-                    <Image className='show-image' src={FoodImages[`${restaurant.type}`]} />
+            <Container fluid='md'>
+                <Container className='show-image-container mb-3'>
+                    <Image className='rounded-bottom show-image' src={FoodImages[`${restaurant.type}`]} />
                     <h1 className='display-1 show-image-header'>{restaurant.name}</h1>
                 </Container>
-                <Card key={restaurant.id} style={{ width: '30rem', margin: 8 }}>
+                <Container className='text-center'>
+                    <h1 className='border-bottom border-2 border-success mb-3'>{restaurant.type} Restaurant</h1>
+                    <h2>{restaurant.address}</h2>
+                    <h2>{restaurant.telephone}</h2>
+                    {
+                        restaurant.owner && user && restaurant.owner._id === user._id
+                            ?
+                            <>
+                                <Button onClick={() => setEditModalShow(true)} className="m-2" variant="warning">
+                                    Edit Restaurant
+                                </Button>
+                                <Button onClick={() => handleDeleteRestaurant()}
+                                    className="m-2"
+                                    variant="danger"
+                                >
+                                    {restaurant.name} is closed permanently
+                                </Button>
+                            </>
+                            :
+                            null
+                    }
+                </Container>
+
+
+
+                {/* <Card key={restaurant.id} style={{ width: '30rem', margin: 8 }}>
 
                     <Card.Header>{restaurant.name}</Card.Header>
 
@@ -173,28 +185,31 @@ const RestaurantShow = ({ user, msgAlert }) => {
                                 null
                         }
                     </Card.Footer>
-                </Card>
+                </Card> */}
+
+                <h3>All of {restaurant.name}'s reviews:</h3>
+                <Container style={cardContainerLayout}>
+                    {reviewCards}
+                </Container>
+                <RestaurantUpdateModal
+                    user={user}
+                    restaurant={restaurant}
+                    show={editModalShow}
+                    msgAlert={msgAlert}
+                    triggerRefresh={() => setUpdated(prev => !prev)}
+                    handleClose={() => setEditModalShow(false)}
+                />
+                <NewReview
+                    user={user}
+                    restaurant={restaurant}
+                    // show={reviewModalShow}
+                    msgAlert={msgAlert}
+                    triggerRefresh={() => setUpdated(prev => !prev)}
+                // handleClose={() => setReviewModalShow(false)}
+                />
+
+
             </Container>
-            <h3>All of {restaurant.name}'s reviews:</h3>
-            <Container style={cardContainerLayout}>
-                {reviewCards}
-            </Container>
-            <RestaurantUpdateModal
-                user={user}
-                restaurant={restaurant}
-                show={editModalShow}
-                msgAlert={msgAlert}
-                triggerRefresh={() => setUpdated(prev => !prev)}
-                handleClose={() => setEditModalShow(false)}
-            />
-            <NewReview
-                user={user}
-                restaurant={restaurant}
-                // show={reviewModalShow}
-                msgAlert={msgAlert}
-                triggerRefresh={() => setUpdated(prev => !prev)}
-            // handleClose={() => setReviewModalShow(false)}
-            />
         </>
     )
 }
