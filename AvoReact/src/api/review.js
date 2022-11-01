@@ -3,8 +3,8 @@ import axios from 'axios'
 
 // CREATE
 export const reviewCreate = (user, restaurantId, newReview) => {
-    console.log('the user in createReview', user)
-    console.log('the newReview in createReview', newReview)
+    // console.log('the user in createReview', user)
+    // console.log('the newReview in createReview', newReview)
 	return axios({
 		url: `${apiUrl}/reviews/${restaurantId}`,
 		method: 'POST',
