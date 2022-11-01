@@ -219,4 +219,3 @@ const RestaurantShow = ({ user, msgAlert }) => {
 }
 
 export default RestaurantShow
-
