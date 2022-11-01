@@ -2,18 +2,32 @@ import React, { useEffect, useState } from 'react'
 import { useParams, useNavigate } from 'react-router-dom'
 import { Container, Card, Button, Image, Row, Col } from 'react-bootstrap'
 import { restaurantShow, restaurantDelete } from '../../api/restaurant'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faBicycle, faClipboardList, faBurger, faBowlFood, faCreditCard, faSquareParking, faWifi, faMaskFace, faWineGlass, faXmark, faShop } from '@fortawesome/free-solid-svg-icons'
 import RestaurantUpdateModal from './RestaurantUpdateModal'
 import NewReview from '../Reviews/NewReview'
 import ShowReview from '../Reviews/ShowReview'
 import FoodImages from '../shared/FoodImages'
 // import LoadingScreen from '../LoadingScreen'
 
+const restaurantOwner = <FontAwesomeIcon icon={faShop} style={{color:'#5d52c7'}} bounce/>
+const delivery = <FontAwesomeIcon icon={faBicycle} style={{color:'#308534'}} />
+const reservations = <FontAwesomeIcon icon={faClipboardList} style={{color:'#308534'}} />
+const takeout = <FontAwesomeIcon icon={faBurger} style={{color:'#308534'}} />
+const catering = <FontAwesomeIcon icon={faBowlFood} style={{color:'#308534'}} />
+const credit = <FontAwesomeIcon icon={faCreditCard} style={{color:'#308534'}} />
+const parking = <FontAwesomeIcon icon={faSquareParking} style={{color:'#308534'}} />
+const wifi = <FontAwesomeIcon icon={faWifi} style={{color:'#308534'}} />
+const mask = <FontAwesomeIcon icon={faMaskFace} style={{color:'#308534'}} />
+const alcohol = <FontAwesomeIcon icon={faWineGlass} style={{color:'#308534'}} />
+const xMark = <FontAwesomeIcon icon={faXmark} style={{color:'#ba4e47'}} />
 
 const cardContainerLayout = {
     display: 'flex',
     flexFlow: 'row wrap',
     justifyContent: 'center'
 }
+
 
 
 const RestaurantShow = ({ user, msgAlert }) => {
@@ -129,8 +143,38 @@ const RestaurantShow = ({ user, msgAlert }) => {
                 </Container>
                 <Container className='text-center'>
                     <h1 className='border-bottom border-2 border-success mb-3'>{restaurant.type} Restaurant</h1>
+
+                    {restaurant.isUserRestaurantOwner ?
+                        <h5>{restaurantOwner} You are the business owner!</h5>
+                        :
+                        null
+                    }
+
                     <h4>{restaurant.address}</h4>
                     <h4>{restaurant.telephone}</h4>
+                    
+                </Container>
+                <Container className='d-flex'>
+                    <Container className='d-flex justify-content-end'>
+                        <ul>
+                            <li>{restaurant.delivery ? delivery : xMark} Offers delivery </li>
+                            <li>{restaurant.reservations ? reservations : xMark} Takes reservations</li>
+                            <li>{restaurant.takeout ? takeout : xMark} Offers takeout</li>
+                            <li>{restaurant.catering ? catering : xMark} Offers catering</li>
+                        </ul>
+                    </Container>
+                    <Container className='d-flex justify-content-start'>
+                        <ul>
+                            <li>{restaurant.acceptsCreditCard ? credit : xMark} Accepts credit cards</li>
+                            <li>{restaurant.parking ? parking : xMark} Free parking</li>
+                            <li>{restaurant.wifi ? wifi : xMark} Free Wi-fi</li>
+                            <li>{restaurant.masksRequired ? mask : xMark} Requires masks</li>
+                            <li>{restaurant.alcohol ? alcohol : xMark} Offers alcohol</li>
+                        </ul>
+                    </Container>
+
+                </Container>
+                <Container className='text-center'>
                     {
                         restaurant.owner && user && restaurant.owner._id === user._id
                             ?
@@ -149,29 +193,6 @@ const RestaurantShow = ({ user, msgAlert }) => {
                             null
                     }
                 </Container>
-                <Container>
-                    <Row>
-                        <Col>Delivery: {restaurant.delivery ? 'Yes' : 'No'}</Col>
-                        <Col>Reservations: {restaurant.reservations ? 'Yes' : 'No'}</Col>
-                    </Row>
-                    <Row>
-                        <Col>Takeout: {restaurant.takeout ? 'Yes' : 'No'}</Col>
-                        <Col>Catering: {restaurant.catering ? 'Yes' : 'No'}</Col>
-                    </Row>
-                    <Row>
-                        <Col>Accepts Credit Cards: {restaurant.acceptsCreditCard ? 'Yes' : 'No'}</Col>
-                        <Col>Parking: {restaurant.parking ? 'Yes' : 'No'}</Col>
-                    </Row>
-                    <Row>
-                        <Col>Free Wi-fi: {restaurant.wifi ? 'Yes' : 'No'}</Col>
-                        <Col>Masks Required: {restaurant.masksRequired ? 'Yes' : 'No'}</Col>
-                    </Row>
-                    <Row>
-                        <Col>Alcohol: {restaurant.alcohol ? 'Yes' : 'No'}</Col>
-                    </Row>
-                </Container>
-
-
                 {/* <Card key={restaurant.id} style={{ width: '30rem', margin: 8 }}>
 
                     <Card.Header>{restaurant.name}</Card.Header>
