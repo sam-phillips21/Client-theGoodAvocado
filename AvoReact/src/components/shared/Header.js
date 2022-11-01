@@ -58,7 +58,7 @@ const alwaysOptions = (
 )
 
 const Header = ({ user }) => (
-	<Navbar bg='success' variant='dark' expand='md'>
+	<Navbar bg='secondary' variant='dark' expand='md'>
 		<Navbar.Brand className='m-2'>
             <Link to='/' style={linkStyle}>
                 The Good Avocado
