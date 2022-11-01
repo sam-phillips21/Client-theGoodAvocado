@@ -38,4 +38,11 @@ code {
   object-fit: cover;
 }
 
+ul {
+  list-style: none;
+}
 
+li {
+  margin: 10px;
+  font-size: 1.2em;
+}
