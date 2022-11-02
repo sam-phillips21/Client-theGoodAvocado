@@ -42,14 +42,14 @@ const ShowReview = (props) => {
 
         <>
             <Card className="m-2">
-                    <Card.Header>{review.authorEmail} said:</Card.Header>
+                    <Card.Header>{review.ownerEmail} said:</Card.Header>
                     <Card.Body>
                         <small>Comments: {review.comment}</small><br/>
                         <small>Rating: {review.rating}</small><br/>
                     </Card.Body>
                     <Card.Footer>
                         {
-                            user.email === review.authorEmail
+                            user.email === review.ownerEmail
                             ?
                             <>
                                 <Button

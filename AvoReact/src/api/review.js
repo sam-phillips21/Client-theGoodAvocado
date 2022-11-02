@@ -3,8 +3,8 @@ import axios from 'axios'
 
 // CREATE
 export const reviewCreate = (user, restaurantId, newReview) => {
-	const authorId = { author: user._id }
-	const review = {...newReview, ...authorId}
+	const ownerId = { owner: user._id }
+	const review = {...newReview, ...ownerId}
 
 	return axios({
 		url: `${apiUrl}/reviews/${restaurantId}`,
@@ -14,8 +14,8 @@ export const reviewCreate = (user, restaurantId, newReview) => {
 }
 
 // INDEX
-export const reviewIndex = (author) => {
-	// const authorId = { author: user._id }
+export const reviewIndex = (owner) => {
+	// const ownerId = { owner: user._id }
 	return axios({
 		url: apiUrl + '/reviews',
 		method: 'GET',
@@ -34,8 +34,8 @@ export const reviewIndex = (author) => {
 
 // UPDATE review
 export const reviewUpdate = (user, restaurantId, updatedReview) => {
-	const authorId = { author: user._id }
-	const review = {...updatedReview, ...authorId}
+	const ownerId = { owner: user._id }
+	const review = {...updatedReview, ...ownerId}
 
 	return axios({
 		url: `${apiUrl}/reviews/${restaurantId}/${review.id}`,
