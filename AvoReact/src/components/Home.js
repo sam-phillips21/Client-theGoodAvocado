@@ -1,29 +1,6 @@
 import RestaurantIndex from "./restaurants/RestaurantIndex"
 import { Carousel } from "react-bootstrap"
 
-
-
-// 	return (
-// 		<>
-// 			<div className='container-sm'>
-// 				<h2>Welcome to The Good Avocado </h2>
-// 				<img className='d-flex p-2' src="https://images.pexels.com/photos/3184183/pexels-photo-3184183.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1" alt="a table full of various meals" />
-// 			</div>
-// 			<div>
-// 				<br/>
-// 				<br/>
-
-// 				<RestaurantIndex msgAlert= {msgAlert}/>
-// 			</div>
-			
-
-			
-// 		</>
-// 	)
-// }
-
-
-// function CarouselFadeExample() {
 	const Home = (props) => {
 		const { msgAlert, user } = props
 		console.log('props in home', props)
@@ -39,7 +16,7 @@ import { Carousel } from "react-bootstrap"
         />
         <Carousel.Caption>
           <h3>Find amazing food!</h3>
-          <p>Welcome to the Good Avocado! A place to find restaurant reviews and ifnformation </p>
+          <p>Welcome to the Good Avocado! A place to find restaurant reviews and information. </p>
         </Carousel.Caption>
       </Carousel.Item>
       <Carousel.Item>
@@ -76,8 +53,4 @@ import { Carousel } from "react-bootstrap"
   );
 }
 
-
-
-
 export default Home
-// export default CarouselFadeExample
