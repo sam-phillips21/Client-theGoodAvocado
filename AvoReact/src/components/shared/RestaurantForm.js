@@ -53,11 +53,11 @@ const RestaurantForm = (props) => {
                     <option value="Seafood">Seafood</option>
                     <option value="Spanish">Spanish</option>
                     <option value="Vietnamese">Vietnamese</option>
-                    <option value="Other">Other</option>
+                    <option value="Fusion">Fusion</option>
                 </Form.Select>
                 <Form.Label>Additional Types:</Form.Label>
                 <Form.Control
-                    placeholder="Optional - Do you serve more than one type of cuisine?"
+                    placeholder="Optional - List other types of cuisine"
                     name="otherTypes"
                     id="otherTypes"
                     value={restaurant.otherTypes}
@@ -125,7 +125,7 @@ const RestaurantForm = (props) => {
                     onChange={handleChange}
                 />
                   <Form.Check 
-                    label="Vegan Options??"
+                    label="Vegan friendly?"
                     name="vegan"
                     defaultChecked={restaurant.vegan}
                     onChange={handleChange}
