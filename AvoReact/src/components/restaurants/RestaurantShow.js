@@ -140,17 +140,20 @@ const RestaurantShow = ({ user, msgAlert }) => {
                         </ul>
                     </Container>
                 </Container>
-                <Container className='text-center'>
+                <Container className='text-center mb-5'>
                     {
                         restaurant.owner && user && restaurant.owner._id === user._id
                             ?
                             <>
-                                <Button onClick={() => setEditModalShow(true)} className="m-2" variant="warning">
+                                <Button onClick={() => setEditModalShow(true)} className="m-2" 
+                                variant="success" 
+                                >
                                     Edit Restaurant
                                 </Button>
                                 <Button onClick={() => handleDeleteRestaurant()}
                                     className="m-2"
-                                    variant="danger"
+                                    variant="danger" 
+                                    style={{backgroundColor: '#b89477'}}
                                 >
                                     {restaurant.name} is Closed Permanently
                                 </Button>
@@ -193,7 +196,6 @@ const RestaurantShow = ({ user, msgAlert }) => {
                     }
 
                 </Container>
-
             </Container>
         </>
     )
