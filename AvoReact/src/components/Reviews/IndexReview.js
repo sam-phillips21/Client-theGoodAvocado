@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from 'react' 
 import { Card } from 'react-bootstrap'
 import { Link } from 'react-router-dom'
-import { restaurantUpdate } from '../../api/restaurant'
 import { reviewIndex } from '../../api/review'
 
 const cardContainerLayout = {
@@ -31,7 +30,6 @@ const ReviewIndex = ({ user, msgAlert, review }) => {
     }, [])
 
     const usersReviews = allReviews.filter(review => review.review.ownerEmail === user.email)
-
     const reviewCards = usersReviews.map(review => (
         
         <Card key={ review.id } style={{ width: '25rem', margin: 5 }}>      

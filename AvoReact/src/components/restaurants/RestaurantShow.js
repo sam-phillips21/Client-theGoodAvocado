@@ -1,41 +1,34 @@
 import React, { useEffect, useState } from 'react'
 import { useParams, useNavigate } from 'react-router-dom'
 import { Container, Button, Image, } from 'react-bootstrap'
-import { restaurantShow, restaurantDelete } from '../../api/restaurant'
+import { restaurantShow, restaurantDelete, restaurantCreate } from '../../api/restaurant'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faCarrot, faBicycle, faClipboardList, faBurger, faBowlFood, faCreditCard, faSquareParking, faWifi, faMaskFace, faWineGlass, faXmark, faShop } from '@fortawesome/free-solid-svg-icons'
+import { faLocationDot, faPhone, faCarrot, faBicycle, faClipboardList, faBurger, faBowlFood, faCreditCard, faSquareParking, faWifi, faMaskFace, faWineGlass, faXmark, faShop } from '@fortawesome/free-solid-svg-icons'
 import RestaurantUpdateModal from './RestaurantUpdateModal'
 import NewReview from '../Reviews/NewReview'
 import ShowReview from '../Reviews/ShowReview'
 import FoodImages from '../shared/FoodImages'
 // import LoadingScreen from '../LoadingScreen'
 
-const restaurantOwner = <FontAwesomeIcon icon={faShop} style={{color:'#5d52c7'}} bounce/>
-const delivery = <FontAwesomeIcon icon={faBicycle} style={{color:'#308534'}} />
-const reservations = <FontAwesomeIcon icon={faClipboardList} style={{color:'#308534'}} />
-const takeout = <FontAwesomeIcon icon={faBurger} style={{color:'#308534'}} />
-const catering = <FontAwesomeIcon icon={faBowlFood} style={{color:'#308534'}} />
-const credit = <FontAwesomeIcon icon={faCreditCard} style={{color:'#308534'}} />
-const parking = <FontAwesomeIcon icon={faSquareParking} style={{color:'#308534'}} />
-const wifi = <FontAwesomeIcon icon={faWifi} style={{color:'#308534'}} />
-const mask = <FontAwesomeIcon icon={faMaskFace} style={{color:'#308534'}} />
-const alcohol = <FontAwesomeIcon icon={faWineGlass} style={{color:'#308534'}} />
-const xMark = <FontAwesomeIcon icon={faXmark} style={{color:'#ba4e47'}} />
-const vegan = <FontAwesomeIcon icon={faCarrot} style={{color:'#308534'}} />
-const cardContainerLayout = {
-    display: 'flex',
-    flexFlow: 'row wrap',
-    justifyContent: 'center'
-}
-
+const restaurantOwner = <FontAwesomeIcon icon={faShop} style={{ color: '#5d52c7' }} bounce />
+const address = <FontAwesomeIcon icon={faLocationDot} />
+const telephone = <FontAwesomeIcon icon={faPhone} />
+const delivery = <FontAwesomeIcon icon={faBicycle} style={{ color: '#308534' }} />
+const reservations = <FontAwesomeIcon icon={faClipboardList} style={{ color: '#308534' }} />
+const takeout = <FontAwesomeIcon icon={faBurger} style={{ color: '#308534' }} />
+const catering = <FontAwesomeIcon icon={faBowlFood} style={{ color: '#308534' }} />
+const credit = <FontAwesomeIcon icon={faCreditCard} style={{ color: '#308534' }} />
+const parking = <FontAwesomeIcon icon={faSquareParking} style={{ color: '#308534' }} />
+const wifi = <FontAwesomeIcon icon={faWifi} style={{ color: '#308534' }} />
+const mask = <FontAwesomeIcon icon={faMaskFace} style={{ color: '#308534' }} />
+const alcohol = <FontAwesomeIcon icon={faWineGlass} style={{ color: '#308534' }} />
+const xMark = <FontAwesomeIcon icon={faXmark} style={{ color: '#ba4e47' }} />
+const vegan = <FontAwesomeIcon icon={faCarrot} style={{ color: '#308534' }} />
 
 
 const RestaurantShow = ({ user, msgAlert }) => {
-console.log('this is the restShow user', user)
     const [restaurant, setRestaurant] = useState(null)
     const [editModalShow, setEditModalShow] = useState(false)
-    // const [reviewModalShow, setReviewModalShow] = useState(false)
-
     const [deleted, setDeleted] = useState(false)
     const [updated, setUpdated] = useState(false)
 
@@ -45,7 +38,6 @@ console.log('this is the restShow user', user)
     useEffect(() => {
         restaurantShow(user, id)
             .then(res => {
-
                 setRestaurant(res.data.restaurant)
             })
             .catch((error) => {
@@ -57,35 +49,6 @@ console.log('this is the restShow user', user)
             })
     }, [updated])
 
-    // const toggleShowUpdate = () => {
-    //     setIsUpdateShown(prevUpdateShown => !prevUpdateShown)
-    // }
-
-    // const handleChange = (event) => {
-    //     // to keep the values as users input info 
-    //     // first spread the current restaurant
-    //     // then comma and modify the key to the value you need
-    //     setRestaurant({...restaurant, [event.target.name]: event.target.value})
-    // }
-
-    // const handleUpdateRestaurant = () => {
-    //     restaurantUpdate(restaurant, user, id)
-    //     .then(() => {
-    //         msgAlert({
-    //             heading: 'Success',
-    //             message: 'Updating Restaurant',
-    //             variant: 'success'
-    //         })
-    //     })
-    //     .catch((error) => {
-    //         msgAlert({
-    //             heading: 'Failure',
-    //             message: 'Update Restaurant Failure' + error,
-    //             variant: 'danger'
-    //         })
-    //     })
-    // }
-
     const handleDeleteRestaurant = () => {
         restaurantDelete(user, id)
             .then(() => {
@@ -95,7 +58,6 @@ console.log('this is the restShow user', user)
                     message: 'Deleting a Restaurant',
                     variant: 'success'
                 })
-
             })
             .catch((error) => {
                 msgAlert({
@@ -112,23 +74,22 @@ console.log('this is the restShow user', user)
             // map over the reviews
             // produce one ShowReview component for each of them
             reviewCards = restaurant.reviews.map(review => (
-                <ShowReview
-                    key={review._id}
-                    review={review}
-                    restaurant={restaurant}
-                    user={user}
-                    msgAlert={msgAlert}
-                    triggerRefresh={() => setUpdated(prev => !prev)}
-                />
+
+                <Container>
+                    <ShowReview
+                        key={review._id}
+                        review={review}
+                        restaurant={restaurant}
+                        user={user}
+                        msgAlert={msgAlert}
+                        triggerRefresh={() => setUpdated(prev => !prev)}
+                    />
+                </Container>
             ))
         }
     }
 
     if (deleted) navigate('/restaurants')
-
-    // if (!restaurant) {
-    //     return <LoadingScreen />
-    // }
 
     if (!restaurant) {
         return <p> ...Loading </p>
@@ -143,16 +104,21 @@ console.log('this is the restShow user', user)
                 </Container>
                 <Container className='text-center'>
                     <h1 className='border-bottom border-2 border-success mb-3'>{restaurant.type} Restaurant</h1>
-
+                    {restaurant.otherTypes ?
+                        <h4>Other options available: {restaurant.otherTypes}</h4>
+                        :
+                        null
+                    }
                     {restaurant.isUserRestaurantOwner ?
                         <h5>{restaurantOwner} You are the business owner!</h5>
                         :
                         null
                     }
 
-                    <h4>{restaurant.address}</h4>
-                    <h4>{restaurant.telephone}</h4>
-                    
+                    <h4>{address} {restaurant.address}</h4>
+
+                    <h4>{telephone} {restaurant.telephone}</h4>
+
                 </Container>
                 <Container className='d-flex'>
                     <Container className='d-flex justify-content-end'>
@@ -173,7 +139,6 @@ console.log('this is the restShow user', user)
                             <li>{restaurant.alcohol ? alcohol : xMark} Offers alcohol</li>
                         </ul>
                     </Container>
-
                 </Container>
                 <Container className='text-center'>
                     {
@@ -187,52 +152,14 @@ console.log('this is the restShow user', user)
                                     className="m-2"
                                     variant="danger"
                                 >
-                                    {restaurant.name} is closed permanently
+                                    {restaurant.name} is Closed Permanently
                                 </Button>
                             </>
                             :
                             null
                     }
                 </Container>
-                {/* <Card key={restaurant.id} style={{ width: '30rem', margin: 8 }}>
 
-                    <Card.Header>{restaurant.name}</Card.Header>
-
-                    <Card.Body>
-                        <Card.Text>
-                            <small>Type: {restaurant.type}</small><br />
-                            <small>Address: {restaurant.address}</small><br />
-                            <small>Telephone: {restaurant.telephone}</small><br />
-                            <small>
-                                Does this restaurant deliver?: {restaurant.delivery ? 'yes' : 'no'}
-                            </small><br />
-                        </Card.Text>
-                    </Card.Body>
-                    <Card.Footer>
-                        {
-                            restaurant.owner && user && restaurant.owner._id === user._id
-                                ?
-                                <>
-                                    <Button onClick={() => setEditModalShow(true)} className="m-2" variant="warning">
-                                        Edit Restaurant
-                                    </Button>
-                                    <Button onClick={() => handleDeleteRestaurant()}
-                                        className="m-2"
-                                        variant="danger"
-                                    >
-                                        {restaurant.name} is closed Permanently
-                                    </Button>
-                                </>
-                                :
-                                null
-                        }
-                    </Card.Footer>
-                </Card> */}
-
-                <h3 className='my-5'>All of {restaurant.name}'s reviews:</h3>
-                <Container style={cardContainerLayout}>
-                    {reviewCards}
-                </Container>
                 <RestaurantUpdateModal
                     user={user}
                     restaurant={restaurant}
@@ -241,15 +168,31 @@ console.log('this is the restShow user', user)
                     triggerRefresh={() => setUpdated(prev => !prev)}
                     handleClose={() => setEditModalShow(false)}
                 />
-                <NewReview
-                    user={user}
-                    restaurant={restaurant}
-                    // show={reviewModalShow}
-                    msgAlert={msgAlert}
-                    triggerRefresh={() => setUpdated(prev => !prev)}
-                // handleClose={() => setReviewModalShow(false)}
-                />
 
+                <Container style={{ width: '40rem' }}>
+                    <NewReview
+                        user={user}
+                        restaurant={restaurant}
+                        msgAlert={msgAlert}
+                        triggerRefresh={() => setUpdated(prev => !prev)}
+                    />
+                </Container>
+
+                <Container>
+                    <h3 className='my-5'>All of {restaurant.name}'s reviews:</h3>
+                    {
+                        restaurant.reviews.length > 0
+                            ?
+                            <>
+                                {reviewCards}
+                            </>
+                            :
+                            <>
+                                <h5 className='text-center'>This restaurant does not have any reviews yet. Be the first to review!</h5>
+                            </>
+                    }
+
+                </Container>
 
             </Container>
         </>
