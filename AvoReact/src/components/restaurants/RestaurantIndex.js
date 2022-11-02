@@ -30,12 +30,12 @@ const RestaurantIndex = ({ user, msgAlert }) => {
 
     const restaurantCards = allRestaurants.map(restaurant => (
 
-        <Card key={restaurant.id} style={{ width: '30rem', margin: 8 }}>
-            <Card.Img variant="top" src={FoodImages[`${restaurant.type}`]} style={{ height: '300px' }} />
+        <Card key={restaurant.id} style={{ width: '30rem', margin: 8, backgroundColor: '#f2f6ec' }}>
+            <Card.Img variant="top" src={FoodImages[`${restaurant.type}`]} style={{ height: '300px' }} alt={restaurant.type}/>
             <Card.Header><b>{restaurant.name}</b> / {restaurant.type}</Card.Header>
             <Card.Body>
                 <Card.Text>
-                    <Link to={`/restaurants/${restaurant._id}`}>View {restaurant.name} </Link>
+                    <Link style={{ color: '#957153', textDecoration: 'none' }} to={`/restaurants/${restaurant._id}`}>View {restaurant.name} </Link>
                 </Card.Text>
             </Card.Body>
         </Card>
@@ -43,11 +43,11 @@ const RestaurantIndex = ({ user, msgAlert }) => {
 
     return (
         <>
-        <h2 className='text-center mt-3'>All Restaurants</h2>
-        <div className='container-md text-center' style={cardContainerLayout}>
-            
-            {restaurantCards}
-        </div>
+            <h2 className='text-center mt-3'>All Restaurants</h2>
+            <div className='container-md text-center' style={cardContainerLayout}>
+
+                {restaurantCards}
+            </div>
         </>
     )
 }
