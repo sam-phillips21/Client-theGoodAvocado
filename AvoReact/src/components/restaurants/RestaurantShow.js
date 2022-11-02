@@ -21,6 +21,7 @@ const wifi = <FontAwesomeIcon icon={faWifi} style={{color:'#308534'}} />
 const mask = <FontAwesomeIcon icon={faMaskFace} style={{color:'#308534'}} />
 const alcohol = <FontAwesomeIcon icon={faWineGlass} style={{color:'#308534'}} />
 const xMark = <FontAwesomeIcon icon={faXmark} style={{color:'#ba4e47'}} />
+const vegan = <FontAwesomeIcon icon={faXmark} style={{color:'#ba4e47'}} />
 
 const cardContainerLayout = {
     display: 'flex',
@@ -161,6 +162,7 @@ console.log('this is the restShow user', user)
                             <li>{restaurant.reservations ? reservations : xMark} Takes reservations</li>
                             <li>{restaurant.takeout ? takeout : xMark} Offers takeout</li>
                             <li>{restaurant.catering ? catering : xMark} Offers catering</li>
+                            <li>{restaurant.vegan ? vegan : xMark} Vegan Options</li>
                         </ul>
                     </Container>
                     <Container className='d-flex justify-content-start'>
