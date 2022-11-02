@@ -41,7 +41,7 @@ const ShowReview = (props) => {
     return (
 
         <>
-            <Card className="m-2">
+            <Card className="m-2" style={{backgroundColor: '#f2f6ec'}}>
                     <Card.Header>{review.ownerEmail} said:</Card.Header>
                     <Card.Body>
                         <small>Comments: {review.comment}</small><br/>
@@ -54,14 +54,13 @@ const ShowReview = (props) => {
                             <>
                                 <Button
                                     className='m-2'
-                                    variant='warning'
+                                    variant='success'
                                     onClick={() => setEditModalShow(true)}
                                 >
                                     Edit
                                 </Button>
                                 <Button
                                     variant="danger"
-                                    // handleChange = {handleChange}
                                     onClick={() => handleDeleteReview()}
                                 >
                                     Delete

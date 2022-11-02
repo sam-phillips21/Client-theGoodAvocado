@@ -56,9 +56,9 @@ const NewReview = (props) => {
     return (
 
         <Accordion>
-            <Accordion.Item eventKey="0">
-                <Accordion.Header>New Review</Accordion.Header>
-                <Accordion.Body>
+            <Accordion.Item style={{backgroundColor: '#f2f6ec'}} eventKey="0">
+                <Accordion.Header>Add a Review</Accordion.Header>
+                <Accordion.Body style={{backgroundColor: '#f2f6ec'}}>
                     <ReviewForm 
                         review={review}
                         handleChange={handleChange}

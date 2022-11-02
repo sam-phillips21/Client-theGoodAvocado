@@ -46,3 +46,9 @@ li {
   margin: 10px;
   font-size: 1.2em;
 }
+
+.rest-form {
+  margin-top: 20px;
+  background-color: #f2f6ec;
+  border-radius: 15px;
+}
