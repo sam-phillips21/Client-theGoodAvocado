@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from 'react' 
 import { Card } from 'react-bootstrap'
 import { Link } from 'react-router-dom'
-import { restaurantUpdate } from '../../api/restaurant'
 import { reviewIndex } from '../../api/review'
 
 const cardContainerLayout = {
@@ -18,7 +17,6 @@ const ReviewIndex = ({ user, msgAlert }) => {
         reviewIndex(user)
         .then(res => {
             setAllReviews(res.data.reviews)
-            // console.log(res.data)
         })
         .catch((error) => {
             msgAlert({
@@ -29,7 +27,8 @@ const ReviewIndex = ({ user, msgAlert }) => {
         })
     }, [])
 
-    const reviewCards = allReviews.map(review => (
+    const usersReviews = allReviews.filter(review => review.review.ownerEmail === user.email)
+    const reviewCards = usersReviews.map(review => (
         
         <Card key={ review.id } style={{ width: '25rem', margin: 5 }}>      
             
@@ -46,8 +45,6 @@ const ReviewIndex = ({ user, msgAlert }) => {
         </Card>
     ))
     
-
-
     return (
         <>
             <h2 className='text-center mt-3'>All My Reviews</h2>
