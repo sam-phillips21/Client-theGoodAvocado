@@ -1,5 +1,6 @@
 import React from 'react'
 import { Form, Container, Button } from 'react-bootstrap'
+import CloudinaryUploadWidget from "./CloudinaryUploadWidget";
 
 const ReviewForm = (props) => {
     const { review, handleChange, handleSubmit, heading } = props
@@ -32,6 +33,10 @@ const ReviewForm = (props) => {
                     <option value="4">4</option>
                     <option value="5">5</option>
                 </Form.Select>
+                <>
+                    <CloudinaryUploadWidget />
+                </>
+
                 <Button type="submit">Submit</Button>
             </Form>
         </Container>
