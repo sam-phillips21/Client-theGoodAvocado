@@ -6,8 +6,7 @@ const RestaurantForm = (props) => {
 
     return (
         <Container className="justify-content-center rest-form" style={{ width: '50rem', padding: '2rem'}} >
-            <h3>{heading}</h3>
-
+            <h3 className='mt-3'>{heading}</h3>
             <Form onSubmit={handleSubmit}>
                 <Form.Label>Name of Restaurant:</Form.Label>
                 <Form.Control
