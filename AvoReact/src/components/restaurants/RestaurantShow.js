@@ -3,7 +3,7 @@ import { useParams, useNavigate } from 'react-router-dom'
 import { Container, Button, Image, } from 'react-bootstrap'
 import { restaurantShow, restaurantDelete } from '../../api/restaurant'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faBicycle, faClipboardList, faBurger, faBowlFood, faCreditCard, faSquareParking, faWifi, faMaskFace, faWineGlass, faXmark, faShop } from '@fortawesome/free-solid-svg-icons'
+import { faCarrot, faBicycle, faClipboardList, faBurger, faBowlFood, faCreditCard, faSquareParking, faWifi, faMaskFace, faWineGlass, faXmark, faShop } from '@fortawesome/free-solid-svg-icons'
 import RestaurantUpdateModal from './RestaurantUpdateModal'
 import NewReview from '../Reviews/NewReview'
 import ShowReview from '../Reviews/ShowReview'
@@ -21,8 +21,7 @@ const wifi = <FontAwesomeIcon icon={faWifi} style={{color:'#308534'}} />
 const mask = <FontAwesomeIcon icon={faMaskFace} style={{color:'#308534'}} />
 const alcohol = <FontAwesomeIcon icon={faWineGlass} style={{color:'#308534'}} />
 const xMark = <FontAwesomeIcon icon={faXmark} style={{color:'#ba4e47'}} />
-const vegan = <FontAwesomeIcon icon={faXmark} style={{color:'#ba4e47'}} />
-
+const vegan = <FontAwesomeIcon icon={faCarrot} style={{color:'#308534'}} />
 const cardContainerLayout = {
     display: 'flex',
     flexFlow: 'row wrap',
@@ -162,7 +161,7 @@ console.log('this is the restShow user', user)
                             <li>{restaurant.reservations ? reservations : xMark} Takes reservations</li>
                             <li>{restaurant.takeout ? takeout : xMark} Offers takeout</li>
                             <li>{restaurant.catering ? catering : xMark} Offers catering</li>
-                            <li>{restaurant.vegan ? vegan : xMark} Vegan Options</li>
+                            <li>{restaurant.vegan ? vegan : xMark} Vegan friendly</li>
                         </ul>
                     </Container>
                     <Container className='d-flex justify-content-start'>
