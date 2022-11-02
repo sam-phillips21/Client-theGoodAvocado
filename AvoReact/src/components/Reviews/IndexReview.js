@@ -9,7 +9,7 @@ const cardContainerLayout = {
     justifyContent: 'center'
 }
 
-const ReviewIndex = ({ user, msgAlert }) => {
+const ReviewIndex = ({ user, msgAlert, review }) => {
 
     const [allReviews, setAllReviews] = useState([])
 
@@ -17,6 +17,8 @@ const ReviewIndex = ({ user, msgAlert }) => {
         reviewIndex(user)
         .then(res => {
             setAllReviews(res.data.reviews)
+            // console.log(res.data.reviews)
+            // console.log(allReviews)
         })
         .catch((error) => {
             msgAlert({
@@ -43,8 +45,8 @@ const ReviewIndex = ({ user, msgAlert }) => {
                 </Card.Text>
             </Card.Body>
         </Card>
-    ))
-    
+    ))    
+
     return (
         <>
             <h2 className='text-center mt-3'>All My Reviews</h2>
