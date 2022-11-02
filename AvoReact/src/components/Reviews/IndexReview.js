@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react' 
 import { Card } from 'react-bootstrap'
 import { Link } from 'react-router-dom'
+import { restaurantUpdate } from '../../api/restaurant'
 import { reviewIndex } from '../../api/review'
 
 const cardContainerLayout = {
@@ -16,8 +17,8 @@ const ReviewIndex = ({ user, msgAlert }) => {
     useEffect(() => {
         reviewIndex(user)
         .then(res => {
-            setAllReviews(res.data.review._id)
-            console.log(res.data)
+            setAllReviews(res.data.reviews)
+            // console.log(res.data)
         })
         .catch((error) => {
             msgAlert({
@@ -32,16 +33,19 @@ const ReviewIndex = ({ user, msgAlert }) => {
         
         <Card key={ review.id } style={{ width: '25rem', margin: 5 }}>      
             
-            <Card.Header>{ user.email }</Card.Header>
+            <Card.Header>
+                <Link to={ `/restaurants/${review.restaurant._id}` }>View { review.restaurant.name } </Link>
+            </Card.Header>
             <Card.Body>
                 <Card.Text>
-                    <Link to={ `/reviews` }>View { review.name } </Link>
-                    <small>Comments: {review.comment}</small><br/>
-                    <small>Rating: {review.rating}</small><br/>
+                    
+                    <small>Comments: {review.review.comment}</small><br/>
+                    <small>Rating: {review.review.rating}</small><br/>
                 </Card.Text>
             </Card.Body>
         </Card>
     ))
+    
 
 
     return (
