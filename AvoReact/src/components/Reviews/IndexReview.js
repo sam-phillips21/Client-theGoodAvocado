@@ -32,10 +32,10 @@ const ReviewIndex = ({ user, msgAlert, review }) => {
     const usersReviews = allReviews.filter(review => review.review.ownerEmail === user.email)
     const reviewCards = usersReviews.map(review => (
         
-        <Card key={ review.id } style={{ width: '25rem', margin: 5 }}>      
-            
+        <Card key={ review.id } style={{ width: '25rem', margin: 5, backgroundColor: '#f2f6ec' }}>      
+            <Card.Img variant="top" src="https://i.imgur.com/hEy5CGF.jpg" />
             <Card.Header>
-                <Link to={ `/restaurants/${review.restaurant._id}` }>View { review.restaurant.name } </Link>
+                <Link style={{color: '#957153', textDecoration: 'none'}} to={ `/restaurants/${review.restaurant._id}` }>View { review.restaurant.name } </Link>
             </Card.Header>
             <Card.Body>
                 <Card.Text>
