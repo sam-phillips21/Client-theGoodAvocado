@@ -153,7 +153,6 @@ const RestaurantShow = ({ user, msgAlert }) => {
                                 <Button onClick={() => handleDeleteRestaurant()}
                                     className="m-2"
                                     variant="danger" 
-                                    style={{backgroundColor: '#b89477'}}
                                 >
                                     {restaurant.name} is Closed Permanently
                                 </Button>
