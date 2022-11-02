@@ -124,6 +124,12 @@ const RestaurantForm = (props) => {
                     defaultChecked={restaurant.alcohol}
                     onChange={handleChange}
                 />
+                  <Form.Check 
+                    label="Vegan Options??"
+                    name="vegan"
+                    defaultChecked={restaurant.vegan}
+                    onChange={handleChange}
+                />
                 
                 <Button type="submit">Submit</Button>
             </Form>
