@@ -10,7 +10,7 @@ const cardContainerLayout = {
     justifyContent: 'center'
 }
 
-const ReviewIndex = ({ user, msgAlert }) => {
+const ReviewIndex = ({ user, msgAlert, review }) => {
 
     const [allReviews, setAllReviews] = useState([])
 
@@ -18,7 +18,8 @@ const ReviewIndex = ({ user, msgAlert }) => {
         reviewIndex(user)
         .then(res => {
             setAllReviews(res.data.reviews)
-            // console.log(res.data)
+            // console.log(res.data.reviews)
+            // console.log(allReviews)
         })
         .catch((error) => {
             msgAlert({
@@ -29,7 +30,9 @@ const ReviewIndex = ({ user, msgAlert }) => {
         })
     }, [])
 
-    const reviewCards = allReviews.map(review => (
+    const usersReviews = allReviews.filter(review => review.review.ownerEmail === user.email)
+
+    const reviewCards = usersReviews.map(review => (
         
         <Card key={ review.id } style={{ width: '25rem', margin: 5 }}>      
             
@@ -44,9 +47,7 @@ const ReviewIndex = ({ user, msgAlert }) => {
                 </Card.Text>
             </Card.Body>
         </Card>
-    ))
-    
-
+    ))    
 
     return (
         <>

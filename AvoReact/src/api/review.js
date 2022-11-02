@@ -14,10 +14,10 @@ export const reviewCreate = (user, restaurantId, newReview) => {
 }
 
 // INDEX
-export const reviewIndex = (owner) => {
+export const reviewIndex = (user) => {
 	// const ownerId = { owner: user._id }
 	return axios({
-		url: apiUrl + '/reviews',
+		url: apiUrl + `/reviews`,
 		method: 'GET',
         // headers: {
 		// 	Authorization: `Token token=${user.token}`,
