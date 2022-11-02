@@ -49,11 +49,6 @@ li {
 
 .rest-form {
   margin-top: 20px;
-  background-color: #fcfeef;
+  background-color: #efefde;
   border-radius: 15px;
-
-}
-
-button:hover {
-  background-color: #606060;
 }
