@@ -127,7 +127,7 @@ const RestaurantShow = ({ user, msgAlert }) => {
                     {restaurant.website ?
                         <>
                             <h4>{website}
-                                <a href={restaurant.website} target='blank'> {restaurant.name}</a>
+                                <a href={restaurant.website} target='blank' style={{ color: '#ba7a5f', textDecoration: 'none' }}> {restaurant.name}</a>
                             </h4>
                         </>
                         :
