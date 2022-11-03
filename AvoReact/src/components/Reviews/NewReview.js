@@ -10,7 +10,8 @@ const NewReview = (props) => {
 
     const [review, setReview] = useState({
         comment: '',
-        rating: ''
+        rating: '',
+        image: ''
     })
 
     const handleChange = (e) => {
@@ -41,8 +42,9 @@ const NewReview = (props) => {
         setReview({
             comment: '',
             rating: '',
+            image: ''
         })
-        console.log('setReview', setReview)
+        console.log('review', review)
         reviewCreate(user, restaurant._id, updatedReview)
             .then(() => {
                 msgAlert({
