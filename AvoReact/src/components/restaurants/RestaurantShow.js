@@ -3,13 +3,13 @@ import { useParams, useNavigate } from 'react-router-dom'
 import { Container, Button, Image, } from 'react-bootstrap'
 import { restaurantShow, restaurantDelete } from '../../api/restaurant'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faLocationDot, faPhone, faCarrot, faBicycle, faClipboardList, faBurger, faBowlFood, faCreditCard, faSquareParking, faWifi, faMaskFace, faWineGlass, faXmark, faShop } from '@fortawesome/free-solid-svg-icons'
+import { faLocationDot, faPhone, faCarrot, faKeyboard, faBicycle, faClipboardList, faBurger, faBowlFood, faCreditCard, faSquareParking, faWifi, faMaskFace, faWineGlass, faXmark, faShop } from '@fortawesome/free-solid-svg-icons'
 import RestaurantUpdateModal from './RestaurantUpdateModal'
 import NewReview from '../Reviews/NewReview'
 import ShowReview from '../Reviews/ShowReview'
 import FoodImages from '../shared/FoodImages'
 import LoadingScreen from '../LoadingScreen'
-
+import { Link } from 'react-router-dom'
 const restaurantOwner = <FontAwesomeIcon icon={faShop} style={{ color: '#5d52c7' }} bounce />
 const address = <FontAwesomeIcon icon={faLocationDot} />
 const telephone = <FontAwesomeIcon icon={faPhone} />
@@ -24,7 +24,7 @@ const mask = <FontAwesomeIcon icon={faMaskFace} style={{ color: '#308534' }} />
 const alcohol = <FontAwesomeIcon icon={faWineGlass} style={{ color: '#308534' }} />
 const xMark = <FontAwesomeIcon icon={faXmark} style={{ color: '#ba4e47' }} />
 const vegan = <FontAwesomeIcon icon={faCarrot} style={{ color: '#308534' }} />
-
+const website = <FontAwesomeIcon icon={faKeyboard} />
 
 const RestaurantShow = ({ user, msgAlert }) => {
     const [restaurant, setRestaurant] = useState(null)
@@ -123,6 +123,9 @@ const RestaurantShow = ({ user, msgAlert }) => {
                     <h4>{address} {restaurant.address}</h4>
 
                     <h4>{telephone} {restaurant.telephone}</h4>
+
+                    <h4>{website} {restaurant.website}
+                    </h4>
 
                 </Container>
                 <Container className='d-flex'>
