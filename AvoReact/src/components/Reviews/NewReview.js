@@ -36,12 +36,13 @@ const NewReview = (props) => {
     const handleSubmit = (e) => {
         e.preventDefault()
         let updatedReview = review
-        console.log('updatedREview', updatedReview)
+        // console.log('updatedREview', updatedReview)
         updatedReview.ownerEmail = user.email
         setReview({
             comment: '',
-            rating: ''
+            rating: '',
         })
+        console.log('setReview', setReview)
         reviewCreate(user, restaurant._id, updatedReview)
             .then(() => {
                 msgAlert({

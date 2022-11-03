@@ -17,7 +17,7 @@ const CloudinaryUploadWidget = ({ handleImageChange }) => {
         
 
         Axios.post("https://api.cloudinary.com/v1_1/dtszeeznm/image/upload", formData).then((response) => {
-            console.log(response.data.url);
+            // console.log(response.data.url);
             // public_id = response.data.public_id
             setPicture(response.data.url)
             handleImageChange(response.data.url)
@@ -40,7 +40,7 @@ const CloudinaryUploadWidget = ({ handleImageChange }) => {
             <img 
                 style={{width: 200}}
                 cloudName="dtszeeznm" 
-                publicId= { picture }
+                // publicId= { picture }
                 src = { picture }
             />
         </div>

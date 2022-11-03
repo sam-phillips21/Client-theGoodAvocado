@@ -7,7 +7,7 @@ import EditReview from '../Reviews/EditReview'
 
 const ShowReview = (props) => {
     const {review, restaurant, user, msgAlert, triggerRefresh} = props
-    console.log('review', review)
+    // console.log('review', review)
 
     const [editModalShow, setEditModalShow] = useState(false)
 
