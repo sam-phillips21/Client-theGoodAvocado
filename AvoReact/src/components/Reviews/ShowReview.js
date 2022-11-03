@@ -42,7 +42,7 @@ const ShowReview = (props) => {
 
         <>
             <Card className="m-2" style={{backgroundColor: '#f2f6ec'}}>
-                    <Card.Header>{review.ownerEmail} said:</Card.Header>
+                    <Card.Header>{review.username} said:</Card.Header>
                     <Card.Body>
                         <small>Comments: {review.comment}</small><br/>
                         <small>Rating: {review.rating}</small><br/>
