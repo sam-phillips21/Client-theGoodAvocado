@@ -3,6 +3,7 @@ import Nav from 'react-bootstrap/Nav'
 import Navbar from 'react-bootstrap/Navbar'
 import { Link } from 'react-router-dom'
 import { Container } from 'react-bootstrap'
+import SearchBar from './SearchBar'
 const linkStyle = {
 	color: 'Black',
 	textDecoration: 'none'
@@ -29,6 +30,9 @@ const authenticatedOptions = (
 				Change Password
 			</Link>
 		</Nav.Item>
+		<Nav.Item className='m-2'>
+			<SearchBar placeholder='Search for a restaurant'/>
+		</Nav.Item>
 		<Nav.Item>
 			<Link className='btn text-light' to='sign-out' style={{ backgroundColor: '#ba7a5f', borderColor: '#ba7a5f' }}>
 				Sign Out
@@ -38,6 +42,7 @@ const authenticatedOptions = (
 )
 
 const unauthenticatedOptions = (
+	
 	<Container className='container-fluid d-flex justify-content-end'>
 		<Nav.Item className='mx-2'>
 			<Link className='btn text-light btn-success' to='sign-up'>Sign Up</Link>
@@ -45,7 +50,11 @@ const unauthenticatedOptions = (
 		<Nav.Item>
 			<Link className='btn text-light' to='sign-in' style={{ backgroundColor: '#ba7a5f', borderColor: '#ba7a5f' }}>Sign In</Link>
 		</Nav.Item>
+		<Nav.Item className='m-2'>
+			<SearchBar placeholder='Search for a restaurant'/>
+		</Nav.Item>
 	</Container>
+	
 )
 
 const Header = ({ user }) => (
