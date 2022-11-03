@@ -7,7 +7,7 @@ import EditReview from '../Reviews/EditReview'
 
 const ShowReview = (props) => {
     const {review, restaurant, user, msgAlert, triggerRefresh} = props
-    // console.log('this is the props, props')
+    console.log('review', review)
 
     const [editModalShow, setEditModalShow] = useState(false)
 
@@ -46,6 +46,10 @@ const ShowReview = (props) => {
                     <Card.Body>
                         <small>Comments: {review.comment}</small><br/>
                         <small>Rating: {review.rating}</small><br/>
+                        <img 
+                            style={{width: 200}} 
+                            src={review.image}
+                        />
                     </Card.Body>
                     <Card.Footer>
                         {
