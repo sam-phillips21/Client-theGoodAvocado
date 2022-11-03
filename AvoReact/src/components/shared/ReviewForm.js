@@ -22,7 +22,7 @@ const ReviewForm = (props) => {
                 <Form.Select
                     aria-label="rating"
                     name="rating"
-                    defaultValue={review.rating} 
+                    value={review.rating} 
                     onChange={handleChange}
                 >
                     <option>Add a rating</option>
@@ -39,7 +39,7 @@ const ReviewForm = (props) => {
                     />
                 </>
 
-                <Button type="submit">Submit</Button>
+                <Button variant='success' type="submit">Submit</Button>
             </Form>
         </Container>
     )
