@@ -81,7 +81,7 @@ const SignIn = (props) => {
                             onChange={e => setPassword(e.target.value)}
                         />
                     </Form.Group>
-                    <Button variant='primary' type='submit'>
+                    <Button className='mt-2' variant='success' type='submit'>
                         Submit
                     </Button>
                 </Form>
