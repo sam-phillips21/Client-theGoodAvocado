@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import { useParams, useNavigate } from 'react-router-dom'
 import { Container, Button, Image, } from 'react-bootstrap'
-import { restaurantShow, restaurantDelete, restaurantCreate } from '../../api/restaurant'
+import { restaurantShow, restaurantDelete } from '../../api/restaurant'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faLocationDot, faPhone, faCarrot, faBicycle, faClipboardList, faBurger, faBowlFood, faCreditCard, faSquareParking, faWifi, faMaskFace, faWineGlass, faXmark, faShop } from '@fortawesome/free-solid-svg-icons'
 import RestaurantUpdateModal from './RestaurantUpdateModal'
@@ -34,6 +34,11 @@ const RestaurantShow = ({ user, msgAlert }) => {
 
     const { id } = useParams()
     const navigate = useNavigate()
+
+    useEffect(() => {
+        // 👇️ scroll to top on page load
+        window.scrollTo({top: 0, left: 0, behavior: 'instant'});
+      }, []);
 
     useEffect(() => {
         restaurantShow(user, id)
