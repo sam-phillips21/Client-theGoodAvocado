@@ -153,7 +153,7 @@ const RestaurantForm = (props) => {
                         />
                     </Form.Group>
                 </Row>
-                <Button className='btn btn-light text-light mt-3' type="submit" style={{backgroundColor: '#b89477'}}>Submit</Button>
+                <Button className='btn btn-light text-light mt-3' type="submit" style={{backgroundColor: '#ba7a5f'}}>Submit</Button>
 
             </Form>
         </Container>

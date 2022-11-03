@@ -2,6 +2,7 @@ import React, { Fragment } from 'react'
 import Nav from 'react-bootstrap/Nav'
 import Navbar from 'react-bootstrap/Navbar'
 import { Link } from 'react-router-dom'
+import { Container, Button} from 'react-bootstrap'
 const linkStyle = {
     color: 'Black',
     textDecoration: 'none'
@@ -14,13 +15,13 @@ const authenticatedOptions = (
 			</Link>
 		</Nav.Item>
 		<Nav.Item className='m-2'>
-			<Link to='reviews' style={linkStyle}>
-				My Reviews
+			<Link to='create' style={linkStyle}>
+				Add a Restaurant
 			</Link>
 		</Nav.Item>
 		<Nav.Item className='m-2'>
-			<Link to='create' style={linkStyle}>
-				Create a Restaurant
+			<Link to='reviews' style={linkStyle}>
+				My Reviews
 			</Link>
 		</Nav.Item>
 		<Nav.Item className='m-2'>
@@ -28,8 +29,8 @@ const authenticatedOptions = (
 				Change Password
 			</Link>
 		</Nav.Item>
-		<Nav.Item className='m-2'>
-			<Link to='sign-out' style={linkStyle}>
+		<Nav.Item className='btn' style={{backgroundColor: '#ba7a5f', borderColor: '#ba7a5f'}}>
+			<Link className='text-light' to='sign-out' style={linkStyle}>
 				Sign Out
 			</Link>
 		</Nav.Item>
@@ -37,24 +38,14 @@ const authenticatedOptions = (
 )
 
 const unauthenticatedOptions = (
-	<>
-        <Nav.Item className='m-2'>
-		    <Link to='sign-up' style={linkStyle}>Sign Up</Link>
+	<Container className='container-fluid d-flex justify-content-end'>
+        <Nav.Item className='mx-2 btn btn-success'>
+		    <Link className='text-light' to='sign-up' style={linkStyle}>Sign Up</Link>
         </Nav.Item>
-        <Nav.Item className='m-2'>
-		    <Link to='sign-in' style={linkStyle}>Sign In</Link>
+        <Nav.Item className='btn' style={{backgroundColor: '#ba7a5f', borderColor: '#ba7a5f'}}>
+		    <Link className='text-light' to='sign-in' style={linkStyle}>Sign In</Link>
         </Nav.Item>
-	</>
-)
-
-const alwaysOptions = (
-	<>
-		<Nav.Item className='m-2'>
-			<Link to='/' style={linkStyle}>
-				Home
-			</Link>
-		</Nav.Item>
-	</>
+	</Container>
 )
 
 const Header = ({ user }) => (
@@ -66,11 +57,10 @@ const Header = ({ user }) => (
         </Navbar.Brand>
 		<Navbar.Toggle aria-controls='basic-navbar-nav' />
 		<Navbar.Collapse id='basic-navbar-nav'>
-			<Nav className='ml-auto'>
+			<Nav className='ml-auto container-fluid d-flex justify-content-between'>
 				{user && (
-					<span className='m-2'>Welcome, {user.email}</span>
+					<span className='m-2'><i>Welcome, {user.email}</i></span>
 				)}
-				{alwaysOptions}
 				{user ? authenticatedOptions : unauthenticatedOptions}
 			</Nav>
 		</Navbar.Collapse>
