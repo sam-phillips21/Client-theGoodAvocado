@@ -1,11 +1,13 @@
 import React, { useState } from "react";
 import Axios from 'axios'
 import { Button } from 'react-bootstrap'
-import { Image } from 'cloudinary-react'
+// import { Image } from 'cloudinary-react'
 
-const CloudinaryUploadWidget = () => {
+const CloudinaryUploadWidget = ({ handleImageChange }) => {
 
     const [imageSelected, setImageSelected] = useState('')
+    const [picture, setPicture] = useState('')
+    // let public_id = null
 
     const uploadImage = (files) => {
         // console.log(files[0])
@@ -13,12 +15,16 @@ const CloudinaryUploadWidget = () => {
         formData.append("file", imageSelected)
         formData.append("upload_preset", "gxc7sx3v")
         
+
         Axios.post("https://api.cloudinary.com/v1_1/dtszeeznm/image/upload", formData).then((response) => {
-            console.log(response);
+            console.log(response.data.url);
+            // public_id = response.data.public_id
+            setPicture(response.data.url)
+            handleImageChange(response.data.url)
+            // console.log('this is public_id', public_id)
         });
     };
 
-    let public_id = null
 
     return (
         <div>
@@ -31,10 +37,11 @@ const CloudinaryUploadWidget = () => {
                 Upload
             </Button>
 
-            <Image 
+            <img 
                 style={{width: 200}}
                 cloudName="dtszeeznm" 
-                publicId= {`https://res.cloudinary.com/dtszeeznm/image/upload/v1667425812/${public_id}.jpg`}
+                publicId= { picture }
+                src = { picture }
             />
         </div>
     );

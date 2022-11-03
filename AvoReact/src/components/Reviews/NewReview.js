@@ -29,10 +29,20 @@ const NewReview = (props) => {
             }
         })
     }
+    const handleImageChange = (image) => {
+        setReview(prevReview => {
+            const name = 'image'
+            const updatedReview = {[name]: image}
+            return {
+                ...prevReview, ...updatedReview
+            }
+        })
+    } 
 
     const handleSubmit = (e) => {
         e.preventDefault()
         let updatedReview = review
+        console.log('updatedREview', updatedReview)
         updatedReview.ownerEmail = user.email
 
         reviewCreate(user, restaurant._id, updatedReview)
@@ -62,6 +72,7 @@ const NewReview = (props) => {
                     <ReviewForm 
                         review={review}
                         handleChange={handleChange}
+                        handleImageChange={handleImageChange}
                         handleSubmit={handleSubmit}
                         heading="Please submit a review!"
                     />
