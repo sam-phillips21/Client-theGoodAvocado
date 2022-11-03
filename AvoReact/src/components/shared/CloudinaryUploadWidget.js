@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import Axios from 'axios'
 import { Button } from 'react-bootstrap'
 // import { Image } from 'cloudinary-react'
@@ -14,7 +14,6 @@ const CloudinaryUploadWidget = ({ handleImageChange }) => {
         formData.append("file", imageSelected)
         formData.append("upload_preset", "gxc7sx3v")
 
-
         Axios.post("https://api.cloudinary.com/v1_1/dtszeeznm/image/upload", formData)
             .then((response) => {
                 // console.log(response.data.url);
@@ -22,13 +21,16 @@ const CloudinaryUploadWidget = ({ handleImageChange }) => {
                 handleImageChange(response.data.url)
                 // console.log('this is public_id', public_id)
             });
-            return () => {
-                console.log('post setPictureMount', setPicture)
-                setPicture('')
+            return (e) => {
+                e.target.files = ''
+                // console.log('post setPictureMount', setPicture)
+                // setPicture('')
+                // // setImageSelected('')
+                // // handleImageChange('')
             }
     };
 
-    // useEffect(() => {
+     // useEffect(() => {
     //     console.log('setPicture pre', setPicture)
     
     //     return () => {
@@ -36,8 +38,6 @@ const CloudinaryUploadWidget = ({ handleImageChange }) => {
     //       setPicture('')
     //     }
     //   }, [])
-
-    
 
     return (
         <div>

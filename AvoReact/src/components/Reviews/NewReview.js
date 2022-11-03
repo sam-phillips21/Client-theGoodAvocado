@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import Accordion from 'react-bootstrap/Accordion';
 import ReviewForm from '../shared/ReviewForm'
 import { reviewCreate } from '../../api/review'
@@ -34,6 +34,18 @@ const NewReview = (props) => {
         })
     } 
 
+    // image won't clear with everything else
+    useEffect((image) => {
+            console.log('image', image)
+            const name = 'image'
+            const updatedReview = {[name]: image}
+        
+            return () => {
+              console.log('image', image)
+              updatedReview('')
+            }
+          }, [])
+
     const handleSubmit = (e) => {
         e.preventDefault()
         let updatedReview = review
@@ -44,7 +56,7 @@ const NewReview = (props) => {
             rating: '',
             image: ''
         })
-        console.log('review', review)
+        // console.log('review', review)
         reviewCreate(user, restaurant._id, updatedReview)
             .then(() => {
                 msgAlert({
