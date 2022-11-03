@@ -8,7 +8,7 @@ import RestaurantUpdateModal from './RestaurantUpdateModal'
 import NewReview from '../Reviews/NewReview'
 import ShowReview from '../Reviews/ShowReview'
 import FoodImages from '../shared/FoodImages'
-// import LoadingScreen from '../LoadingScreen'
+import LoadingScreen from '../LoadingScreen'
 
 const restaurantOwner = <FontAwesomeIcon icon={faShop} style={{ color: '#5d52c7' }} bounce />
 const address = <FontAwesomeIcon icon={faLocationDot} />
@@ -92,7 +92,7 @@ const RestaurantShow = ({ user, msgAlert }) => {
     if (deleted) navigate('/restaurants')
 
     if (!restaurant) {
-        return <p> ...Loading </p>
+        return <LoadingScreen />
     }
 
     return (
