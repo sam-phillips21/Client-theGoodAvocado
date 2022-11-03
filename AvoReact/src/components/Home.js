@@ -7,6 +7,7 @@ import { Carousel } from "react-bootstrap"
 	
   return (
 	<>
+	
     <Carousel fade>
       <Carousel.Item>
         <img
@@ -15,8 +16,8 @@ import { Carousel } from "react-bootstrap"
           alt="First slide"
         />
         <Carousel.Caption>
-          <h3>Find amazing food!</h3>
-          <p>Welcome to the Good Avocado! A place to find restaurant reviews and information. </p>
+          <h3 style = {{backgroundColor: `rgba( 255,255,255,.3)`, fontSize: '50px' }}>Find amazing food!</h3>
+          <p style = {{backgroundColor: `rgba( 128,128,128,.3)`, fontSize: '30px'}}>Welcome to the Good Avocado! A place to find restaurant reviews and information. </p>
         </Carousel.Caption>
       </Carousel.Item>
 	  <Carousel.Item>
@@ -27,8 +28,8 @@ import { Carousel } from "react-bootstrap"
         />
 
         <Carousel.Caption>
-          <h3>Its all about the avocado</h3>
-          <p>
+          <h3 style = {{color: '', fontSize: '50px'}}>Its all about the avocado</h3>
+          <p style = {{color: '', fontSize: '30px'}}>
 		  Like a good avocado, a good restaurant can be hard to find!
           </p>
         </Carousel.Caption>
@@ -41,11 +42,10 @@ import { Carousel } from "react-bootstrap"
         />
 
         <Carousel.Caption>
-          <h3>Find amazing seafood restaurants!</h3>
-          <p>We understand seafood.</p>
+          <h3 style= {{color: '', fontSize: '50px'}}>Find seafood restaurants!</h3>
+          <p style= {{color: '', fontSize: '30px'}}>We understand seafood.</p>
         </Carousel.Caption>
       </Carousel.Item>
-   
 	  <Carousel.Item>
         <img
           className="d-block w-100"
@@ -54,8 +54,8 @@ import { Carousel } from "react-bootstrap"
         />
 
         <Carousel.Caption>
-          <h3></h3>
-          <p>
+          <h3 style= {{color: '', fontSize: '50px'}}></h3>
+          <p style= {{color: '', fontSize: '30px'}}>
 		  
           </p>
         </Carousel.Caption>
@@ -68,8 +68,8 @@ import { Carousel } from "react-bootstrap"
         />
 
         <Carousel.Caption>
-          <h3></h3>
-          <p>
+          <h3 style= {{color: '', fontSize: '50px'}}></h3>
+          <p style= {{color: '', fontSize: '30px'}}>
 		  
           </p>
         </Carousel.Caption>
@@ -77,6 +77,7 @@ import { Carousel } from "react-bootstrap"
     </Carousel>
 	
 	<RestaurantIndex msgAlert= {msgAlert}/>
+	
 	</>
 	
   );
