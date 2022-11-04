@@ -8,7 +8,9 @@ import messages from '../shared/AutoDismissAlert/messages'
 const EditReview = (props) => {
     const { 
         user, show, handleClose, 
-        msgAlert, triggerRefresh, restaurant
+        msgAlert, triggerRefresh, restaurant, 
+        handleImageChange, picture, setPicture, 
+        setImageSelected, imageSelected
     } = props
 
     const [review, setReview] = useState(props.review)
@@ -17,13 +19,6 @@ const EditReview = (props) => {
         setReview(prevReview => {
             const name = e.target.name
             let value = e.target.value
-
-            // handle the checkbox
-            // if (name === "isSqueaky" && e.target.checked) {
-            //     value = true
-            // } else if (name === "isSqueaky" && !e.target.checked) {
-            //     value = false
-            // }
 
             const updatedReview = { [name]: value }
 
@@ -60,10 +55,16 @@ const EditReview = (props) => {
             <Modal.Header closeButton/>
             <Modal.Body>
                 <ReviewForm 
+                    imageSelected={imageSelected}
+                    setImageSelected={setImageSelected}
+                    picture={picture}
+                    setPicture={setPicture}
                     review={review}
                     handleChange={handleChange}
                     handleSubmit={handleSubmit}
-                    heading="Give this restaurant a review!"
+                    // triggerRefresh={triggerRefresh}
+                    handleImageChange={handleImageChange}
+                    heading="Edit this review!"
                 />
             </Modal.Body>
         </Modal>
