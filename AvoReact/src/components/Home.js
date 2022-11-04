@@ -1,85 +1,77 @@
 import RestaurantIndex from "./restaurants/RestaurantIndex"
 import { Carousel } from "react-bootstrap"
+import FoodImages from "./shared/FoodImages"
 
-	const Home = (props) => {
-		const { msgAlert, user } = props
-		console.log('props in home', props)
-	
+const Home = ({ msgAlert }) => {
+
   return (
-	<>
-    <Carousel fade>
-      <Carousel.Item>
-        <img
-          className="d-block w-100"
-          src="https://images.pexels.com/photos/3184183/pexels-photo-3184183.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1"
-          alt="First slide"
-        />
-        <Carousel.Caption>
-          <h3>Find amazing food!</h3>
-          <p>Welcome to the Good Avocado! A place to find restaurant reviews and information. </p>
-        </Carousel.Caption>
-      </Carousel.Item>
-	  <Carousel.Item>
-        <img
-          className="d-block w-100"
-          src="https://images.unsplash.com/photo-1580823673284-e911e30564b6?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1770&q=80"
-          alt="Third slide"
-        />
+    <>
+      <Carousel className='carousel-text' fade>
+        <Carousel.Item>
+          <img
+            className="d-block w-100 carousel-img"
+            src={FoodImages.Fusion}
+            alt="Avocados"
+          />
+          <Carousel.Caption>
+            <h3>It's all about the avocado!</h3>
+            <p>
+              Like a good avocado, a good restaurant can be hard to find.
+            </p>
+          </Carousel.Caption>
+        </Carousel.Item> 
+        <Carousel.Item>
+          <img
+            className="d-block w-100 carousel-img"
+            src="https://images.pexels.com/photos/3184183/pexels-photo-3184183.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1"
+            alt="Table of people eating"
+          />
+          <Carousel.Caption>
+            <h3>Looking for amazing food?</h3>
+            <p>We've got tons of restaurants and reviews for you!</p>
+          </Carousel.Caption>
+        </Carousel.Item>
+        <Carousel.Item>
+          <img
+            className="d-block w-100 carousel-img"
+            src={FoodImages.Seafood}
+            alt="Lobster"
+          />
 
-        <Carousel.Caption>
-          <h3>Its all about the avocado</h3>
-          <p>
-		  Like a good avocado, a good restaurant can be hard to find!
-          </p>
-        </Carousel.Caption>
-      </Carousel.Item>
-      <Carousel.Item>
-        <img
-          className="d-block w-100"
-          src="https://images.unsplash.com/photo-1588791174744-7e9bf4378277?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1770&q=80"
-          alt="Second slide"
-        />
+          <Carousel.Caption>
+            <h3>Find great seafood restaurants and more!</h3>
+            <p>Trust us, we understand seafood.</p>
+          </Carousel.Caption>
+        </Carousel.Item>
+        <Carousel.Item>
+          <img
+            className="d-block w-100 carousel-img"
+            src={FoodImages.Italian}
+            alt="Pasta"
+          />
 
-        <Carousel.Caption>
-          <h3>Find amazing seafood restaurants!</h3>
-          <p>We understand seafood.</p>
-        </Carousel.Caption>
-      </Carousel.Item>
-   
-	  <Carousel.Item>
-        <img
-          className="d-block w-100"
-          src="https://images.unsplash.com/photo-1533787761082-492a5b83e614?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1770&q=80"
-          alt="Fourth slide"
-        />
+          <Carousel.Caption>
+            <h3>Leave reviews for your favorite restaurants.</h3>
+            <p>Great place to show off your food pictures, too!</p>
+          </Carousel.Caption>
+        </Carousel.Item>
+        <Carousel.Item>
+          <img
+            className="d-block w-100 carousel-img"
+            src={FoodImages.Japanese}
+            alt="Sushi"
+          />
 
-        <Carousel.Caption>
-          <h3></h3>
-          <p>
-		  
-          </p>
-        </Carousel.Caption>
-      </Carousel.Item>
-	  <Carousel.Item>
-        <img
-          className="d-block w-100"
-          src="https://images.unsplash.com/photo-1611143669185-af224c5e3252?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2232&q=80"
-          alt="Fifth slide"
-        />
+          <Carousel.Caption>
+            <h3>Food anywhere, anytime!</h3>
+            <p>Get the full restaurant experience regardless of where you are.</p>
+          </Carousel.Caption>
+        </Carousel.Item>
+      </Carousel>
 
-        <Carousel.Caption>
-          <h3></h3>
-          <p>
-		  
-          </p>
-        </Carousel.Caption>
-      </Carousel.Item>
-    </Carousel>
-	
-	<RestaurantIndex msgAlert= {msgAlert}/>
-	</>
-	
-  );
+      <RestaurantIndex msgAlert={msgAlert} />
+    </>
+  )
 }
 
 export default Home

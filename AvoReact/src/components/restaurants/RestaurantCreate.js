@@ -22,7 +22,7 @@ const RestaurantCreate = ({ user, msgAlert }) => {
         wifi: false,
         masksRequired: false,
         alcohol: false,
-        veganOptions: false
+        vegan: false
     }
 
     const [restaurant, setRestaurant] = useState(defaultRestaurant)

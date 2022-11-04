@@ -1,11 +1,12 @@
-import React, { Fragment } from 'react'
+import React from 'react'
 import Nav from 'react-bootstrap/Nav'
 import Navbar from 'react-bootstrap/Navbar'
 import { Link } from 'react-router-dom'
-import { Container, Button} from 'react-bootstrap'
+import { Container } from 'react-bootstrap'
+import SearchBar from './SearchBar'
 const linkStyle = {
-    color: 'Black',
-    textDecoration: 'none'
+	color: 'Black',
+	textDecoration: 'none'
 }
 const authenticatedOptions = (
 	<>
@@ -29,8 +30,11 @@ const authenticatedOptions = (
 				Change Password
 			</Link>
 		</Nav.Item>
-		<Nav.Item className='btn' style={{backgroundColor: '#ba7a5f', borderColor: '#ba7a5f'}}>
-			<Link className='text-light' to='sign-out' style={linkStyle}>
+		<Nav.Item className='m-2'>
+			<SearchBar />
+		</Nav.Item>
+		<Nav.Item>
+			<Link className='btn text-light' to='sign-out' style={{ backgroundColor: '#ba7a5f', borderColor: '#ba7a5f' }}>
 				Sign Out
 			</Link>
 		</Nav.Item>
@@ -38,23 +42,35 @@ const authenticatedOptions = (
 )
 
 const unauthenticatedOptions = (
+	
 	<Container className='container-fluid d-flex justify-content-end'>
-        <Nav.Item className='mx-2 btn btn-success'>
-		    <Link className='text-light' to='sign-up' style={linkStyle}>Sign Up</Link>
-        </Nav.Item>
-        <Nav.Item className='btn' style={{backgroundColor: '#ba7a5f', borderColor: '#ba7a5f'}}>
-		    <Link className='text-light' to='sign-in' style={linkStyle}>Sign In</Link>
-        </Nav.Item>
+		<Nav.Item className='m-2'>
+			<SearchBar />
+		</Nav.Item>
+		<Nav.Item className='mx-2'>
+			<Link className='btn text-light btn-success' to='sign-up'>Sign Up</Link>
+		</Nav.Item>
+		<Nav.Item>
+			<Link className='btn text-light' to='sign-in' style={{ backgroundColor: '#ba7a5f', borderColor: '#ba7a5f' }}>Sign In</Link>
+		</Nav.Item>
+		
 	</Container>
+	
 )
 
 const Header = ({ user }) => (
 	<Navbar variant='dark' expand='md'>
-		<Navbar.Brand className='m-2'>
-            <Link to='/' style={linkStyle}>
-                The Good Avocado
-            </Link>
-        </Navbar.Brand>
+		
+			<Navbar.Brand className='m-2'>
+				<Link to='/' style={linkStyle}>
+					<img
+						src="https://i.imgur.com/ut67YmM.png"
+						width="125"
+						height="auto"
+					/>
+				</Link>
+			</Navbar.Brand>
+		
 		<Navbar.Toggle aria-controls='basic-navbar-nav' />
 		<Navbar.Collapse id='basic-navbar-nav'>
 			<Nav className='ml-auto container-fluid d-flex justify-content-between'>

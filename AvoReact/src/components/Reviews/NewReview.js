@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import Accordion from 'react-bootstrap/Accordion';
 import ReviewForm from '../shared/ReviewForm'
 import { reviewCreate } from '../../api/review'
@@ -10,8 +10,13 @@ const NewReview = (props) => {
 
     const [review, setReview] = useState({
         comment: '',
-        rating: ''
+        rating: '',
+        image: ''
     })
+
+    const [picture, setPicture] = useState('')
+    const [imageSelected, setImageSelected] = useState('')
+
 
     const handleChange = (e) => {
         setReview(prevReview => {
@@ -33,15 +38,21 @@ const NewReview = (props) => {
         })
     } 
 
+
     const handleSubmit = (e) => {
         e.preventDefault()
         let updatedReview = review
-        console.log('updatedREview', updatedReview)
+        // console.log('updatedREview', updatedReview)
         updatedReview.ownerEmail = user.email
         setReview({
             comment: '',
-            rating: ''
+            rating: '',
+            image: ''
         })
+
+        
+
+        // console.log('review', review)
         reviewCreate(user, restaurant._id, updatedReview)
             .then(() => {
                 msgAlert({
@@ -49,6 +60,10 @@ const NewReview = (props) => {
                     message: 'We appreciate you taking the time to review this restaurant!',
                     variant: 'success'
                 })
+            })
+            .then(() => {
+                setPicture('')
+                setImageSelected('')
             })
             .then(() => triggerRefresh())
             .catch(() => {
@@ -67,6 +82,10 @@ const NewReview = (props) => {
                 <Accordion.Header>Add a Review</Accordion.Header>
                 <Accordion.Body style={{ backgroundColor: '#f2f6ec' }}>
                     <ReviewForm
+                        imageSelected={imageSelected}
+                        setImageSelected={setImageSelected}
+                        picture={picture}
+                        setPicture={setPicture}
                         review={review}
                         handleChange={handleChange}
                         handleImageChange={handleImageChange}

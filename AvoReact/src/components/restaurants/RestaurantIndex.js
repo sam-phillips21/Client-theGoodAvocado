@@ -35,7 +35,7 @@ const RestaurantIndex = ({ user, msgAlert }) => {
             <Card.Header><b>{restaurant.name}</b> / {restaurant.type}</Card.Header>
             <Card.Body>
                 <Card.Text>
-                    <Link style={{ color: '#957153', textDecoration: 'none' }} to={`/restaurants/${restaurant._id}`}>View {restaurant.name} </Link>
+                    <Link style={{ color: '#ba7a5f', textDecoration: 'none', fontWeight: 'bold' }} to={`/restaurants/${restaurant._id}`}>View {restaurant.name} </Link>
                 </Card.Text>
             </Card.Body>
         </Card>

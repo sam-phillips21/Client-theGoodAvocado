@@ -5,22 +5,47 @@ body {
   background-repeat: no-repeat;
   background-attachment: fixed;
   font-family: 'Swanky and Moo Moo', cursive, -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-  'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-  sans-serif;
+    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+    sans-serif;
   margin: 0;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  height: 100%;
 }
 
 
 code {
   font-family: 'Swanky and Moo Moo', cursive, source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
-} 
+}
+
+.carousel-text h3 {
+  font-size: 50px;
+  text-shadow: -2px 2px 2px #000,
+    2px 2px 2px #000,
+    2px -1px 0 #000,
+    -2px -1px 0 #000;
+}
+
+.carousel-text p {
+  font-size: 30px;
+  text-shadow: -1px 1px 2px #000,
+    1px 1px 2px #000,
+    1px -1px 0 #000,
+    -1px -1px 0 #000;
+    font-weight: bold;
+}
+
+.carousel-img {
+  width: 100%;
+  height: 600px;
+  object-fit: cover;
+}
+
 
 .show-image-container {
   position: relative;
-} 
+}
 
 .show-image-header {
   position: absolute;
@@ -51,4 +76,17 @@ li {
   margin-top: 20px;
   background-color: #f2f6ec;
   border-radius: 15px;
+}
+
+#footer {
+  text-align: center;
+  margin-bottom: 25px;
+  margin-top: 30px;
+}
+
+#footer img {
+  width: 95px;
+  height: auto;
+  margin-top: -10px;
+  margin-right: -5px;
 }
