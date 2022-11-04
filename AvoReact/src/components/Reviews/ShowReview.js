@@ -53,7 +53,7 @@ const ShowReview = (props) => {
                     </Card.Body>
                     <Card.Footer>
                         {
-                            user.email === review.ownerEmail
+                            user && user.email === review.ownerEmail
                             ?
                             <>
                                 <Button
