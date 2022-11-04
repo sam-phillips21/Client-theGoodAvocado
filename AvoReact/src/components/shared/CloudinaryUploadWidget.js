@@ -3,10 +3,11 @@ import Axios from 'axios'
 import { Button } from 'react-bootstrap'
 // import { Image } from 'cloudinary-react'
 
-const CloudinaryUploadWidget = ({ handleImageChange }) => {
+const CloudinaryUploadWidget = ({ handleImageChange, clear }) => {
 
     const [imageSelected, setImageSelected] = useState('')
     const [picture, setPicture] = useState('')
+    // const [clear, setClear] = useState(false)
 
     const uploadImage = (files) => {
         // console.log(files[0])
@@ -19,25 +20,33 @@ const CloudinaryUploadWidget = ({ handleImageChange }) => {
                 // console.log(response.data.url);
                 setPicture(response.data.url)
                 handleImageChange(response.data.url)
+                // setClear(true)
                 // console.log('this is public_id', public_id)
-            });
-            return (e) => {
-                e.target.files = ''
-                // console.log('post setPictureMount', setPicture)
-                // setPicture('')
-                // // setImageSelected('')
-                // // handleImageChange('')
-            }
+            })
+            // .then(() =>{
+            //     setPicture('')
+            // })
+            // return () => {
+            //     // e.target.files = ''
+            //     // console.log('post setPictureMount', setPicture)
+            //     setPicture('')
+            //     // // setImageSelected('')
+            //     // // handleImageChange('')
+            // }
     };
 
-     // useEffect(() => {
+    if(clear) {
+        setPicture('')
+        // setClear(!clear)
+    }
+    //  useEffect(() => {
     //     console.log('setPicture pre', setPicture)
     
     //     return () => {
     //       console.log('setPicture post', setPicture)
     //       setPicture('')
     //     }
-    //   }, [])
+    //   }, [picture])
 
     return (
         <div>
@@ -45,11 +54,9 @@ const CloudinaryUploadWidget = ({ handleImageChange }) => {
                 type="file"
                 onChange={(e) => { setImageSelected(e.target.files[0]) }}
             />
-            <Button id="upload_widget" className="m-2 cloudinary-button btn-secondary" onClick={uploadImage}
-            >
+            <Button id="upload_widget" className="m-2 cloudinary-button btn-secondary" onClick={uploadImage}>
                 Upload
             </Button>
-
 
             <img
                 style={{ width: 200 }}
