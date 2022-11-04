@@ -13,6 +13,7 @@ const NewReview = (props) => {
         rating: '',
         image: ''
     })
+    const [clear, setClear] = useState(false)
 
     const handleChange = (e) => {
         setReview(prevReview => {
@@ -25,6 +26,7 @@ const NewReview = (props) => {
         })
     }
     const handleImageChange = (image) => {
+        setClear(false)
         setReview(prevReview => {
             const name = 'image'
             const updatedReview = {[name]: image}
@@ -35,16 +37,16 @@ const NewReview = (props) => {
     } 
 
     // image won't clear with everything else
-    useEffect((image) => {
-            console.log('image', image)
-            const name = 'image'
-            const updatedReview = {[name]: image}
+    // useEffect((image) => {
+    //         console.log('image', image)
+    //         const name = 'image'
+    //         const updatedReview = {[name]: image}
         
-            return () => {
-              console.log('image', image)
-              updatedReview('')
-            }
-          }, [])
+    //         return () => {
+    //           console.log('image', image)
+    //           updatedReview('')
+    //         }
+    //       }, [])
 
     const handleSubmit = (e) => {
         e.preventDefault()
@@ -56,6 +58,9 @@ const NewReview = (props) => {
             rating: '',
             image: ''
         })
+
+        setClear(false)
+
         // console.log('review', review)
         reviewCreate(user, restaurant._id, updatedReview)
             .then(() => {
@@ -82,6 +87,7 @@ const NewReview = (props) => {
                 <Accordion.Header>Add a Review</Accordion.Header>
                 <Accordion.Body style={{ backgroundColor: '#f2f6ec' }}>
                     <ReviewForm
+                        clear={clear}
                         review={review}
                         handleChange={handleChange}
                         handleImageChange={handleImageChange}
