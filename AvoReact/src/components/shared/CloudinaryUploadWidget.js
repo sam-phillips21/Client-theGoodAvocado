@@ -23,7 +23,7 @@ const CloudinaryUploadWidget = ({ handleImageChange, picture, setPicture, setIma
         }
     }, [])
     
-    console.log('picture', picture)
+    // console.log('picture', picture)
     return (
         <div>
             <input
