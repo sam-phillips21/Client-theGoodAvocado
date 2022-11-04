@@ -13,7 +13,7 @@ const NewReview = (props) => {
         rating: '',
         image: ''
     })
-    // const [clear, setClear] = useState(false)
+
     const [picture, setPicture] = useState('')
     const [imageSelected, setImageSelected] = useState('')
 
@@ -38,18 +38,6 @@ const NewReview = (props) => {
         })
     } 
 
-    // image won't clear with everything else
-    // useEffect((image) => {
-    //         console.log('image', image)
-    //         const name = 'image'
-    //         const updatedReview = {[name]: image}
-        
-    //         return () => {
-    //           console.log('image', image)
-    //           updatedReview('')
-    //           setClear(!clear)
-    //         }
-    //       }, [])
 
     const handleSubmit = (e) => {
         e.preventDefault()
