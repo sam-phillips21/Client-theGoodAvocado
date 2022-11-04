@@ -9,7 +9,9 @@ import NewReview from '../Reviews/NewReview'
 import ShowReview from '../Reviews/ShowReview'
 import FoodImages from '../shared/FoodImages'
 import LoadingScreen from '../LoadingScreen'
-import { Link } from 'react-router-dom'
+
+
+
 const restaurantOwner = <FontAwesomeIcon icon={faShop} style={{ color: '#5d52c7' }} bounce />
 const address = <FontAwesomeIcon icon={faLocationDot} />
 const telephone = <FontAwesomeIcon icon={faPhone} />
