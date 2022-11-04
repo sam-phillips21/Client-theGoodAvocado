@@ -3,10 +3,10 @@ import Axios from 'axios'
 import { Button } from 'react-bootstrap'
 // import { Image } from 'cloudinary-react'
 
-const CloudinaryUploadWidget = ({ handleImageChange, clear }) => {
+const CloudinaryUploadWidget = ({ handleImageChange, picture, setPicture, setImageSelected, imageSelected }) => {
 
-    const [imageSelected, setImageSelected] = useState('')
-    const [picture, setPicture] = useState('')
+    // const [imageSelected, setImageSelected] = useState('')
+    // const [picture, setPicture] = useState('')
     // const [clear, setClear] = useState(false)
 
     const uploadImage = (files) => {
@@ -35,19 +35,18 @@ const CloudinaryUploadWidget = ({ handleImageChange, clear }) => {
             // }
     };
 
-    if(clear) {
-        setPicture('')
-        // setClear(!clear)
-    }
-    //  useEffect(() => {
-    //     console.log('setPicture pre', setPicture)
-    
-    //     return () => {
-    //       console.log('setPicture post', setPicture)
-    //       setPicture('')
-    //     }
-    //   }, [picture])
+    // if(clear) {
+    //     setPicture('')
+    //     // setClear(!clear)
+    // }
 
+    useEffect(() => {
+        return () => {
+            setPicture('')
+        }
+    }, [])
+    
+    console.log('picture', picture)
     return (
         <div>
             <input
