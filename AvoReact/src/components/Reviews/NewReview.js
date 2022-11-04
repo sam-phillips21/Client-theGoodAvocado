@@ -13,7 +13,10 @@ const NewReview = (props) => {
         rating: '',
         image: ''
     })
-    const [clear, setClear] = useState(false)
+    // const [clear, setClear] = useState(false)
+    const [picture, setPicture] = useState('')
+    const [imageSelected, setImageSelected] = useState('')
+
 
     const handleChange = (e) => {
         setReview(prevReview => {
@@ -26,7 +29,6 @@ const NewReview = (props) => {
         })
     }
     const handleImageChange = (image) => {
-        setClear(false)
         setReview(prevReview => {
             const name = 'image'
             const updatedReview = {[name]: image}
@@ -45,6 +47,7 @@ const NewReview = (props) => {
     //         return () => {
     //           console.log('image', image)
     //           updatedReview('')
+    //           setClear(!clear)
     //         }
     //       }, [])
 
@@ -59,7 +62,7 @@ const NewReview = (props) => {
             image: ''
         })
 
-        setClear(false)
+        
 
         // console.log('review', review)
         reviewCreate(user, restaurant._id, updatedReview)
@@ -69,6 +72,10 @@ const NewReview = (props) => {
                     message: 'We appreciate you taking the time to review this restaurant!',
                     variant: 'success'
                 })
+            })
+            .then(() => {
+                setPicture('')
+                setImageSelected('')
             })
             .then(() => triggerRefresh())
             .catch(() => {
@@ -87,7 +94,10 @@ const NewReview = (props) => {
                 <Accordion.Header>Add a Review</Accordion.Header>
                 <Accordion.Body style={{ backgroundColor: '#f2f6ec' }}>
                     <ReviewForm
-                        clear={clear}
+                        imageSelected={imageSelected}
+                        setImageSelected={setImageSelected}
+                        picture={picture}
+                        setPicture={setPicture}
                         review={review}
                         handleChange={handleChange}
                         handleImageChange={handleImageChange}

@@ -3,7 +3,7 @@ import { Form, Container, Button } from 'react-bootstrap'
 import CloudinaryUploadWidget from "./CloudinaryUploadWidget";
 
 const ReviewForm = (props) => {
-    const { review, handleChange, handleSubmit, heading, handleImageChange, clear } = props
+    const { review, handleChange, handleSubmit, heading, handleImageChange, picture, setPicture, imageSelected, setImageSelected } = props
 
     return (
         <Container className="justify-content-center">
@@ -36,7 +36,10 @@ const ReviewForm = (props) => {
                 <>
                     <CloudinaryUploadWidget 
                         handleImageChange={handleImageChange}
-                        clear={clear}
+                        picture={picture}
+                        setPicture={setPicture}
+                        imageSelected={imageSelected}
+                        setImageSelected={setImageSelected}
                     />
                 </>
 
