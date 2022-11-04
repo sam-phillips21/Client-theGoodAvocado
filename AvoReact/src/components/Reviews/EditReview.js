@@ -62,7 +62,7 @@ const EditReview = (props) => {
                     review={review}
                     handleChange={handleChange}
                     handleSubmit={handleSubmit}
-                    // triggerRefresh={triggerRefresh}
+                    triggerRefresh={() => setPicture(prev => !prev)}
                     handleImageChange={handleImageChange}
                     heading="Edit this review!"
                 />
