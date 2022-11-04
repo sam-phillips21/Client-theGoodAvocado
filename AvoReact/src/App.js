@@ -17,6 +17,7 @@ import RestaurantIndex from './components/restaurants/RestaurantIndex'
 import RestaurantShow from './components/restaurants/RestaurantShow'
 // import ShowReview from './components/Reviews/ShowReview'
 import IndexReview from './components/Reviews/IndexReview'
+import RestaurantSearch from './components/restaurants/RestaurantSearch'
 
 const App = () => {
 
@@ -93,12 +94,16 @@ const App = () => {
 							<RestaurantShow msgAlert={msgAlert} user={user} />
 								}
 					/>
-						<Route
+					<Route
 						path='/reviews'
 						element={
 						<RequireAuth user={user}>	
 							<IndexReview msgAlert={msgAlert} user={user} />
 						</RequireAuth>}
+					/>
+					<Route 
+						path='/restaurants/search/:searchInput' 
+						element={<RestaurantSearch msgAlert={msgAlert} user={user} />} 
 					/>
 				</Routes>
 				{msgAlerts.map((msgAlert) => (
