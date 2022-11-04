@@ -37,8 +37,8 @@ const RestaurantShow = ({ user, msgAlert }) => {
 
     useEffect(() => {
         // 👇️ scroll to top on page load
-        window.scrollTo({top: 0, left: 0, behavior: 'instant'});
-      }, []);
+        window.scrollTo({ top: 0, left: 0, behavior: 'instant' });
+    }, []);
 
     useEffect(() => {
         restaurantShow(user, id)
@@ -124,8 +124,16 @@ const RestaurantShow = ({ user, msgAlert }) => {
 
                     <h4>{telephone} {restaurant.telephone}</h4>
 
-                    <h4>{website} {restaurant.website}
-                    </h4>
+                    {restaurant.website ?
+                        <>
+                            <h4>{website}
+                                <a href={restaurant.website} target='blank' style={{ color: '#ba7a5f', textDecoration: 'none' }}> {restaurant.name}</a>
+                            </h4>
+                        </>
+                        :
+                        <h4>{website} No Website for this restaurant yet</h4>
+                    }
+
 
                 </Container>
                 <Container className='d-flex'>
@@ -153,14 +161,14 @@ const RestaurantShow = ({ user, msgAlert }) => {
                         restaurant.owner && user && restaurant.owner._id === user._id
                             ?
                             <>
-                                <Button onClick={() => setEditModalShow(true)} className="m-2" 
-                                variant="success" 
+                                <Button onClick={() => setEditModalShow(true)} className="m-2"
+                                    variant="success"
                                 >
                                     Edit Restaurant
                                 </Button>
                                 <Button onClick={() => handleDeleteRestaurant()}
                                     className="m-2"
-                                    variant="danger" 
+                                    variant="danger"
                                 >
                                     {restaurant.name} is Closed Permanently
                                 </Button>

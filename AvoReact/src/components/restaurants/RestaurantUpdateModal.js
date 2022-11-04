@@ -46,7 +46,7 @@ const RestaurantUpdateModal = (props) => {
     }
 
     return (
-        <Modal show={show} onHide={handleClose}>
+        <Modal size='lg' show={show} onHide={handleClose}>
             <Modal.Header closeButton/>
             <Modal.Body>
                 <RestaurantForm 

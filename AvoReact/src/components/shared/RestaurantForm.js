@@ -1,11 +1,11 @@
 import React from 'react'
-import { Form, Button, Container, Row, Col } from 'react-bootstrap'
+import { Form, Button, Container, Row, Col, InputGroup } from 'react-bootstrap'
 
 const RestaurantForm = (props) => {
     const { restaurant, handleChange, heading, handleSubmit } = props
 
     return (
-        <Container className="justify-content-center rest-form" style={{ width: '50rem', padding: '2rem'}} >
+        <Container className="justify-content-center rest-form" style={{ width: '48em', padding: '2rem' }} >
             <h3 className='mt-3'>{heading}</h3>
             <Form onSubmit={handleSubmit}>
                 <Form.Label>Name of Restaurant:</Form.Label>
@@ -76,6 +76,16 @@ const RestaurantForm = (props) => {
                         />
                     </Form.Group>
                 </Row>
+                <Form.Group>
+                    <Form.Label className='mt-2'>Website:</Form.Label>
+                    <Form.Control
+                        placeholder="Optional - copy and paste the restaurant URL from your browser"
+                        name="website"
+                        id="website"
+                        value={restaurant.website}
+                        onChange={handleChange}
+                    />
+                </Form.Group>
 
                 <Form.Check
                     className='mt-4'
@@ -153,7 +163,7 @@ const RestaurantForm = (props) => {
                         />
                     </Form.Group>
                 </Row>
-                <Button className='btn btn-light text-light mt-3' type="submit" style={{backgroundColor: '#ba7a5f'}}>Submit</Button>
+                <Button className='btn btn-light text-light mt-3' type="submit" style={{ backgroundColor: '#ba7a5f' }}>Submit</Button>
 
             </Form>
         </Container>
