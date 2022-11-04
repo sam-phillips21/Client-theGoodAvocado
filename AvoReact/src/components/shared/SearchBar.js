@@ -1,10 +1,8 @@
 import React, { useState } from "react"
-// import ".src/index.css"
-// import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-// import { faXmark, faMagnifyingGlass } from '@fortawesome/free-solid-svg-icons'
 import { Input } from 'antd'
-import { useNavigate } from 'react-router-dom'
-
+import { useNavigate } from 'react-router-dom' 
+import 'antd/es/input/style/index.css'
+import 'antd/es/button/style/index.css'
 
 const { Search } = Input
 
@@ -25,6 +23,9 @@ const SearchBar = () => {
                     onSearch={onSearch}
                     value={inputValue}
                     onChange={(e) => setInputValue(e.target.value)}
+                    style={{
+                        width: '280px'
+                    }}
                 />
             </div>
         </div>
