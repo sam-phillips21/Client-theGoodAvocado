@@ -21,7 +21,7 @@ const RestaurantSearch = () => {
         axios.get('http://localhost:8000/restaurants')
             .then((response) => {
                 const filteredRestaurants = response.data.restaurants.filter(restaurant => {
-                    return restaurant.name.toLowerCase().includes(searchInput.toLowerCase()) 
+                    return restaurant.name.toLowerCase().includes(searchInput.toLowerCase())
                         || restaurant.type.toLowerCase().includes(searchInput.toLowerCase())
                         || restaurant.address.toLowerCase().includes(searchInput.toLowerCase())
                 })
@@ -30,7 +30,7 @@ const RestaurantSearch = () => {
             .catch((err) => {
                 setError(err)
             })
-    }, [])
+    }, [searchInput])
 
 
     const restaurantCards = restaurants.map(restaurant => (
@@ -45,11 +45,20 @@ const RestaurantSearch = () => {
         </Card>
     ))
 
+    if (restaurants.length === 0) {
+        console.log(restaurants)
+        return (
+            <div className='text-center mt-5 mb-5'>
+                <h4>Sorry! Your search did not return any matching results.</h4>
+                <h6>Try searching for something else.</h6>
+            </div>
+        )
+    }
+
     return (
         <>
             <h2 className='text-center mt-3'>Restaurant Search Results</h2>
             <div className='container-md text-center' style={cardContainerLayout}>
-
                 {restaurantCards}
             </div>
         </>
