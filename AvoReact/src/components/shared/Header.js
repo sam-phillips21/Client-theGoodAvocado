@@ -34,7 +34,7 @@ const authenticatedOptions = (
 			<SearchBar />
 		</Nav.Item>
 		<Nav.Item>
-			<Link className='btn text-light' to='sign-out' style={{ backgroundColor: '#ba7a5f', borderColor: '#ba7a5f' }}>
+			<Link className='btn text-light mt-1' to='sign-out' style={{ backgroundColor: '#ba7a5f', borderColor: '#ba7a5f' }}>
 				Sign Out
 			</Link>
 		</Nav.Item>
@@ -48,10 +48,10 @@ const unauthenticatedOptions = (
 			<SearchBar />
 		</Nav.Item>
 		<Nav.Item className='mx-2'>
-			<Link className='btn text-light btn-success' to='sign-up'>Sign Up</Link>
+			<Link className='btn text-light btn-success mt-1' to='sign-up'>Sign Up</Link>
 		</Nav.Item>
 		<Nav.Item>
-			<Link className='btn text-light' to='sign-in' style={{ backgroundColor: '#ba7a5f', borderColor: '#ba7a5f' }}>Sign In</Link>
+			<Link className='btn text-light mt-1' to='sign-in' style={{ backgroundColor: '#ba7a5f', borderColor: '#ba7a5f' }}>Sign In</Link>
 		</Nav.Item>
 		
 	</Container>
