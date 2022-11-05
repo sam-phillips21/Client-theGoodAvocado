@@ -8,12 +8,12 @@ import messages from '../shared/AutoDismissAlert/messages'
 const EditReview = (props) => {
     const { 
         user, show, handleClose, 
-        msgAlert, triggerRefresh, restaurant, 
-        handleImageChange, picture, setPicture, 
-        setImageSelected, imageSelected
+        msgAlert, triggerRefresh, restaurant
     } = props
 
     const [review, setReview] = useState(props.review)
+    const [picture, setPicture] = useState(props.review.image)
+    const [imageSelected, setImageSelected] = useState(props.imageSelected)
 
     const handleChange = (e) => {
         setReview(prevReview => {
@@ -27,6 +27,16 @@ const EditReview = (props) => {
             }
         })
     }
+
+    const handleImageChange = (image) => {
+        setReview(prevReview => {
+            const name = 'image'
+            const updatedReview = {[name]: image}
+            return {
+                ...prevReview, ...updatedReview
+            }
+        })
+    } 
 
     const handleSubmit = (e) => {
         e.preventDefault()
