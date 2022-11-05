@@ -49,6 +49,7 @@ const ShowReview = (props) => {
                         <img 
                             style={{width: 200}} 
                             src={review.image}
+                            alt={"food worthy of mention by reviewer - please see review for more details"}
                         />
                     </Card.Body>
                     <Card.Footer>

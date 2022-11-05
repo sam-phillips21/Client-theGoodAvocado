@@ -1,5 +1,5 @@
 import React from 'react'
-import { Form, Button, Container, Row, Col, InputGroup } from 'react-bootstrap'
+import { Form, Button, Container, Row, Col } from 'react-bootstrap'
 
 const RestaurantForm = (props) => {
     const { restaurant, handleChange, heading, handleSubmit } = props
