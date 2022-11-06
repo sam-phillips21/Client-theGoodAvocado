@@ -2,8 +2,8 @@ import React, { useState } from 'react'
 import { Card, Button } from 'react-bootstrap'
 import { reviewDelete } from '../../api/review'
 import EditReview from '../Reviews/EditReview'
-import { Rate } from 'antd'
 import moment from 'moment'
+import StarRating from '../shared/StarRating'
 
 // import LoadingScreen from '../LoadingScreen'
 
@@ -47,8 +47,7 @@ let date = moment(review.createdAt).format('YYYY-MMM-DD')
             <Card className="m-2" style={{ backgroundColor: '#f2f6ec' }}>
                 <Card.Header className='d-flex justify-content-between' style={{ backgroundColor: '#f9ffee' }}>
                     <p>{review.username} said:</p>
-                    <Rate
-                        disabled
+                    <StarRating
                         value={review.rating}
                         style={{ fontSize: 15 }}
                     />

@@ -1,7 +1,7 @@
 import React from 'react'
 import { Form, Container, Button, Col } from 'react-bootstrap'
 import CloudinaryUploadWidget from "./CloudinaryUploadWidget";
-import 'antd/es/rate/style/index.css'
+
 
 const ReviewForm = (props) => {
     const { review, handleChange, handleSubmit, heading, handleImageChange, picture, setPicture, imageSelected, setImageSelected } = props
