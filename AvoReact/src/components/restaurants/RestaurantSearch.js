@@ -12,10 +12,9 @@ const cardContainerLayout = {
     justifyContent: 'center'
 }
 
-const RestaurantSearch = () => {
+const RestaurantSearch = ({ msgAlert }) => {
     const { searchInput } = useParams()
     const [restaurants, setRestaurants] = useState([])
-    const [error, setError] = useState("")
 
     useEffect(() => {
         axios.get('http://localhost:8000/restaurants')
@@ -30,7 +29,11 @@ const RestaurantSearch = () => {
                 setRestaurants(filteredRestaurants)
             })
             .catch((error) => {
-                setError(error)
+                msgAlert({
+                    heading: 'Failure',
+                    message: 'Search Failure: ' + error,
+                    variant: 'danger'
+                })
             })
     }, [searchInput])
 
