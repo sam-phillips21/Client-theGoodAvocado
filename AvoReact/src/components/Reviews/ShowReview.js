@@ -5,23 +5,14 @@ import EditReview from '../Reviews/EditReview'
 import moment from 'moment'
 import StarRating from '../shared/StarRating'
 
-// import LoadingScreen from '../LoadingScreen'
-
 const ShowReview = (props) => {
     const { review, restaurant, user, msgAlert, triggerRefresh } = props
-    // console.log('review', review)
 
     const [editModalShow, setEditModalShow] = useState(false)
 
 
     const handleDeleteReview = () => {
         reviewDelete(user, restaurant._id, review.id)
-            // .then(() => {
-            //     // console.log('user', user)
-            //     // console.log('restaurant', restaurant)
-            //     // console.log('review', review)
-
-            // })
 
             .then(() => {
                 msgAlert({
