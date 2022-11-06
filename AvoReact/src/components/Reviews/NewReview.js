@@ -19,7 +19,6 @@ const NewReview = (props) => {
 
 
     const handleChange = (e) => {
-        console.log(e)
         setReview(prevReview => {
             const name = e.target.name 
             let value = e.target.value

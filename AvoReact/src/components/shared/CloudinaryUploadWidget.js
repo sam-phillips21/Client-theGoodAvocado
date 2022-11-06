@@ -32,6 +32,7 @@ const CloudinaryUploadWidget = ({ handleImageChange, picture, setPicture, setIma
                 style={{ width: 200 }}
                 cloudName="dtszeeznm"
                 src={picture}
+                alt={"the food the reviewer ate - please see review for more details!"}
             />
         </div>
     );
