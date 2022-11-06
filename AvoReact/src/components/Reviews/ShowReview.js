@@ -39,7 +39,7 @@ const ShowReview = (props) => {
                 })
             })
     }
-let date = moment(review.createdAt).format('YYYY-MMM-DD')
+    let date = moment(review.createdAt).format('MMMM Do YYYY, h:mm a')
 
     return (
 
