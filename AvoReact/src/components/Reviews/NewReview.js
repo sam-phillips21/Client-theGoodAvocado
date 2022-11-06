@@ -14,10 +14,12 @@ const NewReview = (props) => {
         image: ''
     })
 
+    // These states are to clear the image data from the review form after a review submit
+    // They are set here and then used as props in CloudinaryUploadWidget.js, ReviewForm.js, and EditReview.js
     const [picture, setPicture] = useState('')
     const [imageSelected, setImageSelected] = useState('')
 
-
+    // sets the new values for a new review
     const handleChange = (e) => {
         setReview(prevReview => {
             const name = e.target.name 
@@ -42,7 +44,6 @@ const NewReview = (props) => {
     const handleSubmit = (e) => {
         e.preventDefault()
         let updatedReview = review
-        // console.log('updatedREview', updatedReview)
         updatedReview.ownerEmail = user.email
         setReview({
             comment: '',
@@ -51,8 +52,6 @@ const NewReview = (props) => {
         })
 
         
-
-        // console.log('review', review)
         reviewCreate(user, restaurant._id, updatedReview)
             .then(() => {
                 msgAlert({
@@ -61,6 +60,7 @@ const NewReview = (props) => {
                     variant: 'success'
                 })
             })
+            // sets the image preview back to an empty string
             .then(() => {
                 setPicture('')
                 setImageSelected('')

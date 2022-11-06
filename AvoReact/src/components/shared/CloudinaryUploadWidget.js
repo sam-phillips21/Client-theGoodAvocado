@@ -4,12 +4,14 @@ import { Button } from 'react-bootstrap'
 
 const CloudinaryUploadWidget = ({ handleImageChange, picture, setPicture, setImageSelected, imageSelected }) => {
 
+    // Sends the image to cloudinary for storage
     const uploadImage = (files) => {
-        // console.log(files[0])
+
         const formData = new FormData()
         formData.append("file", imageSelected)
         formData.append("upload_preset", "gxc7sx3v")
 
+        // Requests cloudinary to send the image back for viewing on the website
         Axios.post("https://api.cloudinary.com/v1_1/dtszeeznm/image/upload", formData)
             .then((response) => {
                 setPicture(response.data.url)
@@ -17,7 +19,7 @@ const CloudinaryUploadWidget = ({ handleImageChange, picture, setPicture, setIma
             })
     };
     
-    // console.log('picture', picture)
+
     return (
         <div>
             <input
@@ -28,11 +30,12 @@ const CloudinaryUploadWidget = ({ handleImageChange, picture, setPicture, setIma
                 Upload
             </Button>
 
+            {/* displays a preview of the image */}
             <img
                 style={{ width: 200 }}
                 cloudName="dtszeeznm"
                 src={picture}
-                alt={"the food the reviewer ate - please see review for more details!"}
+                alt={""}
             />
         </div>
     );

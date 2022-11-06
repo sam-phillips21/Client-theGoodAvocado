@@ -17,8 +17,7 @@ const ReviewIndex = ({ user, msgAlert, review }) => {
         reviewIndex(user)
         .then(res => {
             setAllReviews(res.data.reviews)
-            // console.log(res.data.reviews)
-            // console.log(allReviews)
+
         })
         .catch((error) => {
             msgAlert({
@@ -29,6 +28,7 @@ const ReviewIndex = ({ user, msgAlert, review }) => {
         })
     }, [])
 
+    // Filters Reviews by owner
     const usersReviews = allReviews.filter(review => review.review.ownerEmail === user.email)
     const reviewCards = usersReviews.map(review => (
         
