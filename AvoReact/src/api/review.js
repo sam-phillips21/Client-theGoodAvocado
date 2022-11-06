@@ -1,7 +1,7 @@
 import apiUrl from '../apiConfig'
 import axios from 'axios'
 
-// CREATE
+// CREATE a review- token require
 export const reviewCreate = (user, restaurantId, newReview) => {
 	const ownerId = { owner: user._id }
 	const review = {...newReview, ...ownerId}
@@ -13,26 +13,17 @@ export const reviewCreate = (user, restaurantId, newReview) => {
 	})
 }
 
-// INDEX
+// INDEX reviews - no token
 export const reviewIndex = (user) => {
-	// const ownerId = { owner: user._id }
+
 	return axios({
 		url: apiUrl + `/reviews`,
 		method: 'GET',
-        // headers: {
-		// 	Authorization: `Token token=${user.token}`,
-		// },
+
 	})
 }
 
-// export const reviewShow = (user, id) => {
-// 	return axios({
-// 		url: apiUrl + '/reviews/' + id,
-// 		method: 'GET',
-// 	})
-// }
-
-// UPDATE review
+// UPDATE a review - token Require
 export const reviewUpdate = (user, restaurantId, updatedReview) => {
 	const ownerId = { owner: user._id }
 	const review = {...updatedReview, ...ownerId}
@@ -47,7 +38,7 @@ export const reviewUpdate = (user, restaurantId, updatedReview) => {
 	})
 }
 
-// DELETE review
+// DELETE review - token require
 export const reviewDelete = (user, restaurantId, reviewId) => {
 	return axios({
 		url: `${apiUrl}/reviews/${restaurantId}/${reviewId}`,

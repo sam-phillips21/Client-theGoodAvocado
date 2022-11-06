@@ -1,6 +1,7 @@
 import apiUrl from '../apiConfig'
 import axios from 'axios'
 
+// CREATE a restaurant - token require
 export const restaurantCreate = (data, user) => {
 	return axios({
 		method: 'POST',
@@ -14,6 +15,7 @@ export const restaurantCreate = (data, user) => {
 	})
 }
 
+// INDEX all restaurants - no token require
 export const restaurantIndex = (user) => {
 	return axios({
 		method: 'GET',
@@ -21,6 +23,7 @@ export const restaurantIndex = (user) => {
 	})
 }
 
+// SHOW a restaurant - no token require
 export const restaurantShow = (user, id) => {
 	return axios({
 		method: 'GET',
@@ -28,6 +31,7 @@ export const restaurantShow = (user, id) => {
 	})
 }
 
+// UPDATE a restaurant - token require
 export const restaurantUpdate = (data, user, id) => {
 	return axios({
 		method: 'PATCH',
@@ -41,6 +45,7 @@ export const restaurantUpdate = (data, user, id) => {
 	})
 }
 
+// DELETE a restaurant - token require
 export const restaurantDelete = (user, id) => {
 	return axios({
 		method: 'DELETE',
