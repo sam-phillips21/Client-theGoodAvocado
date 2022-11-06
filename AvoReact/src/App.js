@@ -1,9 +1,6 @@
-// import React, { Component, Fragment } from 'react'
 import React, { useState, Fragment } from 'react'
 import { Route, Routes } from 'react-router-dom'
 import { v4 as uuid } from 'uuid'
-
-// import AuthenticatedRoute from './components/shared/AuthenticatedRoute'
 import AutoDismissAlert from './components/shared/AutoDismissAlert/AutoDismissAlert'
 import Header from './components/shared/Header'
 import RequireAuth from './components/shared/RequireAuth'
@@ -15,7 +12,6 @@ import ChangePassword from './components/auth/ChangePassword'
 import RestaurantCreate from './components/restaurants/RestaurantCreate'
 import RestaurantIndex from './components/restaurants/RestaurantIndex'
 import RestaurantShow from './components/restaurants/RestaurantShow'
-// import ShowReview from './components/Reviews/ShowReview'
 import IndexReview from './components/Reviews/IndexReview'
 import RestaurantSearch from './components/restaurants/RestaurantSearch'
 
@@ -24,10 +20,7 @@ const App = () => {
   const [user, setUser] = useState(null)
   const [msgAlerts, setMsgAlerts] = useState([])
 
-//   console.log('user in app', user)
-//   console.log('message alerts', msgAlerts)
   const clearUser = () => {
-    console.log('clear user ran')
     setUser(null)
   }
 

@@ -1,4 +1,3 @@
-// import React, { Component } from 'react'
 import React, { useState } from 'react'
 import { useNavigate } from 'react-router-dom'
 
@@ -9,15 +8,7 @@ import Form from 'react-bootstrap/Form'
 import Button from 'react-bootstrap/Button'
 
 const SignUp = (props) => {
-	// constructor(props) {
-	// 	super(props)
-
-	// 	this.state = {
-	// 		email: '',
-	// 		password: '',
-	// 		passwordConfirmation: '',
-	// 	}
-	// }    
+   
     const [email, setEmail] = useState('')
     const [password, setPassword] = useState('')
     const [passwordConfirmation, setPasswordConfirmation] = useState('')
@@ -56,7 +47,7 @@ const SignUp = (props) => {
 
 
     return (
-        <div className='row'>
+        <div className='row' key={email.id}>
             <div className='col-sm-10 col-md-8 mx-auto mt-5'>
                 <h3>Sign Up</h3>
                 <Form onSubmit={onSignUp}>
