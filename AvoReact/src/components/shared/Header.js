@@ -67,6 +67,7 @@ const Header = ({ user }) => (
 						src="https://i.imgur.com/ut67YmM.png"
 						width="125"
 						height="auto"
+						alt={"The word 'good' with perfectly ripened avocados instead of 'o's"}
 					/>
 				</Link>
 			</Navbar.Brand>
