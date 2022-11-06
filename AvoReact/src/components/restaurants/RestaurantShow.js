@@ -110,7 +110,7 @@ const RestaurantShow = ({ user, msgAlert }) => {
         <>
             <Container fluid='md'>
                 <Container className='show-image-container mb-3'>
-                    <Image className='rounded-bottom show-image' src={FoodImages[`${restaurant.type}`]} />
+                    <Image className='rounded-bottom show-image' src={FoodImages[`${restaurant.type}`]} alt={restaurant.type} />
                     <h1 className='display-1 show-image-header'>{restaurant.name}</h1>
                 </Container>
                 <Container className='text-center'>
