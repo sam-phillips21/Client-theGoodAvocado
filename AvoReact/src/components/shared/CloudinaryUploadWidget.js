@@ -1,4 +1,5 @@
-import React, { useEffect } from "react";
+
+import React from "react";
 import Axios from 'axios'
 import { Button } from 'react-bootstrap'
 
@@ -16,12 +17,6 @@ const CloudinaryUploadWidget = ({ handleImageChange, picture, setPicture, setIma
                 handleImageChange(response.data.url)
             })
     };
-
-    useEffect(() => {
-        return () => {
-            setPicture('')
-        }
-    }, [])
     
     // console.log('picture', picture)
     return (
