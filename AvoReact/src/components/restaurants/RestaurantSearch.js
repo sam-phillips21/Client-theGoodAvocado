@@ -20,6 +20,8 @@ const RestaurantSearch = () => {
     useEffect(() => {
         axios.get('http://localhost:8000/restaurants')
             .then((response) => {
+                // filter restaurants based on search input
+                // allow search on these fields - name, type, and address of restaurant
                 const filteredRestaurants = response.data.restaurants.filter(restaurant => {
                     return restaurant.name.toLowerCase().includes(searchInput.toLowerCase())
                         || restaurant.type.toLowerCase().includes(searchInput.toLowerCase())
@@ -27,12 +29,12 @@ const RestaurantSearch = () => {
                 })
                 setRestaurants(filteredRestaurants)
             })
-            .catch((err) => {
-                setError(err)
+            .catch((error) => {
+                setError(error)
             })
     }, [searchInput])
 
-
+    // Display the restaurants that match the search term
     const restaurantCards = restaurants.map(restaurant => (
         <Card key={restaurant.id} style={{ width: '30rem', margin: 8, backgroundColor: '#f2f6ec' }}>
             <Card.Img variant="top" src={FoodImages[`${restaurant.type}`]} style={{ height: '300px' }} alt={restaurant.type} />
@@ -45,8 +47,8 @@ const RestaurantSearch = () => {
         </Card>
     ))
 
+    // Display this if there is no restaurant that match the search
     if (restaurants.length === 0) {
-        console.log(restaurants)
         return (
             <div className='text-center mt-5 mb-5'>
                 <h4>Sorry! Your search did not return any matching results.</h4>

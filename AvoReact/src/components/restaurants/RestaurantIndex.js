@@ -28,10 +28,11 @@ const RestaurantIndex = ({ user, msgAlert }) => {
             })
     }, [])
 
+    // map over all restaurants to produce cards to display each restaurant with an image and link
     const restaurantCards = allRestaurants.map(restaurant => (
 
         <Card key={restaurant.id} style={{ width: '30rem', margin: 8, backgroundColor: '#f2f6ec' }}>
-            <Card.Img variant="top" src={FoodImages[`${restaurant.type}`]} style={{ height: '300px' }} alt={restaurant.type}/>
+            <Card.Img variant="top" src={FoodImages[`${restaurant.type}`]} style={{ height: '300px' }} alt={restaurant.type} />
             <Card.Header><b>{restaurant.name}</b> / {restaurant.type}</Card.Header>
             <Card.Body>
                 <Card.Text>
