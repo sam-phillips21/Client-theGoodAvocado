@@ -49,7 +49,7 @@ let date = moment(review.createdAt).format('YYYY-MMM-DD')
                     <p>{review.username} said:</p>
                     <Rate
                         disabled
-                        defaultValue={review.rating}
+                        value={review.rating}
                         style={{ fontSize: 15 }}
                     />
                 </Card.Header>
