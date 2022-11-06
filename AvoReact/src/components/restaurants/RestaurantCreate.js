@@ -27,18 +27,18 @@ const RestaurantCreate = ({ user, msgAlert }) => {
 
     const [restaurant, setRestaurant] = useState(defaultRestaurant)
 
+
     const handleChange = event => {
         setRestaurant(prevRestaurant => {
             const updatedName = event.target.name
-            console.log(event.target.type)
+            // check input type
+            // if input type = checkbox, assign event.target.checked (boolean)
             let updatedValue = event.target.type === 'checkbox' ? event.target.checked : event.target.value
 
             const updatedRestaurant = { [updatedName]: updatedValue }
-            console.log(updatedRestaurant)
             return { ...prevRestaurant, ...updatedRestaurant }
         })
     }
-
 
     const handleCreateRestaurant = event => {
         event.preventDefault()
