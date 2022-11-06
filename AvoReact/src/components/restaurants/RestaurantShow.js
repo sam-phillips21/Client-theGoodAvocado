@@ -9,7 +9,7 @@ import NewReview from '../Reviews/NewReview'
 import ShowReview from '../Reviews/ShowReview'
 import FoodImages from '../shared/FoodImages'
 import LoadingScreen from '../LoadingScreen'
-
+import StarRating from '../shared/StarRating'
 
 
 const restaurantOwner = <FontAwesomeIcon icon={faShop} style={{ color: '#5d52c7' }} bounce />
@@ -38,7 +38,7 @@ const RestaurantShow = ({ user, msgAlert }) => {
     const navigate = useNavigate()
 
     useEffect(() => {
-        // 👇️ scroll to top on page load
+        // scroll to top on page load
         window.scrollTo({ top: 0, left: 0, behavior: 'instant' });
     }, []);
 
@@ -75,9 +75,13 @@ const RestaurantShow = ({ user, msgAlert }) => {
             })
     }
 
+    let averageRating
     let reviewCards
     if (restaurant) {
         if (restaurant.reviews.length > 0) {
+            let ratings = restaurant.reviews.map(review => review.rating)
+            averageRating = Math.round((ratings.reduce((a, b) => a + b, 0) / ratings.length) / 0.5) * 0.5
+
             // map over the reviews
             // produce one ShowReview component for each of them
             reviewCards = restaurant.reviews.map(review => (
@@ -106,11 +110,16 @@ const RestaurantShow = ({ user, msgAlert }) => {
         <>
             <Container fluid='md'>
                 <Container className='show-image-container mb-3'>
-                    <Image className='rounded-bottom show-image' src={FoodImages[`${restaurant.type}`]} />
+                    <Image className='rounded-bottom show-image' src={FoodImages[`${restaurant.type}`]} alt={restaurant.type} />
                     <h1 className='display-1 show-image-header'>{restaurant.name}</h1>
                 </Container>
                 <Container className='text-center'>
-                    <h1 className='border-bottom border-2 border-success mb-3'>{restaurant.type} Restaurant</h1>
+                    <h1 className='border-bottom border-2 border-success mb-2'>{restaurant.type} Restaurant</h1>
+                    <StarRating
+                        value={averageRating}
+                        style={{ fontSize: 18, color: 'yellow' }}
+                    />
+
                     {restaurant.otherTypes ?
                         <h4>Other options available: {restaurant.otherTypes}</h4>
                         :

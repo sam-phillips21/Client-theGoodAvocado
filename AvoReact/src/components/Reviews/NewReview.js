@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useState }from 'react'
 import Accordion from 'react-bootstrap/Accordion';
 import ReviewForm from '../shared/ReviewForm'
 import { reviewCreate } from '../../api/review'
@@ -20,7 +20,7 @@ const NewReview = (props) => {
 
     const handleChange = (e) => {
         setReview(prevReview => {
-            const name = e.target.name
+            const name = e.target.name 
             let value = e.target.value
             const updatedReview = { [name]: value }
             return {
@@ -90,7 +90,7 @@ const NewReview = (props) => {
                         handleChange={handleChange}
                         handleImageChange={handleImageChange}
                         handleSubmit={handleSubmit}
-                        heading="Please submit a review!"
+                        heading="Add a review for this restaurant"
                     />
                 </Accordion.Body>
             </Accordion.Item>
