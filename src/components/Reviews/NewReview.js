@@ -16,6 +16,7 @@ const NewReview = (props) => {
 
     // These states are to clear the image data from the review form after a review submit
     // They are set here and then used as props in CloudinaryUploadWidget.js, ReviewForm.js, and EditReview.js
+    // Shoutout to Timm and Aisha for helping with this tricky part
     const [picture, setPicture] = useState('')
     const [imageSelected, setImageSelected] = useState('')
 
