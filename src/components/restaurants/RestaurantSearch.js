@@ -4,6 +4,7 @@ import axios from "axios"
 import FoodImages from "../shared/FoodImages"
 import { Card } from 'react-bootstrap'
 import { Link } from 'react-router-dom'
+import apiUrl from '../../apiConfig'
 
 
 const cardContainerLayout = {
@@ -17,7 +18,7 @@ const RestaurantSearch = ({ msgAlert }) => {
     const [restaurants, setRestaurants] = useState([])
 
     useEffect(() => {
-        axios.get('http://localhost:8000/restaurants')
+        axios.get(`${apiUrl}` + '/restaurants')
             .then((response) => {
                 // filter restaurants based on search input
                 // allow search on these fields - name, type, and address of restaurant
