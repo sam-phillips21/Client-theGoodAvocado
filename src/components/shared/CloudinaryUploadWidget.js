@@ -2,6 +2,7 @@ import React from "react";
 import Axios from 'axios'
 import { Button } from 'react-bootstrap'
 
+// Shout out to John McCants for helping pull the image back from cloudinary for display on the website
 const CloudinaryUploadWidget = ({ handleImageChange, picture, setPicture, setImageSelected, imageSelected }) => {
 
     // Sends the image to cloudinary for storage
