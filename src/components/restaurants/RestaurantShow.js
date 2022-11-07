@@ -113,6 +113,7 @@ const RestaurantShow = ({ user, msgAlert }) => {
                     />
 
                     {
+                        //These can be conditionally rendered instead!
                         restaurant.otherTypes
                             ?
                             <h4>Other options available: {restaurant.otherTypes}</h4>

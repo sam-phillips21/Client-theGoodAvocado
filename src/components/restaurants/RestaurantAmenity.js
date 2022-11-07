@@ -23,6 +23,7 @@ const RestaurantAmenity = ({ restaurant }) => {
         <Container className='d-flex'>
             <Container className='d-flex justify-content-end'>
                 <ul>
+                    {/* This is a great way to set this up! */}
                     <li>{restaurant.delivery ? delivery : xMark} Offers delivery </li>
                     <li>{restaurant.reservations ? reservations : xMark} Takes reservations</li>
                     <li>{restaurant.takeout ? takeout : xMark} Offers takeout</li>
