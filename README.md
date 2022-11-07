@@ -1,30 +1,53 @@
 # The Good Avocado App
 
-A Yelp Mockup: Restaurant Reviews and Descriptions
+A Yelp Mockup: Restaurant Descriptions and Reviews
 
 ## The Flossing Avocados
 
-Alina, Angel, Melanie, Sam 
+* Alina Ishizaki - https://github.com/amishizaki
+* Angel Zhou - https://github.com/angel-zh
+* Melanie Silva - https://github.com/melsil11
+* Sam Phillips - https://github.com/sam-phillips21
 
 ## Description
 
 Our Application is designed to allow users to interact with various restaurants. Users can share their favorite restaurants to help users have better experiences when dining out. Users will be able to share their experiences and leave reviews.  Our intended audience is for anyone who enjoys trying new restaurants and sharing their love of food. People all over the world are always looking for insight before spending their hard earned money on a lousy meal. Food is something everyone enjoys and we hope to share a great platform to help users have great meals.
 
 * Compile seed data based on a few restaurants in various locations to start
-* Seed data: Location
+* Restaurant Seed data: name, address , telephone, type, otherTypes, delivery, reservations, takeout, catering, acceptsCreditCards, parking, wifi, masksRequired, alcohol, vegan 
 
 * Restaurant model: 
-- Type: style/ cuisine 
-- Location: string
+- Name: String
+- Address: String
+- Telephone: String
+- Type: String
+- OtherTypes: String
+- IsRestaurantOwner 
 - Delivery: Boolean
-	
+- Reservations: Boolean
+- Takeout: Boolean
+- Catering: Boolean
+- AcceptsCreditCards: Boolean
+- Parking: Boolean
+- Wifi: Boolean
+- MasksRequired: Boolean
+- Alcohol: Boolean
+- Vegan: Boolean	
 - Reviews: Sub-document
-- Ratings: Sub-document
+- Owner: mongoose.Schema.Types.ObjectId
+
+* Review model:
+- Comment: String
+- Rating: String
+- Owner: mongoose.Schema.Types.ObjectId
+- OwnerEmail: String
+
+
 
 ## Technologies Used
 
-* React
 * Mongoose
+* React
 * Express
 * Node.js
 * MongoDB 
@@ -71,10 +94,9 @@ As a user, I want the ability to...
 | Monday | * Approval * API setup * Models * Functionality * Research for Frontend |
 | Tuesday | * More of the same * Check Functionality |
 | Wednesay | * Frontend * React - Components * Testing |
-| Thursday | * Frontend * React - Components * Testing |
-| Friday | * Stretch Goals |
-| Saturday | * Rest? Watch a movie? |
-| Sunday | * Checking everything |
+| Thursday | * Frontend * React - Components * Testing * Stretch Goals |
+| Friday | * Deploy * Presentation |
+
 
 ## More details
 
