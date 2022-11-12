@@ -23,6 +23,7 @@ const RestaurantShow = ({ user, msgAlert }) => {
     const [editModalShow, setEditModalShow] = useState(false)
     const [deleted, setDeleted] = useState(false)
     const [updated, setUpdated] = useState(false)
+    const [averageRating, setAverageRating] = useState('')
 
     const { id } = useParams()
     const navigate = useNavigate()
@@ -36,6 +37,11 @@ const RestaurantShow = ({ user, msgAlert }) => {
         restaurantShow(user, id)
             .then(res => {
                 setRestaurant(res.data.restaurant)
+                // Get the ratings from the restaurant's reviews
+                let ratings = res.data.restaurant.reviews.map(review => review.rating)
+                // Calculate the average rating for the restaurant, round to the nearest 0.5
+                let calAvgRating = Math.round((ratings.reduce((a, b) => a + b, 0) / ratings.length) / 0.5) * 0.5
+                setAverageRating(calAvgRating)
             })
             .catch((error) => {
                 msgAlert({
@@ -65,15 +71,9 @@ const RestaurantShow = ({ user, msgAlert }) => {
             })
     }
 
-    let averageRating
     let reviewCards
     if (restaurant) {
         if (restaurant.reviews.length > 0) {
-            // Get the ratings from the restaurant's reviews
-            let ratings = restaurant.reviews.map(review => review.rating)
-            // Calculate the average rating for the restaurant, round to the nearest 0.5
-            averageRating = Math.round((ratings.reduce((a, b) => a + b, 0) / ratings.length) / 0.5) * 0.5
-
             // map over the reviews
             // produce one ShowReview component for each of them
             reviewCards = restaurant.reviews.map(review => (
@@ -106,7 +106,7 @@ const RestaurantShow = ({ user, msgAlert }) => {
                 </Container>
                 <Container className='text-center'>
                     <h1 className='border-bottom border-2 border-success mb-2'>{restaurant.type} Restaurant</h1>
-                
+
                     <StarRating
                         value={averageRating}
                         style={{ fontSize: 18, color: 'yellow' }}
